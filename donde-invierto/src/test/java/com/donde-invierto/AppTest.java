@@ -1,4 +1,4 @@
-﻿package com.donde-invierto;
+package dominio;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
