@@ -35,7 +35,7 @@ public class JSONLoader
 						
 	  if (cuentaJSON.has("indicadores")) 
 	  {
-		 JSONArray indicadores = cuentaJSON.getJSONArray("indicadores")
+		 JSONArray indicadores = cuentaJSON.getJSONArray("indicadores");
 		 
 		 for (int p = 0; p < indicadores.length(); p++) 
 		 {					
