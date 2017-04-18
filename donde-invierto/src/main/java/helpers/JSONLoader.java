@@ -6,15 +6,17 @@ import java.io.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class JSONLoader {
+public class JSONLoader 
+{
   
   private String FilePath = "";  
   
-  public JSONLoader(String filePath) 
+  public JSONLoader(String filePath)
   {
 	  this.FilePath = filePath;	
   }
   
+  //
   public String GetCuentasAsJSONArray()
   {
 	  
