@@ -11,6 +11,6 @@ public class CargaArchivoTest {
 	String filePath = "C:/Users/Rulo/Desktop/2017-mn-group-04-develop/donde-invierto/src/test/resources/cuentas.json";
 	JSONLoader loader = new JSONLoader(filePath);	  
 	
-	loader.GetJSONObject();	
+	loader.GetCuentasAsJSONArray();	
   }
 }
