@@ -16,7 +16,7 @@ public class JSONLoader
 	  this.FilePath = filePath;	
   }
   
-  //
+  
   public String GetCuentasAsJSONArray()
   {
 	  
@@ -31,17 +31,19 @@ public class JSONLoader
 	  JSONObject cuentaJSON = arr.getJSONObject(i);
 	  String nombre = cuentaJSON.getString("nombre");	
 	  
-	  System.out.println(nombre);
+	  // Inicializar cuenta.
 						
 	  if (cuentaJSON.has("indicadores")) 
 	  {
-		 JSONArray indicadores = cuentaJSON.getJSONArray("indicadores");
+		 JSONArray indicadores = cuentaJSON.getJSONArray("indicadores")
 		 
 		 for (int p = 0; p < indicadores.length(); p++) 
 		 {					
 			JSONObject indicador = indicadores.getJSONObject(p);					
 			String indicadorNombre = indicador.getString("nombre");
 			Double indicadorValor = indicador.getDouble("valor");												
+		
+			// TODO: Inicializar indicador.
 			System.out.println(indicadorNombre);
 			System.out.println(indicadorValor);
 		 }
@@ -63,4 +65,5 @@ public class JSONLoader
 	   return "";
 	}
   }
+  
 }
