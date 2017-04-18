@@ -6,6 +6,4 @@ public interface ICalculable {
 	
 	public BigDecimal calcular(Periodo periodo);
 	
-	
-
 }

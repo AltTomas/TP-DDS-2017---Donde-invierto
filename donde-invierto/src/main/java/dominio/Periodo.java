@@ -7,6 +7,11 @@ public class Periodo {
 	DateTime fechaInicio;
 	DateTime fechaFin;
 	
+	public Periodo(DateTime paramFechaInicio, DateTime paramFechaFin){
+		this.fechaInicio = paramFechaInicio;
+		this.fechaFin = paramFechaFin;
+	}
+	
 	public DateTime getFechaInicio() {
 		return fechaInicio;
 	}
@@ -28,8 +33,5 @@ public class Periodo {
 		return this.fechaInicio.isAfter(otroPeriodo.fechaInicio) && this.fechaFin.isBefore(otroPeriodo.fechaFin);
 	}
 	
-	public void initilize() {
-		this.fechaInicio = null;
-		this.fechaFin = null;
-	}
+	
 }

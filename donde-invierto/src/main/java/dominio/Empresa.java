@@ -6,10 +6,20 @@ import java.util.List;
 
 public class Empresa {
 	
-	private List<ICalculable> calculos; //interfaz para cuentas e indicadores
+	private String nombre;
+	private List<ICalculable> calculos = new ArrayList<ICalculable>(); //interfaz para cuentas e indicadores
 	
-	public Empresa(){
-		calculos = new ArrayList<ICalculable>();
+	public Empresa(String paramNombre, ICalculable paramCalculo){
+		this.nombre = paramNombre;
+		agregarCuenta(paramCalculo);
+	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public void setNombre(String paramNombre){
+		this.nombre = paramNombre;
 	}
 	
 	public void agregarCuenta(ICalculable calculo){
@@ -28,8 +38,6 @@ public class Empresa {
 		}
 	}
 	
-	public void initialize() {
-		this.calculos = null;
-	}
+	
 	
 }

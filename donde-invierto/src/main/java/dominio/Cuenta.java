@@ -8,6 +8,12 @@ public class Cuenta implements ICalculable {
 	private Periodo periodo;
 	private BigDecimal valor;
 	
+	public Cuenta(String paramNombre, Periodo paramPeriodo, BigDecimal paramValor) {
+		this.nombre = paramNombre;
+		this.periodo = paramPeriodo;
+		this.valor = paramValor;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -32,11 +38,6 @@ public class Cuenta implements ICalculable {
 		}
 	}
 	
-	public void initialize() {
-		this.nombre = null;
-		this.periodo.initilize();
-		this.valor = BigDecimal.ZERO;
-		
-	}
+	
 		
 }
