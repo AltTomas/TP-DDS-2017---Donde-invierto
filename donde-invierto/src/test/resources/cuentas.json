@@ -1,0 +1,15 @@
+[{
+		"nombre": "empresa1",
+		"indicadores": [{
+			"nombre": "indicador1",
+			"valor": 150
+		}]
+	},
+	{
+		"nombre": "empresa2",
+		"indicadores": [{
+			"nombre": "indicador40",
+			"valor": 2000
+		}]
+	}
+]
