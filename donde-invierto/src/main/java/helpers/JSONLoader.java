@@ -6,14 +6,16 @@ import java.io.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class JSONLoader {
+public class JSONLoader 
+{
   
   private String FilePath = "";  
   
-  public JSONLoader(String filePath) 
+  public JSONLoader(String filePath)
   {
 	  this.FilePath = filePath;	
   }
+  
   
   public String GetCuentasAsJSONArray()
   {
@@ -29,7 +31,7 @@ public class JSONLoader {
 	  JSONObject cuentaJSON = arr.getJSONObject(i);
 	  String nombre = cuentaJSON.getString("nombre");	
 	  
-	  System.out.println(nombre);
+	  // Inicializar cuenta.
 						
 	  if (cuentaJSON.has("indicadores")) 
 	  {
@@ -40,6 +42,8 @@ public class JSONLoader {
 			JSONObject indicador = indicadores.getJSONObject(p);					
 			String indicadorNombre = indicador.getString("nombre");
 			Double indicadorValor = indicador.getDouble("valor");												
+		
+			// TODO: Inicializar indicador.
 			System.out.println(indicadorNombre);
 			System.out.println(indicadorValor);
 		 }
@@ -61,4 +65,5 @@ public class JSONLoader {
 	   return "";
 	}
   }
+  
 }
