@@ -28,4 +28,8 @@ public class Empresa {
 		}
 	}
 	
+	public void initialize() {
+		this.calculos = null;
+	}
+	
 }

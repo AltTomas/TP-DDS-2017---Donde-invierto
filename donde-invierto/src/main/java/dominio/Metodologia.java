@@ -14,4 +14,8 @@ public class Metodologia {
 		}
 		return valor;
 	}
+	
+	public void initialize() {
+		this.condiciones = null;
+	}
 }

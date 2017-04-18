@@ -18,5 +18,11 @@ public class Condicion {
 		}
 		
 	}
+	
+	public void initialize() {
+		
+		this.otraEmpresa.initialize();
+		this.valor = BigDecimal.ZERO;
+	}
 
 }

@@ -31,5 +31,12 @@ public class Cuenta implements ICalculable {
 			return BigDecimal.ZERO;
 		}
 	}
+	
+	public void initialize() {
+		this.nombre = null;
+		this.periodo.initilize();
+		this.valor = BigDecimal.ZERO;
+		
+	}
 		
 }

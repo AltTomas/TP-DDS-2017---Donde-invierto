@@ -28,4 +28,8 @@ public class Periodo {
 		return this.fechaInicio.isAfter(otroPeriodo.fechaInicio) && this.fechaFin.isBefore(otroPeriodo.fechaFin);
 	}
 	
+	public void initilize() {
+		this.fechaInicio = null;
+		this.fechaFin = null;
+	}
 }
