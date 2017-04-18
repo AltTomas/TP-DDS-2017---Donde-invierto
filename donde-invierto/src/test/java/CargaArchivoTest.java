@@ -8,7 +8,7 @@ public class CargaArchivoTest {
   @Test
   public void testAssertTrue() {
 	
-	String filePath = "C:/Users/Rulo/Desktop/2017-mn-group-04-develop/donde-invierto/src/test/resources/cuentas.json";
+	String filePath = "";
 	JSONLoader loader = new JSONLoader(filePath);	  
 	
 	loader.GetCuentasAsJSONArray();	

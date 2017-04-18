@@ -15,11 +15,9 @@ public class JSONLoader {
   public String GetCuentasAsJSONArray()
   {
 	  
-	String contenidoJSON = this.ReadFile(this.FilePath);
-	
+	String contenidoJSON = this.ReadFile(this.FilePath);	
 	System.out.println(this.FilePath);
-	///ArrayList<PuntoDeInteres> ListaPOI = new ArrayList<>();
-
+	
 	JSONArray arr = new JSONArray(contenidoJSON);
 
 	for (int i = 0; i < arr.length(); i++) 
@@ -38,8 +36,9 @@ public class JSONLoader {
 		 {					
 			JSONObject indicador = indicadores.getJSONObject(p);					
 			String indicadorNombre = indicador.getString("nombre");
-		    //Int valor = indicador.getJSONString("valor");														
+			Double indicadorValor = indicador.getDouble("valor");												
 			System.out.println(indicadorNombre);
+			System.out.println(indicadorValor);
 		 }
 	  }		
 	}
