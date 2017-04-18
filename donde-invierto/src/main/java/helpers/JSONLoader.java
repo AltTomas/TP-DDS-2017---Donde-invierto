@@ -1,5 +1,8 @@
 package helpers;
 
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,7 +50,15 @@ public class JSONLoader {
   }
   
   private String ReadFile(String filePath)
-  {
-	return "[{\"nombre\": \"empresa1\",\"indicadores\": [{\"nombre\": \"indicador1\",\"valor\": 150}]},{\"nombre\": \"empresa2\",\"indicadores\": [{\"nombre\": \"indicador40\",\"valor\": 2000}]}]";
+  {	
+	try
+	{
+	   String content = new Scanner(new File(filePath)).useDelimiter("\\Z").next();	
+	   return content;
+	}
+	catch(FileNotFoundException ex)
+	{
+	   return "";
+	}
   }
 }
