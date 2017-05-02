@@ -24,13 +24,15 @@ public class CargaArchivoTest {
   }
   
   @Test
-  public void testHayEmpresas(){
+  public void testHayEmpresas()
+  {
 	  assertTrue(empresas.size() > 0);
   }
   
 
   @Test
-  public void testEmpresaConCuentas() {
+  public void testEmpresaConCuentas() 
+  {
 	  List<ICalculable> cuentas = null;
 	  
 	  String empresaBuscada = "empresa1";
@@ -47,4 +49,5 @@ public class CargaArchivoTest {
 	  
 	  assertTrue(cuentas.size() > 0);
   }
+  
 }
