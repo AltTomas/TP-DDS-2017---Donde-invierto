@@ -1,10 +1,11 @@
-[{
+[
+    {
 		"nombre": "empresa1",
 		"cuentas": [{
 			"nombre": "cuenta1",
 			"valor": 150,
-			"fechaInicio": "01:01:1992",
-			"fechaFin": "31:12:1992"
+			"fechaInicio": "1992-01-01",
+			"fechaFin": "2007-12-03"
 		}]
 	},
 	{
@@ -12,8 +13,8 @@
 		"cuentas": [{
 			"nombre": "cuenta40",
 			"valor": 2000,
-			"fechaInicio": "01:01:1993",
-			"fechaFin": "31:12:1993"
+			"fechaInicio": "1992-01-01",
+			"fechaFin": "1992-12-31"
 		}]
 	}
 ]

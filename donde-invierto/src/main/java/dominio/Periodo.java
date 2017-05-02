@@ -1,38 +1,39 @@
 package dominio;
 
-import java.util.Date;
-
-import org.joda.time.DateTime;
+import java.time.LocalDate;
+import java.lang.UnsupportedOperationException;
 
 public class Periodo {
 	
-	Date fechaInicio;
-	Date fechaFin;
+	LocalDate fechaInicio;
+	LocalDate fechaFin;
 	
-	public Periodo(Date paramFechaInicio, Date paramFechaFin){
+	public Periodo(LocalDate paramFechaInicio, LocalDate paramFechaFin){
 		this.fechaInicio = paramFechaInicio;
 		this.fechaFin = paramFechaFin;
 	}
 	
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
 	
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 	
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
 	
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	
 	//Falta comparar entre que fechas se encuentra el nuevo periodo
-	public boolean estaComprendidoEntre(Periodo otroPeriodo){
-		return this.fechaInicio.after(otroPeriodo.fechaInicio) && this.fechaFin.before(otroPeriodo.fechaFin);
+	public boolean estaComprendidoEntre(Periodo otroPeriodo) throws UnsupportedOperationException
+	{
+		//return this.fechaInicio.after(otroPeriodo.fechaInicio) && this.fechaFin.before(otroPeriodo.fechaFin);
+		throw new UnsupportedOperationException();
 	}
 	
 	
