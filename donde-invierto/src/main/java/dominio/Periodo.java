@@ -30,10 +30,10 @@ public class Periodo {
 	}
 	
 	//Falta comparar entre que fechas se encuentra el nuevo periodo
-	public boolean estaComprendidoEntre(Periodo otroPeriodo) throws UnsupportedOperationException
-	{
-		//return this.fechaInicio.after(otroPeriodo.fechaInicio) && this.fechaFin.before(otroPeriodo.fechaFin);
-		throw new UnsupportedOperationException();
+	public boolean estaComprendidoEntre(Periodo otroPeriodo)
+	{		
+		return this.fechaInicio.isAfter(otroPeriodo.fechaInicio) && 			
+			   this.fechaFin.isBefore(otroPeriodo.fechaFin);
 	}
 	
 	
