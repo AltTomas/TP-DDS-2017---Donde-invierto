@@ -9,9 +9,8 @@ public class Empresa {
 	private String nombre;
 	private List<ICalculable> calculos = new ArrayList<ICalculable>(); //interfaz para cuentas e indicadores
 	
-	public Empresa(String paramNombre, ICalculable paramCalculo){
+	public Empresa(String paramNombre){
 		this.nombre = paramNombre;
-		agregarCuenta(paramCalculo);
 	}
 	
 	public String getNombre() {
