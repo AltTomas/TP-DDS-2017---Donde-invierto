@@ -1,6 +1,9 @@
 package dominio;
 
+// JUnit
 import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+
 import helpers.JSONLoader;
 import java.util.ArrayList;
 
@@ -14,7 +17,7 @@ public class CargaArchivoTest {
 	
 	ArrayList<Empresa> empresas = loader.GetEmpresasFromJSONArray();	
 	
-	
-	// TODO: agregar algun assert que justifique tener este test.
+	// El array tiene más de una empresa.
+	assertTrue(empresas.size() > 0);	
   }
 }
