@@ -15,11 +15,10 @@ public class CargaArchivoTest {
   private ArrayList<Empresa> empresas = null;
   
   @Before
-  public void cargaArchivo() {
-	
-	String filePath = "/home/dds/dds-utn/2017-mn-group-04/donde-invierto/src/test/resources/cuentas.json";
-	
-	JSONLoader loader = new JSONLoader(filePath);	  
+  public void cargaArchivo() 
+  {		
+	String filePath = "src/test/resources/cuentas.json";		
+	JSONLoader loader = new JSONLoader(filePath);	  	
 	
 	empresas = loader.GetEmpresasFromJSONArray();
   }
