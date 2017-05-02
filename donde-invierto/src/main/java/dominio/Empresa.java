@@ -7,6 +7,7 @@ import java.util.List;
 public class Empresa {
 	
 	private String nombre;
+	
 		
 	// Interfaz para cuentas e indicadores
 	private List<ICalculable> calculos = new ArrayList<ICalculable>(); 
@@ -25,6 +26,10 @@ public class Empresa {
 	
 	public void agregarCuenta(ICalculable calculo){
 		this.calculos.add(calculo);
+	}
+	
+	public List<ICalculable> getCuentas(){
+		return this.calculos;
 	}
 	
 	public void eliminarCuenta(ICalculable calculo){

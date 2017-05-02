@@ -1,23 +1,51 @@
 package dominio;
 
+
 // JUnit
 import org.junit.Test;
+import org.junit.Before;
 import static org.junit.Assert.assertTrue;
 
 import helpers.JSONLoader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CargaArchivoTest {
 
-  @Test
-  public void testCargaArchivo() {
+  private ArrayList<Empresa> empresas = null;
+  
+  @Before
+  public void cargaArchivo() {
 	
-	String filePath = "src/test/resources/cuentas.json";
+	String filePath = "/home/dds/dds-utn/2017-mn-group-04/donde-invierto/src/test/resources/cuentas.json";
+	
 	JSONLoader loader = new JSONLoader(filePath);	  
 	
-	ArrayList<Empresa> empresas = loader.GetEmpresasFromJSONArray();	
-	
-	// El array tiene más de una empresa.
-	assertTrue(empresas.size() > 0);	
+	empresas = loader.GetEmpresasFromJSONArray();
+  }
+  
+  @Test
+  public void testHayEmpresas(){
+	  assertTrue(empresas.size() > 0);
+  }
+  
+
+  @Test
+  public void testEmpresaConCuentas() {
+	  List<ICalculable> cuentas = null;
+	  
+	  String empresaBuscada = "empresa1";
+	  
+	  for (Empresa empresa : empresas)
+	  {
+		  String nombreEmpresa = empresa.getNombre();
+		  if (nombreEmpresa.equals(empresaBuscada))
+		  {
+			  cuentas = empresa.getCuentas();
+			  
+		  }
+	  }
+	  
+	  assertTrue(cuentas.size() > 0);
   }
 }
