@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import dominio.Empresa;
 import dominio.Periodo;
 import dominio.Cuenta;
+import java.util.ArrayList;
 
 public class JSONLoader 
 {
@@ -25,35 +26,37 @@ public class JSONLoader
   }
   
   
-  public String GetCuentasAsJSONArray()
+  public ArrayList<Empresa> GetEmpresasFromJSONArray()
   {
-	  
+	
+	ArrayList<Empresa> empresas = new ArrayList<Empresa>();
+	
 	String contenidoJSON = this.ReadFile(this.FilePath);		
 	JSONArray arr = new JSONArray(contenidoJSON);
 
 	for (int i = 0; i < arr.length(); i++) 
 	{
 		
-	  JSONObject cuentaJSON = arr.getJSONObject(i);
-	  String nombre = cuentaJSON.getString("nombre");	
+	  JSONObject empresaJSON = arr.getJSONObject(i);
+	  String nombre = empresaJSON.getString("nombre");	
 	  
 	  Empresa empresa = new Empresa(nombre);
-	  
-	  
+	  	  
 	  // Inicializar cuenta.
 						
-	  if (cuentaJSON.has("cuentas")) 
+	  if (empresaJSON.has("cuentas")) 
 	  {
-		 JSONArray cuentas = cuentaJSON.getJSONArray("cuentas");
+		 JSONArray cuentas = empresaJSON.getJSONArray("cuentas");
 		 
 		 for (int p = 0; p < cuentas.length(); p++) 
 		 {						
 			 
-			JSONObject cuenta = cuentas.getJSONObject(p);					
-			String cuentaNombre = cuenta.getString("nombre");
-			Double cuentaValor = cuenta.getDouble("valor");
-			String fechaInicio = cuenta.getString("fechaInicio");
-			String fechaFin = cuenta.getString("fechaFin");
+			// Obtener cuenta.
+			JSONObject cuentaJSON = cuentas.getJSONObject(p);			
+			String cuentaNombre = cuentaJSON.getString("nombre");
+			Double cuentaValor = cuentaJSON.getDouble("valor");
+			String fechaInicio = cuentaJSON.getString("fechaInicio");
+			String fechaFin = cuentaJSON.getString("fechaFin");
 			
 			try
 			{
@@ -63,19 +66,24 @@ public class JSONLoader
 			  
 			  Periodo periodo = new Periodo(cuentaFechaInicio, cuentaFechaFin);
 			  BigDecimal cuentaValorBigD = new BigDecimal(cuentaValor);
-			  Cuenta cuenta1 = new Cuenta(cuentaNombre, periodo, cuentaValorBigD);
+			  Cuenta cuenta = new Cuenta(cuentaNombre, periodo, cuentaValorBigD);
+			  
+			  empresa.agregarCuenta(cuenta);
 			}
 		    catch(DateTimeParseException ex)
 			{
 			   // TODO: código para manejar la excepción.
 			   System.out.println("Ocurrio una excepción");
-			}
+			}						
 								
 		 }
 	  }		
+	  
+	  empresas.add(empresa);
+	  
 	}
 
-	return "";	  
+	return empresas;	  
   }
   
   private String ReadFile(String filePath)

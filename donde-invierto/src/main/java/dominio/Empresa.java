@@ -7,7 +7,9 @@ import java.util.List;
 public class Empresa {
 	
 	private String nombre;
-	private List<ICalculable> calculos = new ArrayList<ICalculable>(); //interfaz para cuentas e indicadores
+		
+	// Interfaz para cuentas e indicadores
+	private List<ICalculable> calculos = new ArrayList<ICalculable>(); 
 	
 	public Empresa(String paramNombre){
 		this.nombre = paramNombre;
