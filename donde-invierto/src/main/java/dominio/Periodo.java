@@ -32,9 +32,9 @@ public class Periodo {
 	//Falta comparar entre que fechas se encuentra el nuevo periodo
 	public boolean estaComprendidoEntre(Periodo otroPeriodo)
 	{		
-		return this.fechaInicio.isAfter(otroPeriodo.fechaInicio) && 			
-			   this.fechaFin.isBefore(otroPeriodo.fechaFin);
-	}
-	
-	
+		return (this.fechaInicio.equals(otroPeriodo.fechaInicio) && 
+			     this.fechaFin.equals(otroPeriodo.fechaFin)) ||
+		       (this.fechaInicio.isAfter(otroPeriodo.fechaInicio) && 			
+			   this.fechaFin.isBefore(otroPeriodo.fechaFin));
+	}	
 }
