@@ -30,7 +30,7 @@ public class IndicadorTest
 	 indicador = new Indicador("Indicador Test", periodo);
   }
 
-  // TODO: el calculo en el futuro debería tener sentido y no ser cero.
+  // TODO: el calculo en el futuro deberia tener sentido y no ser cero.
   @Test
   public void testCalcular()
   {	
