@@ -11,11 +11,9 @@ public class Indicador implements ICalculable {
 	private List<Indicador> indicadores = new ArrayList<Indicador>();
 	private List<Cuenta> cuentas = new ArrayList<Cuenta>();
 
-	public Indicador(String paramNombre, Periodo paramPeriodo, Indicador paramIndicador, Cuenta paramCuenta) {
+	public Indicador(String paramNombre, Periodo paramPeriodo) {
 		this.nombre = paramNombre;
-		this.periodo = paramPeriodo;
-		agregarIndicador(paramIndicador);
-		agregarCuenta(paramCuenta);
+		this.periodo = paramPeriodo;	
 	}
 	
 	public String getNombre() {
