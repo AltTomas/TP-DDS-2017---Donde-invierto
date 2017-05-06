@@ -13,13 +13,17 @@
 	2. Compilar la aplicación usando maven y crear un ejecutable:
 	
 	```
-   	mvn clean compile
+   	
+	mvn clean compile
 	mvn package
+	
 	```
 
 	3. Ejecutar el .jar resultante:
 
     ```  	
+	
 	mvn exec:java
+	
     ```
 	
