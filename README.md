@@ -1,6 +1,6 @@
-﻿ # Donde Invierto
+ # Donde Invierto
  
- TP Del grupo numero 4 de la materia Dise�o de Sistemas
+ TP Del grupo numero 4 de la materia Diseño de Sistemas
  
  ## Estructura del repositorio
  
