@@ -13,6 +13,31 @@
        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 	
+	<build>
+      <plugins>
+        <plugin>
+           <groupId>org.codehaus.mojo</groupId>
+           <artifactId>exec-maven-plugin</artifactId>
+           <version>1.6.0</version>
+           
+		   <executions>
+             <execution>
+               <goals>
+                 <goal>exec</goal>
+               </goals>
+             </execution>
+           </executions>
+		   
+          <configuration>
+		    <mainClass>dominio.Main</mainClass>
+            <executable>donde-invierto-1.0-SNAPSHOT.jar</executable>        
+			<workingDirectory>./target</workingDirectory>
+          </configuration>
+		
+        </plugin>
+      </plugins>
+    </build>	
+	
 	<dependencies>
 	
 		<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
@@ -37,4 +62,5 @@
 		</dependency>		
 		
 	</dependencies>
+	
 </project>
