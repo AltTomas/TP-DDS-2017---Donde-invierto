@@ -4,8 +4,8 @@
 
  ## Correr la aplicación
  
-  Posicionarse sobre la carpeta donde-invierto.
-  Compilar la aplicación usando maven y crear un ejecutable:
+  - Posicionarse sobre la carpeta donde-invierto.
+  - Compilar la aplicación usando maven y crear un ejecutable:
 	
   ```
   mvn clean compile
