@@ -17,6 +17,12 @@
   ```  	
   mvn exec:java
   ```
+ 
+ ## Correr los tests
+
+  ```  	
+  mvn test
+  ``` 
 
  ## Estructura del repositorio
  
