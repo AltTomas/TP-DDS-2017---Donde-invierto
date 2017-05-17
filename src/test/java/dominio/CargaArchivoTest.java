@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 import helpers.JSONLoader;
 import java.util.ArrayList;
 import java.util.List;
-//import helpers.FileReader;
+import helpers.FileToStringReader;
 
 public class CargaArchivoTest {
 

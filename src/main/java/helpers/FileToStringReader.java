@@ -1,3 +1,5 @@
+package helpers;
+
 import java.io.*;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
