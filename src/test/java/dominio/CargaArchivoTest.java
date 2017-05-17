@@ -28,8 +28,7 @@ public class CargaArchivoTest {
   public void testHayEmpresas()
   {
 	  assertTrue(empresas.size() > 0);
-  }
-  
+  }  
 
   @Test
   public void testEmpresaConCuentas() 
@@ -44,7 +43,6 @@ public class CargaArchivoTest {
 		  if (nombreEmpresa.equals(empresaBuscada))
 		  {
 			  cuentas = empresa.getCuentas();
-			  System.out.println(cuentas);
 		  }
 	  }
 	  
