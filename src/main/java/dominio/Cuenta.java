@@ -1,6 +1,9 @@
 package dominio;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.math.BigDecimal;
 
 public class Cuenta implements ICalculable {
 
@@ -8,10 +11,16 @@ public class Cuenta implements ICalculable {
 	private Periodo periodo;
 	private BigDecimal valor;
 	
-	public Cuenta(String paramNombre, Periodo paramPeriodo, BigDecimal paramValor) {
-		this.nombre = paramNombre;
-		this.periodo = paramPeriodo;
-		this.valor = paramValor;
+	public Cuenta(String nombre, String fechaInicio, String fechaFin, int valor)
+	{
+		LocalDate cuentaFechaInicio = LocalDate.parse(fechaInicio);
+		LocalDate cuentaFechaFin = LocalDate.parse(fechaFin);			  
+        Periodo periodo = new Periodo(cuentaFechaInicio, cuentaFechaFin);
+        BigDecimal valorBigDecimal = new BigDecimal(valor);
+		
+		this.nombre = nombre;
+		this.periodo = periodo;
+		this.valor = valorBigDecimal;
 	}
 	
 	public String getNombre() {
@@ -37,7 +46,5 @@ public class Cuenta implements ICalculable {
 			return BigDecimal.ZERO;
 		}
 	}
-	
-	
-		
+
 }

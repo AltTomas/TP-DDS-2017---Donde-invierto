@@ -27,19 +27,17 @@ public class EmpresaTest
   @Before
   public void cargaEmpresa() 
   {	
- 
-     // Set cuenta.
+	 // Set periodos.
      LocalDate fechaInicio = LocalDate.parse("2007-01-01");
 	 LocalDate fechaFin = LocalDate.parse("2008-01-01");
-	 periodo = new Periodo(fechaInicio, fechaFin); 	 	 
-     cuenta = new Cuenta("Ahorros", periodo, valor);	
-     
-	 //	El periodo de la empresa esta comprendido entre este.
-	 LocalDate fechaInicio2 = LocalDate.parse("2010-01-01");
+	 periodo = new Periodo(fechaInicio, fechaFin); 	 	
+ 	 LocalDate fechaInicio2 = LocalDate.parse("2010-01-01");
 	 LocalDate fechaFin2 = LocalDate.parse("2014-01-01");
 	 periodo2 = new Periodo(fechaInicio2, fechaFin2); 
-	 BigDecimal valor2 = new BigDecimal(12300);	 
-	 cuenta2 = new Cuenta("Test", periodo2, valor2);	
+	 
+     // Set cuenta.	 	 
+     cuenta = new Cuenta("Ahorros", "2007-01-01", "2008-01-01", 12000);	     
+	 cuenta2 = new Cuenta("Test", "2010-01-01", "2014-01-01", 12300);	
 	 
 	 //Set empresa.
      empresa = new Empresa("Empresa Test");	 	

@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 public class Condicion {
 	
-	private ICalculable calculo;
+	private Cuenta calculo;
 	private Empresa otraEmpresa;
 	private BigDecimal valor;
 	
-	public Condicion(ICalculable paramCalculo, Empresa paramEmpresa, BigDecimal paramValor) 
+	public Condicion(Cuenta paramCalculo, Empresa paramEmpresa, BigDecimal paramValor) 
 	{
 		this.calculo = paramCalculo;
 		this.otraEmpresa = paramEmpresa;

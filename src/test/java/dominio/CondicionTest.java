@@ -21,16 +21,9 @@ public class CondicionTest
   
   @Before
   public void cargaIndicador() 
-  {	
- 
-	BigDecimal valor = new BigDecimal(4500);
-	
-    // Set cuenta.
-    LocalDate fechaInicio = LocalDate.parse("2007-01-01");
-	LocalDate fechaFin = LocalDate.parse("2008-01-01");
-	periodo = new Periodo(fechaInicio, fechaFin); 	 	 
-    Cuenta cuenta = new Cuenta("Ahorros", periodo, valor);	
- 
+  {	 	 
+    BigDecimal valor = new BigDecimal(4500);
+    Cuenta cuenta = new Cuenta("Ahorros", "2007-01-01", "2008-01-01", 4500);	
     Empresa empresa = new Empresa("Empresa Test");	
     condicion = new Condicion(cuenta, empresa, valor);
   }

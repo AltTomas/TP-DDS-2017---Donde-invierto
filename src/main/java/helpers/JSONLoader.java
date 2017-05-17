@@ -8,12 +8,12 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.io.*;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import dominio.Empresa;
 import dominio.Periodo;
 import dominio.Cuenta;
 import java.util.ArrayList;
+import com.google.gson.Gson;
+import java.util.Arrays;
 
 public class JSONLoader 
 {
@@ -24,67 +24,18 @@ public class JSONLoader
   {
 	  this.FilePath = filePath;	
   }
-  
-  
+
   public ArrayList<Empresa> GetEmpresasFromJSONArray()
   {
+    String contenidoJSON = this.ReadFile(this.FilePath);
 	
-	ArrayList<Empresa> empresas = new ArrayList<Empresa>();
+	// GSON deserialization library.
+	Gson gson = new Gson();	
+	Empresa [] empresas = gson.fromJson(contenidoJSON, Empresa[].class);	
+    ArrayList<Empresa> empresasArray = new ArrayList<Empresa>(Arrays.asList(empresas));
 	
-	String contenidoJSON = this.ReadFile(this.FilePath);		
-	JSONArray arr = new JSONArray(contenidoJSON);
-
-	for (int i = 0; i < arr.length(); i++) 
-	{
-		
-	  JSONObject empresaJSON = arr.getJSONObject(i);
-	  String nombre = empresaJSON.getString("nombre");	
-	  
-	  Empresa empresa = new Empresa(nombre);
-	  	  
-	  // Inicializar cuenta.
-						
-	  if (empresaJSON.has("cuentas")) 
-	  {
-		 JSONArray cuentas = empresaJSON.getJSONArray("cuentas");
-		 
-		 for (int p = 0; p < cuentas.length(); p++) 
-		 {						
-			 
-			// Obtener cuenta.
-			JSONObject cuentaJSON = cuentas.getJSONObject(p);			
-			String cuentaNombre = cuentaJSON.getString("nombre");
-			Double cuentaValor = cuentaJSON.getDouble("valor");
-			String fechaInicio = cuentaJSON.getString("fechaInicio");
-			String fechaFin = cuentaJSON.getString("fechaFin");
-			
-			try
-			{
-			  // Parsear fechas.
-			  LocalDate cuentaFechaInicio = LocalDate.parse(fechaInicio);
-			  LocalDate cuentaFechaFin = LocalDate.parse(fechaFin);
-			  
-			  Periodo periodo = new Periodo(cuentaFechaInicio, cuentaFechaFin);
-			  BigDecimal cuentaValorBigD = new BigDecimal(cuentaValor);
-			  Cuenta cuenta = new Cuenta(cuentaNombre, periodo, cuentaValorBigD);
-			  
-			  empresa.agregarCuenta(cuenta);
-			}
-		    catch(DateTimeParseException ex)
-			{
-			   // TODO: código para manejar la excepción.
-			   System.out.println("Ocurrio una excepción");
-			}						
-								
-		 }
-	  }		
-	  
-	  empresas.add(empresa);
-	  
-	}
-
-	return empresas;	  
-  }
+	return empresasArray;
+  }	  
   
   private String ReadFile(String filePath)
   {	

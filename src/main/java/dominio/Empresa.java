@@ -7,11 +7,10 @@ import java.util.List;
 public class Empresa {
 	
 	private String nombre;
-			
-	// Interfaz para cuentas e indicadores
-	private List<ICalculable> calculos = new ArrayList<ICalculable>(); 
+	private ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>(); 
 	
-	public Empresa(String paramNombre){
+	public Empresa(String paramNombre)
+	{
 		this.nombre = paramNombre;
 	}
 	
@@ -23,20 +22,20 @@ public class Empresa {
 		this.nombre = paramNombre;
 	}
 	
-	public void agregarCuenta(ICalculable calculo){
-		this.calculos.add(calculo);
+	public void agregarCuenta(Cuenta cuenta){
+		this.cuentas.add(cuenta);
 	}
 	
-	public List<ICalculable> getCuentas(){
-		return this.calculos;
+	public List<Cuenta> getCuentas(){
+		return this.cuentas;
 	}
 	
-	public void eliminarCuenta(ICalculable calculo){
-		this.calculos.remove(calculo);
+	public void eliminarCuenta(Cuenta calculo){
+		this.cuentas.remove(calculo);
 	}
 	
-	public BigDecimal getValorCalculo(ICalculable calculo, Periodo periodo){
-		if (this.calculos.contains(calculo)){
+	public BigDecimal getValorCalculo(Cuenta calculo, Periodo periodo){
+		if (this.cuentas.contains(calculo)){
 			return calculo.calcular(periodo);
 		}else{
 			return BigDecimal.ZERO;

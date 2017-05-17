@@ -19,15 +19,11 @@ public class MetodologiaTest
   
   @Before
   public void cargaMetodologia() 
-  {	
- 	BigDecimal valor = new BigDecimal(4500);
+  {	 	
+    // Set cuenta. 
+    Cuenta cuenta = new Cuenta("Ahorros", "2007-01-01", "2008-01-01", 4500);	
+  	BigDecimal valor = new BigDecimal(4500);
 	
-    // Set cuenta.
-    LocalDate fechaInicio = LocalDate.parse("2007-01-01");
-	LocalDate fechaFin = LocalDate.parse("2008-01-01");
-	Periodo periodo = new Periodo(fechaInicio, fechaFin); 	 	 
-    Cuenta cuenta = new Cuenta("Ahorros", periodo, valor);	
- 
     Empresa empresa = new Empresa("Empresa Test");	
     Condicion condicion = new Condicion(cuenta, empresa, valor);
 	

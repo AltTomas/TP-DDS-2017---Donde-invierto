@@ -32,7 +32,7 @@ public class CargaArchivoTest {
   @Test
   public void testEmpresaConCuentas() 
   {
-	  List<ICalculable> cuentas = null;
+	  List<Cuenta> cuentas = null;
 	  
 	  String empresaBuscada = "empresa1";
 	  
@@ -42,7 +42,8 @@ public class CargaArchivoTest {
 		  if (nombreEmpresa.equals(empresaBuscada))
 		  {
 			  cuentas = empresa.getCuentas();
-			  
+			  System.out.println(cuentas);
+		      System.out.println("-----------><----------");
 		  }
 	  }
 	  

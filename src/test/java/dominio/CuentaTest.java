@@ -24,14 +24,8 @@ public class CuentaTest
   
   @Before
   public void cargaCuentas() 
-  {	
-     LocalDate fechaInicio = LocalDate.parse("2007-01-01");
-	 LocalDate fechaFin = LocalDate.parse("2008-01-01");
-	 periodo = new Periodo(fechaInicio, fechaFin); 
-	 
-	 BigDecimal valor = new BigDecimal(12000);
-	 
-     cuenta = new Cuenta("Ahorros", periodo, valor);	 
+  {		 
+     cuenta = new Cuenta("Ahorros", "2007-01-01", "2008-01-01", 12000);	 
 	 
 	 //	El periodo de la empresa esta comprendido entre este.
 	 LocalDate fechaInicio2 = LocalDate.parse("2010-01-01");
