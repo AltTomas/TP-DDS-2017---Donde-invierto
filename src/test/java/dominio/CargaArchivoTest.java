@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import helpers.JSONLoader;
 import java.util.ArrayList;
 import java.util.List;
+//import helpers.FileReader;
 
 public class CargaArchivoTest {
 
@@ -17,7 +18,8 @@ public class CargaArchivoTest {
   public void cargaArchivo() 
   {		
 	String filePath = "src/test/resources/cuentas.json";		
-	JSONLoader loader = new JSONLoader(filePath);	  	
+	FileToStringReader reader = new FileToStringReader();
+	JSONLoader loader = new JSONLoader(filePath, reader);	  	
 	
 	empresas = loader.GetEmpresasFromJSONArray();
   }
@@ -43,7 +45,6 @@ public class CargaArchivoTest {
 		  {
 			  cuentas = empresa.getCuentas();
 			  System.out.println(cuentas);
-		      System.out.println("-----------><----------");
 		  }
 	  }
 	  

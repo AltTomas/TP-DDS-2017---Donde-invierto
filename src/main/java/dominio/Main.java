@@ -13,12 +13,14 @@ public class Main extends Application
 	@Override
     public void start(final Stage primaryStage) {
        
+	    // Boton
         final Button button = new Button();
         button.setText("Demo");       
         button.setOnAction((ActionEvent event) -> {            
             System.out.println("Donde Invierto: Funcionalidad no implementada");
         });
-		        
+		
+		//
         final StackPane root = new StackPane();
         
 		// Agregar los hijos de la ventana (botón).

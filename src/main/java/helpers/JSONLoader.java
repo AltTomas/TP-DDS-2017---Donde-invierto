@@ -1,33 +1,26 @@
 package helpers;
 
-import java.io.FileNotFoundException;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.Scanner;
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.io.*;
 import dominio.Empresa;
-import dominio.Periodo;
-import dominio.Cuenta;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import java.util.Arrays;
+import helpers.FileToStringReader;
 
 public class JSONLoader 
 {
-  
+
   private String FilePath = null;  
+  private FileToStringReader reader = null;
   
-  public JSONLoader(String filePath)
+  public JSONLoader(String filePath, FileToStringReader reader)
   {
 	  this.FilePath = filePath;	
+	  this.FileReader = reader;
   }
 
   public ArrayList<Empresa> GetEmpresasFromJSONArray()
   {
-    String contenidoJSON = this.ReadFile(this.FilePath);
+    String contenidoJSON = this.FileReader.ReadFile(this.FilePath);
 	
 	// GSON deserialization library.
 	Gson gson = new Gson();	
@@ -35,24 +28,6 @@ public class JSONLoader
     ArrayList<Empresa> empresasArray = new ArrayList<Empresa>(Arrays.asList(empresas));
 	
 	return empresasArray;
-  }	  
-  
-  private String ReadFile(String filePath)
-  {	
-	try
-	{
-       File file = new File(filePath);
-
-	   if(!file.exists())
-		   return "";
-	   
-	   String content = new Scanner(file).useDelimiter("\\Z").next();
-	   return content;
-	}
-	catch(FileNotFoundException ex)
-	{
-	   return "";
-	}
   }
-  
+
 }
