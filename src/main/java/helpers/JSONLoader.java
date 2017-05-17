@@ -30,13 +30,23 @@ public class JSONLoader
   }
   
   public boolean IndicadoresToJSONFile(Indicador [] indicadores)
-  {
-	
+  {	
     Gson gson = new Gson();
 	String content = gson.toJson(indicadores);	
 	boolean saved = this.Reader.SaveFile(this.FilePath, content);
 	
     return saved;
+  }
+  
+  public ArrayList<Indicador> IndicadoresFromJSONFile()
+  {	
+    String contenido = this.Reader.ReadFile(this.FilePath);
+
+    Gson gson = new Gson();
+	Indicador[] arrayIndicadores = gson.fromJson(contenido, Indicador[].class);	
+	ArrayList<Indicador> indicadores = new ArrayList<Indicador>(Arrays.asList(arrayIndicadores));
+	
+    return indicadores;
   }
 
 }

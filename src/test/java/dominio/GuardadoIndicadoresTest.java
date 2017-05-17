@@ -3,15 +3,18 @@ package dominio;
 // JUnit
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.After;
 import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
 
 // Funciones de DateTime.
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+// Helpers
 import helpers.JSONLoader;
 import helpers.FileToStringReader;
-
 import helpers.FileToStringReader;
 
 public class GuardadoIndicadoresTest 
@@ -37,7 +40,7 @@ public class GuardadoIndicadoresTest
 	 indicadores[1] = new Indicador("Indicador Test2", periodo2);	 
   }
 
-  // TODO: el calculo en el futuro deberia tener sentido y no ser cero.
+
   @Test
   public void testGuardarEnArchivo()
   {		
@@ -48,6 +51,18 @@ public class GuardadoIndicadoresTest
 	boolean saved = loader.IndicadoresToJSONFile(this.indicadores);
 	
 	assertTrue(saved);
+  }
+  
+  
+  @Test
+  public void testRecuperarIndicadores()
+  {		
+    String filePath = "src/test/resources/indicadores2.json";
+	FileToStringReader reader = new FileToStringReader();
+	JSONLoader loader = new JSONLoader(filePath, reader);	
+	boolean saved = loader.IndicadoresToJSONFile(this.indicadores);
+
+    ArrayList<Indicador> indicadores = loader.IndicadoresFromJSONFile();
   }
   
 }
