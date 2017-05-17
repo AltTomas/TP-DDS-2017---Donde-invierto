@@ -44,7 +44,7 @@ public class GuardadoIndicadoresTest
   @Test
   public void testGuardarEnArchivo()
   {		
-    String filePath = "src/test/resources/indicadores.json";
+    String filePath = "src/test/resources/indicadores_test.json";
 	FileToStringReader reader = new FileToStringReader();
 	JSONLoader loader = new JSONLoader(filePath, reader);
 	
@@ -57,12 +57,14 @@ public class GuardadoIndicadoresTest
   @Test
   public void testRecuperarIndicadores()
   {		
-    String filePath = "src/test/resources/indicadores2.json";
+    String filePath = "src/test/resources/indicadores.json";
 	FileToStringReader reader = new FileToStringReader();
 	JSONLoader loader = new JSONLoader(filePath, reader);	
 	boolean saved = loader.IndicadoresToJSONFile(this.indicadores);
 
     ArrayList<Indicador> indicadores = loader.IndicadoresFromJSONFile();
+	
+	assertTrue(indicadores.size() > 0);	
   }
   
 }
