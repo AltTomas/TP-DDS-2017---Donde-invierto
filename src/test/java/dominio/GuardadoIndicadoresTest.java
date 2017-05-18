@@ -36,8 +36,8 @@ public class GuardadoIndicadoresTest
 	 LocalDate fechaFin2 = LocalDate.parse("2010-01-01");
 	 periodo2 = new Periodo(fechaInicio2, fechaFin2);  
 	 
-	 indicadores[0] = new Indicador("Indicador Test", periodo);
-	 indicadores[1] = new Indicador("Indicador Test2", periodo2);	 
+     indicadores[0] = new Indicador("Indicador Test", periodo, "Operaciones Netas + Operaciones No Netas");
+	 indicadores[1] = new Indicador("Indicador Test2", periodo2, "");
   }
 
 

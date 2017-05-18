@@ -27,7 +27,7 @@ public class IndicadorTest
 	 LocalDate fechaFin = LocalDate.parse("2008-01-01");
 	 periodo = new Periodo(fechaInicio, fechaFin);  
 	 
-	 indicador = new Indicador("Indicador Test", periodo);
+	 indicador = new Indicador("Indicador Test", periodo, "");
   }
 
   // TODO: el calculo en el futuro deberia tener sentido y no ser cero.
