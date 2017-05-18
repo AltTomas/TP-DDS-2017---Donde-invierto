@@ -38,4 +38,12 @@ public class IndicadorTest
 	assertEquals(valor, BigDecimal.ZERO);
   }
   
+  @Test
+  public void testIndicadoresPorPeriodo()
+  {
+    /* TODO: testear la funcionalidad que devuelve 
+	 * los indicadores de un período dado.
+	 */	
+  }
+  
 }
