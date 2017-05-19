@@ -65,6 +65,13 @@ public class Indicador implements ICalculable {
 	public BigDecimal calcularValorIndicadores() {
 		return BigDecimal.ZERO;
 	}
-
+		
+    public boolean estaEnPeriodo(Periodo periodo)
+	{
+	   if(this.periodo.estaComprendidoEntre(periodo))
+		   return true;
+	   else
+		   return false;
+	}		
 }
 
