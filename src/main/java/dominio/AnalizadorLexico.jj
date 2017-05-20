@@ -145,8 +145,16 @@ void operacion():{}
 }
 void expresionAritmetica():{}
 {
-    (<LPAREN>)*<ID><OPERACION><ID>(<RPAREN>)*  
+ //    symbol() | (<LPAREN>)*<ID><OPERACION><ID>(<RPAREN>)* | <OPERACION><ID>
+
+       symbol() | <LPAREN>operacion()<RPAREN> | <OPERACION>expresionAritmetica()  
+}
+
+void symbol():{}
+{
+     <DIGITOS>  | <ID>  
 }	
+	
 void finRegistroJason():{}
 {
  	(<COMA> | <RCORCHETE> | <RLLAVES>)+
