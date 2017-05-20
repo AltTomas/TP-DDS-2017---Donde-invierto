@@ -1,6 +1,6 @@
 /*****************************************************
  Se asume que viene un archivo con indicadores operaciones y cuentas
-    JavaCC y desde JavaCC
+    JavaCC 
 *****************************************************/
 
 PARSER_BEGIN(AnalizadorLexico)
@@ -19,21 +19,20 @@ import java.io.*;
    	return;
    }
    try{
-    parser = new AnalizadorLexico(new FileInputStream(Cadena));
+    
+     parser = new AnalizadorLexico(new FileInputStream(Cadena));
    }catch(FileNotFoundException e){
    	System.out.println("El archivo "+Cadena+" no se encuentra");
    	return;
    }
    while(Leer)
-    /*****************************************************************
-      Primer Manejo de errores, aquí notamos que solo tenemos un tipo
-      de error el error de "Se esperaba otro componente lexico"
-    *****************************************************************/
+    
     try{
      Leer=parser.Programa();
-    }catch (ParseException e){
+    }catch (ParseException e){      
       System.out.println("Error 3: \"Se esperaba otro componente lexico\"");
       Token t=getNextToken();
+      System.out.println(t);
     }
   }
  }
@@ -41,61 +40,135 @@ PARSER_END(AnalizadorLexico)
 
 SKIP:
 {
- <"\t"|" "|"\n"|"\r">
+
+   <"\n"|"\r">
 }
 
 TOKEN:
 {
-  <LEE:"lee">
- |<PON:"pon">
- |<PNT: ".">
- |<OPERACION: ["+","-","*","/"]>
- |<ID: (["a"-"z","A"-"Z"]|["0"-"9"]|"_")>
- |<CAD: "\""(~["\n","\r"])*"\"">
- |<NOVAL: ~["a"-"z","0"-"9","-","\"","\n","\t","\r","."]>
-  /***********************************************************
-    Manejo de errores del tipo TokenMrgError
-  ************************************************************/
-  {System.out.println("Error 1: \"Caracter no valido\"");}
+  <LCORCHETE:"[">
+//  {System.out.println("CORCHETE -->"+image);}  
+ |<RCORCHETE:"]">
+// {System.out.println("CORCHETE -->"+image);}
+ |<LLLAVES:"{">
+// {System.out.println("LLLAVE -->"+image);}
+ |<RLLAVES:"}"> 
+// {System.out.println("RLLAVE -->"+image);}
+ |<LPAREN: "(" >
+// {System.out.println("LPAREN -->"+image);}
+ |<RPAREN: ")" >
+// {System.out.println("RPAREN -->"+image);}
+ |<DIGITOS:(["0"- "9"])+> 
+// {System.out.println("DIGITOS -->"+image);}
+ |<COMILLA:"\"">
+// {System.out.println("COMILLA -->"+image);}
+ |<INDICADORES:(<COMILLA>"indicadores"<COMILLA>)>
+// {System.out.println("INDICADORES -->"+image);}
+ |<FORMULAS:(<COMILLA>"formula"<COMILLA>)>
+// {System.out.println("FORMULAS -->"+image);}
+ |<CUENTAS:(<COMILLA>"cuentas"<COMILLA>)>
+// {System.out.println("CUENTA -->"+image);}
+ |<ESPACIO:" ">
+// {System.out.println("ESPACIO -->"+image);}
+ |<TABULACION:"\t">
+// {System.out.println("TABULACION -->"+image);}
+ |<FORMATOFECHA:(<COMILLA>(<DIGITOS>)+"-"(<DIGITOS>)+"-"(<DIGITOS>)+<COMILLA>)>
+// {System.out.println("FORMATOFECHA -->"+image);}
+ |<COMA: ",">
+// {System.out.println("COMA -->"+image);}
+ |<DOSPUNTOS: ":"> 
+//{System.out.println("DOSPUNTOS -->"+image);} 
+ |<ID:(["a"-"z"]|["A"-"Z"])(["a"-"z" ]|["A"-"Z"]|["0"- "9"]|"_"|" "|"-"){0,31}>
+// {System.out.println("ID-->"+image	);}
+}
+TOKEN:
+{
+ <OPERACION: ["+","-","*","/"]>
+// {System.out.println("OPERACION -->"+image);} 
+ 
 }
 
-
-void Lee():{}
+	
+void leeArchivoJason() :{}
 {
- <LEE><ID>(<OPERACION><ID>)*<PNT>
+    leeInicioRegistroJason() | leeEstructuraDeDatos() | finRegistroJason()  
+
 }
 
-void Pon():{}
+void leeInicioRegistroJason():{}
 {
- <PON>(<ID>|<CAD>)<PNT>
+  	<LCORCHETE> | (<ESPACIO>)+(<LLLAVES>)* | (<TABULACION>)+(<LLLAVES>)*
+
+
+}
+
+void leeEstructuraDeDatos():{}
+{
+     estructuraLineaJason()
+
+}
+
+void estructuraLineaJason():{}
+{
+     atributo() | indicador() | cuenta() | formula() 
+}
+
+void atributo():{}
+{
+ 	<COMILLA><ID><COMILLA><DOSPUNTOS><ESPACIO>(valorCampo()|<LLLAVES>)
+}
+
+void valorCampo():{}
+{
+ 	<COMILLA><ID><COMILLA>|<DIGITOS>|<FORMATOFECHA>
+}
+// estructuda indicador
+void indicador():{}
+{
+  <INDICADORES><DOSPUNTOS><ESPACIO><LCORCHETE>
+}
+// estructura Cuenta
+void cuenta():{}
+{
+  <CUENTAS><DOSPUNTOS><ESPACIO><LCORCHETE>(<LLLAVES>)*  
+}
+ void formula():{}
+{
+    <FORMULAS><DOSPUNTOS><ESPACIO><COMILLA>operacion()<COMILLA>
+} 
+
+void operacion():{}
+{
+
+ 	expresionAritmetica()(<OPERACION>expresionAritmetica())*  
+
+}
+void expresionAritmetica():{}
+{
+    (<LPAREN>)*<ID><OPERACION><ID>(<RPAREN>)*  
+}	
+void finRegistroJason():{}
+{
+ 	(<COMA> | <RCORCHETE> | <RLLAVES>)+
+	
 }
 
 boolean Programa():{}
 { 
  
  try{
-  Lee()
+  leeArchivoJason()
   {
-   System.out.println("Se encontro la sentencia lee");
+//   System.out.println("Se encontro la sentencia inicio Jason");
    return true;
   }
  }catch (ParseException e){
-   System.out.println("Error 2: \"lee debe de cumplir con la sintaxis lee ID.\"");
-   return true;
- }
-|try{
-  Pon()
-  {
-   System.out.println("Se encontro la sentencia pon");
-   return true;
-  }
- }catch (ParseException e){
-   System.out.println("Error 2: \"pon debe de cumplir con la sintaxis pon ID. o pon Cadena.\"");
+   System.out.println("Error 2: \"Se debe  cumplir con la sintaxis.\"");
    return true;
  }
  |<EOF>
   {
-   System.out.println("Se finalizo el analisis.l");
+   System.out.println("Se finalizo el analisis");
    return false;
   }
 }
