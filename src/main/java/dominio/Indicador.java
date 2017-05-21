@@ -10,7 +10,7 @@ public class Indicador implements ICalculable {
 	private Periodo periodo;
 	private List<Indicador> indicadores = new ArrayList<Indicador>();
 	private List<Cuenta> cuentas = new ArrayList<Cuenta>();
-    private String formula = "";
+    public String formula = "";
 	
 	public Indicador(String paramNombre, Periodo paramPeriodo, String formula) {
 		this.nombre = paramNombre;
