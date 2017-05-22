@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.After;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-
 // Funciones de DateTime.
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -16,6 +14,9 @@ import java.time.format.DateTimeParseException;
 import helpers.JSONLoader;
 import helpers.FileToStringReader;
 import helpers.FileToStringReader;
+
+// Array list
+import java.util.ArrayList;
 
 public class GuardadoIndicadoresTest 
 {
