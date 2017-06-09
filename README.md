@@ -4,11 +4,14 @@
 
  ## Correr la aplicación
  
+  - Generar los archivos fuentes del javacc.
   - Posicionarse sobre la carpeta donde-invierto.
   - Compilar la aplicación usando maven y crear un ejecutable:
-	
+
   ```
-  mvn clean compile
+  mvn clean
+  mvn generate-sources
+  mvn compile
   mvn package	
   ```
 
