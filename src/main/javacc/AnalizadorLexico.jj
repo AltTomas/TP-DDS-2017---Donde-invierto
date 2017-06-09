@@ -2,40 +2,55 @@
  Se asume que viene un archivo con indicadores operaciones y cuentas
     JavaCC 
 *****************************************************/
-
 PARSER_BEGIN(AnalizadorLexico)
+package dominio;
 import java.io.*;
- public class AnalizadorLexico{
-  public static void main(String arg[])throws ParseException {
-   BufferedReader Nuevo= new BufferedReader(new InputStreamReader(System.in));
-   String Cadena;
-   boolean Leer=true;
-   AnalizadorLexico parser;
-   System.out.print("Ruta y Nombre del archivo: ");
-   try{
-    Cadena=Nuevo.readLine();
-   }catch(IOException e){
-   	System.out.println("Error al leer la cadena");
-   	return;
-   }
-   try{
+
+public class AnalizadorLexico
+{
+	 
+   public static void main(String arg[])throws ParseException 
+   {
+   
+     BufferedReader Nuevo= new BufferedReader(new InputStreamReader(System.in));
+     String Cadena;
+     boolean Leer=true;
+     AnalizadorLexico parser;
+     System.out.print("Ruta y Nombre del archivo: ");
+   
+     try
+     {
+        Cadena=Nuevo.readLine();
+     }
+     catch(IOException e)
+     {
+   	    System.out.println("Error al leer la cadena");
+   	    return;
+     }
+     try
+     {   
+        parser = new AnalizadorLexico(new FileInputStream(Cadena));
+     }
+     catch(FileNotFoundException e)
+     {
+       System.out.println("El archivo "+Cadena+" no se encuentra");
+   	   return;
+     }
+     while(Leer)
     
-     parser = new AnalizadorLexico(new FileInputStream(Cadena));
-   }catch(FileNotFoundException e){
-   	System.out.println("El archivo "+Cadena+" no se encuentra");
-   	return;
-   }
-   while(Leer)
-    
-    try{
-     Leer=parser.Programa();
-    }catch (ParseException e){      
-      System.out.println("Error 3: \"Se esperaba otro componente lexico\"");
-      Token t=getNextToken();
-      System.out.println(t);
-    }
-  }
- }
+       try
+	   {
+         Leer=parser.Programa();
+       }
+	   catch (ParseException e)
+	   {
+          System.out.println("Error 3: \"Se esperaba otro componente lexico\"");
+          Token t=getNextToken();
+          System.out.println(t);
+       }
+   }  
+}
+
 PARSER_END(AnalizadorLexico)
 
 SKIP:
@@ -85,27 +100,22 @@ TOKEN:
 {
  <OPERACION: ["+","-","*","/"]>
 // {System.out.println("OPERACION -->"+image);} 
- 
 }
 
 	
 void leeArchivoJason() :{}
 {
-    leeInicioRegistroJason() | leeEstructuraDeDatos() | finRegistroJason()  
-
+    leeInicioRegistroJason() | leeEstructuraDeDatos() | finRegistroJason()
 }
 
 void leeInicioRegistroJason():{}
 {
   	<LCORCHETE> | (<ESPACIO>)+(<LLLAVES>)* | (<TABULACION>)+(<LLLAVES>)*
-
-
 }
 
 void leeEstructuraDeDatos():{}
 {
      estructuraLineaJason()
-
 }
 
 void estructuraLineaJason():{}
@@ -164,19 +174,23 @@ void finRegistroJason():{}
 boolean Programa():{}
 { 
  
- try{
+ try
+ {	 
   leeArchivoJason()
   {
-//   System.out.println("Se encontro la sentencia inicio Jason");
+   // System.out.println("Se encontro la sentencia inicio Jason");
    return true;
   }
- }catch (ParseException e){
+ }
+ catch (ParseException e)
+ {
    System.out.println("Error 2: \"Se debe  cumplir con la sintaxis.\"");
    return true;
  }
- |<EOF>
-  {
+ |<EOF> 
+ {
    System.out.println("Se finalizo el analisis");
    return false;
-  }
+ }
+ 
 }
