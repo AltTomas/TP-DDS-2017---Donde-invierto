@@ -172,8 +172,7 @@ void finRegistroJason():{}
 }
 
 boolean Programa():{}
-{ 
- 
+{  
  try
  {	 
   leeArchivoJason()
@@ -191,6 +190,5 @@ boolean Programa():{}
  {
    System.out.println("Se finalizo el analisis");
    return false;
- }
- 
+ } 
 }
