@@ -18,7 +18,7 @@ public class CargaArchivoTest {
   public void cargaArchivo() 
   {		
 	String filePath = "src/test/resources/cuentas.json";		
-	FileToStringReader reader = new FileToStringReader();
+	FileToStringReader reader = new FileToStringReader();	
 	JSONLoader loader = new JSONLoader(filePath, reader);	  	
 	
 	empresas = loader.GetEmpresasFromJSONArray();

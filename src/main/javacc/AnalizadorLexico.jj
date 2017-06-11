@@ -8,47 +8,39 @@ import java.io.*;
 
 public class AnalizadorLexico
 {
-	 
-   public static void main(String arg[])throws ParseException 
+
+   public AnalizadorLexico() {}
+
+   public static void main(FileInputStream file)throws ParseException 
    {
    
-     BufferedReader Nuevo= new BufferedReader(new InputStreamReader(System.in));
+     BufferedReader Nuevo = new BufferedReader(new InputStreamReader(file));
      String Cadena;
      boolean Leer=true;
-     AnalizadorLexico parser;
-     System.out.print("Ruta y Nombre del archivo: ");
-   
+	 
      try
      {
         Cadena=Nuevo.readLine();
      }
      catch(IOException e)
      {
-   	    System.out.println("Error al leer la cadena");
-   	    return;
+            System.out.println("Error al leer la cadena");
+            return;
      }
-     try
-     {   
-        parser = new AnalizadorLexico(new FileInputStream(Cadena));
-     }
-     catch(FileNotFoundException e)
-     {
-       System.out.println("El archivo "+Cadena+" no se encuentra");
-   	   return;
-     }
+     
      while(Leer)
-    
+
        try
-	   {
-         Leer=parser.Programa();
+       {
+          Leer= Programa();
        }
-	   catch (ParseException e)
-	   {
+       catch (ParseException e)
+       {
           System.out.println("Error 3: \"Se esperaba otro componente lexico\"");
           Token t=getNextToken();
           System.out.println(t);
        }
-   }  
+   } 
 }
 
 PARSER_END(AnalizadorLexico)
