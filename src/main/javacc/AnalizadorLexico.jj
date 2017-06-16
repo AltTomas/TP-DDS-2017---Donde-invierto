@@ -2,6 +2,10 @@
  Se asume que viene un archivo con indicadores operaciones y cuentas
     JavaCC 
 *****************************************************/
+options {
+ STATIC = false;
+}
+
 PARSER_BEGIN(AnalizadorLexico)
 package dominio;
 import java.io.*;
@@ -9,38 +13,41 @@ import java.io.*;
 public class AnalizadorLexico
 {
 
-   public AnalizadorLexico() {}
+//   public AnalizadorLexico() {}
 
-   public static void main(FileInputStream file)throws ParseException 
-   {
+//   public static void main(StringReader Cadena)throws ParseException 
+//   {
    
-     BufferedReader Nuevo = new BufferedReader(new InputStreamReader(file));
-     String Cadena;
-     boolean Leer=true;
-	 
-     try
-     {
-        Cadena=Nuevo.readLine();
-     }
-     catch(IOException e)
-     {
-            System.out.println("Error al leer la cadena");
-            return;
-     }
-     
-     while(Leer)
+//     BufferedReader Nuevo = new BufferedReader(new InputStreamReader(file));
+//     StringReader Cadena;
+//     boolean Leer=true;
+ //    AnalizadorLexico parser;
+//	 An	alizadorLexico parser;
+//     try
+//     {
+//        Cadena=Nuevo.readLine();
+//     }
+//     catch(IOException e)
+//     {
+//            System.out.println("Error al leer la cadena");
+ //           return;
+ //    }
 
-       try
-       {
-          Leer= Programa();
-       }
-       catch (ParseException e)
-       {
-          System.out.println("Error 3: \"Se esperaba otro componente lexico\"");
-          Token t=getNextToken();
-          System.out.println(t);
-       }
-   } 
+ //      parser = new AnalizadorLexico(Cadena);
+//        parser = new AnalizadorLexico(new InputStreamReader(file));
+//     while(Leer)
+//
+ //      try
+//       {
+//          Leer= AnalizadorLexico.Programa();
+//       }
+//       catch (ParseException e)
+//       {
+//          System.out.println("Error 3: \"Se esperaba otro componente lexico\"");
+//          Token t=getNextToken();
+//          System.out.println(t);
+//       }
+//   } 
 }
 
 PARSER_END(AnalizadorLexico)
@@ -175,12 +182,12 @@ boolean Programa():{}
  }
  catch (ParseException e)
  {
-   System.out.println("Error 2: \"Se debe  cumplir con la sintaxis.\"");
+//   System.out.println("Error 2: \"Se debe  cumplir con la sintaxis.\"");
    return true;
  }
  |<EOF> 
  {
-   System.out.println("Se finalizo el analisis");
+//   System.out.println("Se finalizo el analisis");
    return false;
  } 
 }
