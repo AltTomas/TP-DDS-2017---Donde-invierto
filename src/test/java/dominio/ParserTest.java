@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.*;
 import java.lang.*;
+
 // JUnit
 import org.junit.Test;
 import org.junit.Rule;
@@ -51,11 +52,11 @@ public class ParserTest
 	AnalizadorLexico parser=null;
     System.out.println("Cadena Ingresada" + cadena1);
 
- 	if( parser == null ) 
-		parser = new AnalizadorLexico(reader1);
+ 	if(parser == null) 
+	   parser = new AnalizadorLexico(reader1);
 	else 
-		parser.ReInit(reader1);
-
+	   parser.ReInit(reader1);
+	
     assertTrue(parser.Programa());	      
   }
 
