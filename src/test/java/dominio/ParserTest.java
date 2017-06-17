@@ -11,7 +11,8 @@ import org.junit.Before;
 import org.junit.rules.ExpectedException;
 import static org.junit.Assert.*;
 
-import dominio.AnalizadorLexico;
+import parser.AnalizadorLexico;
+import parser.ParseException;
 import helpers.FileToStringReader;
 
 public class ParserTest 
@@ -42,7 +43,8 @@ public class ParserTest
   }
 
   @Test
-  public void testInstanciaAnalizadorLexicoCadena() throws ParseException, FileNotFoundException
+  public void testInstanciaAnalizadorLexicoCadena() 
+		throws ParseException, FileNotFoundException
   {
     String cadena1 = "\""+"formula\""+": "+"\"Operacion Neta+Capital\"";
 	Reader reader1 = new StringReader(cadena1);    

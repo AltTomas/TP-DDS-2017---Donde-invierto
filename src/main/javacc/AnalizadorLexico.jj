@@ -7,7 +7,7 @@ options {
 }
 
 PARSER_BEGIN(AnalizadorLexico)
-package dominio;
+package parser;
 import java.io.*;
 
 public class AnalizadorLexico
