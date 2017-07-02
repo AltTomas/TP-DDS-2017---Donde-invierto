@@ -35,7 +35,7 @@ public class ParserTest
     }
 	catch(FileNotFoundException e)
 	{
-   	   System.out.println("El archivo "+file+" no se encuentra");
+   	   System.out.println("El archivo " + file + " no se econtro.");
 	   return ; 
     }
    
