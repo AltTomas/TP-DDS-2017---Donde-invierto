@@ -7,9 +7,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import static spark.Spark.*;
 
-public class Main extends Application
+public class Main
 {
+    public static void main(String[] args) {
+        get("/hello", (req, res) -> "Hello World");
+    }
+
+    /*
 	@Override
     public void start(final Stage primaryStage) {
        
@@ -42,7 +48,7 @@ public class Main extends Application
      * 
      * @param args the command line arguments
      */
-    public static void main(final String[] arguments) {
+    /*public static void main(final String[] arguments) {
         launch(arguments);
-    }
+    }*/
 }
