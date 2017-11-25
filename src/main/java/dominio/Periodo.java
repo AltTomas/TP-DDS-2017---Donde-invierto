@@ -1,13 +1,37 @@
 package dominio;
 
 import java.time.LocalDate;
-import java.lang.UnsupportedOperationException;
 
-public class Periodo {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import java.io.Serializable;
+
+@Entity
+@Table(name="periodo")
+public class Periodo implements Serializable {
 	
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+
+    @Column(name="fechaInicio")
 	LocalDate fechaInicio;
+    
+    @Column(name="fechaFin")
 	LocalDate fechaFin;
 	
+    public Periodo() {}
+    
 	public Periodo(LocalDate paramFechaInicio, LocalDate paramFechaFin){
 		this.fechaInicio = paramFechaInicio;
 		this.fechaFin = paramFechaFin;
@@ -36,5 +60,5 @@ public class Periodo {
 			     this.fechaFin.equals(otroPeriodo.fechaFin)) ||
 		       (this.fechaInicio.isAfter(otroPeriodo.fechaInicio) && 			
 			   this.fechaFin.isBefore(otroPeriodo.fechaFin));
-	}	
+	}
 }

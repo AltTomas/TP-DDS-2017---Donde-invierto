@@ -1,4 +1,4 @@
-package dominio;
+package test;
 
 // JUnit
 import org.junit.Test;
@@ -6,6 +6,9 @@ import org.junit.Before;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
+
+import dominio.Cuenta;
+import dominio.Periodo;
 
 // Funciones de DateTime.
 import java.time.LocalDate;

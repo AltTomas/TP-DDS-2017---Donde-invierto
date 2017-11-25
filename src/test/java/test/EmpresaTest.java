@@ -1,4 +1,4 @@
-package dominio;
+package test;
 
 // JUnit
 import org.junit.Test;
@@ -13,6 +13,12 @@ import java.time.format.DateTimeParseException;
 
 // Big Decimal
 import java.math.BigDecimal;
+
+import dominio.Periodo;
+import dominio.Indicador;
+import dominio.Condicion;
+import dominio.Cuenta;
+import dominio.Empresa;
 
 public class EmpresaTest 
 {

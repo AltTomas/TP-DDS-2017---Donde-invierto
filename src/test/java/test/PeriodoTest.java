@@ -1,4 +1,4 @@
-package dominio;
+package test;
 
 // JUnit
 import org.junit.Test;
@@ -8,7 +8,8 @@ import static org.junit.Assert.assertFalse;
 
 // Funciones de DateTime.
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
+
+import dominio.Periodo;
 
 public class PeriodoTest 
 {

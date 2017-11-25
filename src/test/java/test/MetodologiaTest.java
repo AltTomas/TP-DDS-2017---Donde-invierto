@@ -1,4 +1,4 @@
-package dominio;
+package test;
 
 // JUnit
 import org.junit.Test;
@@ -7,10 +7,15 @@ import static org.junit.Assert.assertFalse;
 
 // Funciones de DateTime.
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 // Big Decimal
 import java.math.BigDecimal;
+
+import dominio.Periodo;
+import dominio.Condicion;
+import dominio.Cuenta;
+import dominio.Empresa;
+import dominio.Metodologia;
 
 public class MetodologiaTest 
 {

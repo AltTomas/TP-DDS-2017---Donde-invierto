@@ -1,4 +1,4 @@
-package dominio;
+package test;
 
 // JUnit
 import org.junit.Test;
@@ -8,12 +8,13 @@ import static org.junit.Assert.assertTrue;
 
 // Funciones de DateTime.
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 // Helpers
-import helpers.JSONLoader;
-import helpers.FileToStringReader;
-import helpers.FileToStringReader;
+import util.JSONLoader;
+import util.FileToStringReader;
+
+import dominio.Periodo;
+import dominio.Indicador;
 
 // Array list
 import java.util.ArrayList;

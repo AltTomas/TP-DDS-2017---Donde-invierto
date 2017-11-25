@@ -1,14 +1,18 @@
-package dominio;
+package test;
 
-// JUnit
-import org.junit.Test;
-import org.junit.Before;
 import static org.junit.Assert.assertTrue;
 
-import helpers.JSONLoader;
 import java.util.ArrayList;
 import java.util.List;
-import helpers.FileToStringReader;
+
+import org.junit.Before;
+// JUnit
+import org.junit.Test;
+
+import dominio.Cuenta;
+import dominio.Empresa;
+import util.FileToStringReader;
+import util.JSONLoader;
 
 public class CargaArchivoTest {
 

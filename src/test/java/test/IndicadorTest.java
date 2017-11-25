@@ -1,4 +1,4 @@
-package dominio;
+package test;
 
 // JUnit
 import org.junit.Test;
@@ -11,7 +11,10 @@ import java.time.format.DateTimeParseException;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import helpers.IndicadorHelper;
+import util.IndicadorHelper;
+
+import dominio.Periodo;
+import dominio.Indicador;
 
 public class IndicadorTest 
 {

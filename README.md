@@ -1,33 +1,18 @@
- # Donde Invierto
+# 2017-mn-group-04
+Repositorio de TPs del grupo 04
  
- TP Del grupo numero 4 de la materia Diseño de Sistemas
+Rework del TP.
 
- ## Correr la aplicación
- 
-  - Generar los archivos fuentes del javacc.
-  - Posicionarse sobre la carpeta donde-invierto.
-  - Compilar la aplicación usando maven y crear un ejecutable:
+Generar una nueva branch, pullear la branch "rework".
 
-  ```
-  mvn clean
-  mvn generate-sources
-  mvn compile
-  mvn package	
-  ```
+En consola ir hacia el directorio del tp y ejecutar:
+            mvn eclipse:clean
+            mvn eclipse:eclipse
+     
+Luego importar desde Eclipse como maven proyect.
 
-  Ejecutar el .jar resultante:
+Ejecutar desde Eclipse como Java App.
 
-  ```  	
-  mvn exec:java
-  ```
- 
- ## Correr los tests
+En el browser ingresar a localhost:4567.
 
-  ```  	
-  mvn test
-  ``` 
-
- ## Estructura del repositorio
- 
-  - docs: documentos de la aplicación.
-  - donde-invierto: código fuente de la aplicación.
+Las empresas creadas para testear tienen nombre: TEST y TEST2 (indeferente en mayusculas o minusculas)
