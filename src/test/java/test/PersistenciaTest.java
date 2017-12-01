@@ -1,6 +1,7 @@
 package test;
 
 import dominio.Periodo;
+import dominio.Empresa;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -31,18 +32,33 @@ public class PersistenciaTest
 		  // Persistir período.	  
 		  LocalDate fechaInicio = LocalDate.parse("2007-01-01");
 		  LocalDate fechaFin = LocalDate.parse("2008-01-01");
-		  Periodo periodo = new Periodo(fechaInicio, fechaFin);		  
-		 
-		  String obtenerPeriodosGrabados = "FROM Periodo";
-		  		  
+		  Periodo periodo = new Periodo(fechaInicio, fechaFin);		  		 		  	  		  		  
+		  String obtenerPeriodoGrabado = "FROM Periodo WHERE fechaInicio='2007-01-01' AND fechaFin='2008-01-01'";		  
+		  
 		  em.getTransaction().begin();
 		  em.persist(periodo);
 		  em.flush();
 		  em.getTransaction().commit();
 
-		  List<Periodo> periodos = em.createQuery(obtenerPeriodosGrabados, Periodo.class).getResultList();
-		  
+		  List<Periodo> periodos = em.createQuery(obtenerPeriodoGrabado, Periodo.class).getResultList();		  
 		  Assert.assertTrue(periodos.size() > 0);
+	  }
+	  
+	  @Test
+	  public void testPersisteEmpresa() 
+	  {
+		  Empresa empresa = new Empresa("Umbrella Corporation");
+		  
+		  String obtenerEmpresasGrabadas = "FROM Empresa";
+  		  
+		  em.getTransaction().begin();
+		  em.persist(empresa);
+		  em.flush();
+		  em.getTransaction().commit();
+
+		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
+		  Assert.assertTrue(empresas.size() > 0);
+		  
 	  }
 	  
 	  @After

@@ -9,9 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+
 
 @Entity
-@Table(name="Empresa")
+@Table(name="empresa")
 public class Empresa {
 	
     @Id
@@ -19,6 +22,7 @@ public class Empresa {
     private int id;
 	
 	private String nombre;
+		
 	private ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>(); 
 	
 	public Empresa(String paramNombre)
@@ -38,6 +42,7 @@ public class Empresa {
 		this.cuentas.add(cuenta);
 	}
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cuentas")
 	public List<Cuenta> getCuentas(){
 		return this.cuentas;
 	}
