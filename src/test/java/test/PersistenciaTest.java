@@ -57,8 +57,7 @@ public class PersistenciaTest
 		  em.getTransaction().commit();
 
 		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
-		  Assert.assertTrue(empresas.size() > 0);
-		  
+		  Assert.assertTrue(empresas.size() > 0);		  
 	  }
 	  
 	  @After
