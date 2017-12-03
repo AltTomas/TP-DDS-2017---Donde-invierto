@@ -9,7 +9,8 @@
     	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     	
 		<class>dominio.Periodo</class>  
-		<class>dominio.Empresa</class>  		      
+		<class>dominio.Empresa</class>  	
+		<class>dominio.Indicador</class>	      
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
           
         <properties> 

@@ -30,6 +30,10 @@ public class Empresa {
 		this.nombre = paramNombre;
 	}
 	
+	public Empresa()
+	{		
+	}
+	
 	public String getNombre() {
 		return this.nombre;
 	}

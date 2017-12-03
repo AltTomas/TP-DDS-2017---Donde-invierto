@@ -9,25 +9,36 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToOne;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
 
 @Entity
-@Table(name="Indicador")
+@Table(name="indicador")
 public class Indicador implements ICalculable {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-	
-	private String nombre;
+		
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="periodo_id", referencedColumnName="id")
 	private Periodo periodo;
-	private List<Indicador> indicadores = new ArrayList<Indicador>();
-	private List<Cuenta> cuentas = new ArrayList<Cuenta>();
+
+	private String nombre;
+	//private List<Indicador> indicadores = new ArrayList<Indicador>();
+	//private List<Cuenta> cuentas = new ArrayList<Cuenta>();
     public String formula = "";
 	
 	public Indicador(String paramNombre, Periodo paramPeriodo, String formula) {
 		this.nombre = paramNombre;
 		this.periodo = paramPeriodo;	
 		this.formula = formula;
+	}
+	
+	public Indicador () {
+		
 	}
 	
 	public String getNombre() {
@@ -46,6 +57,7 @@ public class Indicador implements ICalculable {
 		this.periodo = periodo;
 	}
 
+	/*
 	public void agregarIndicador(Indicador indicador){
 		this.indicadores.add(indicador);
 	}
@@ -60,7 +72,7 @@ public class Indicador implements ICalculable {
 	
 	public void eliminarCuenta(Cuenta cuenta){
 		this.cuentas.remove(cuenta);
-	}
+	}*/
 	
 	public BigDecimal calcular(Periodo periodo){
 		if (periodo.estaComprendidoEntre(this.periodo)){

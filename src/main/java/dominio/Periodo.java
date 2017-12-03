@@ -12,17 +12,11 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="periodo")
-public class Periodo implements Serializable {
-	
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Periodo {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
 
     @Column(name="fechaInicio")
 	LocalDate fechaInicio;
