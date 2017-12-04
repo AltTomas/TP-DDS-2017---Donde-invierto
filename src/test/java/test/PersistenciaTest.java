@@ -3,6 +3,7 @@ package test;
 import dominio.Periodo;
 import dominio.Empresa;
 import dominio.Indicador;
+import dominio.Cuenta;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -78,6 +79,24 @@ public class PersistenciaTest
 		  List<Indicador> indicadores = em.createQuery(obtenerIndicadoresGrabados, Indicador.class).getResultList();		  
 		  Assert.assertTrue(indicadores.size() > 0);		  
 	  }
+	  
+	  
+	  @Test
+	  public void testPersisteCuenta() 
+	  {				  
+		  Cuenta cuenta = new Cuenta("Cuenta 1", "2007-01-01", "2007-01-02", 1); 			 
+		  
+		  String obtenerCuentasGrabadas = "FROM Cuenta";
+  		  
+		  em.getTransaction().begin();
+		  em.persist(cuenta);
+		  em.flush();
+		  em.getTransaction().commit();
+
+		  List<Cuenta> cuentas = em.createQuery(obtenerCuentasGrabadas, Cuenta.class).getResultList();		  
+		  Assert.assertTrue(cuentas.size() > 0);		  
+	  }
+	  
 
 	  // TODO: el test elimina los periodos pero no considera que hacer cuando una empresa o un indicador ya tienen un periodo.
 	  @After
@@ -113,11 +132,22 @@ public class PersistenciaTest
 		  		  
 		  if(periodoList.size() > 0)
 		  {			
-			  System.out.println("Eliminar periodo");
-			  System.out.println("==================");
 			  Periodo periodoElem = (Periodo) periodoList.get(0);
 			  em.getTransaction().begin();
 			  em.remove(periodoElem);
+			  em.getTransaction().commit();  			  
+		  }
+		  
+		  
+		  // Eliminar cuenta creada.
+		  String obtenerCuentaGrabada = "FROM Cuenta";		  
+		  List<Cuenta> cuentaList = em.createQuery(obtenerCuentaGrabada, Cuenta.class).getResultList();	
+  		  
+		  if(cuentaList.size() > 0)
+		  {			
+			  Cuenta cuentaElem = (Cuenta) cuentaList.get(0);
+			  em.getTransaction().begin();
+			  em.remove(cuentaElem);
 			  em.getTransaction().commit();  			  
 		  }
 			  

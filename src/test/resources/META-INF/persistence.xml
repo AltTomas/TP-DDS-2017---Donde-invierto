@@ -10,7 +10,8 @@
     	
 		<class>dominio.Periodo</class>
 		<class>dominio.Empresa</class>
-		<class>dominio.Indicador</class>          		          
+		<class>dominio.Indicador</class>
+		<class>dominio.Cuenta</class> 		          		          
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
             	    	 
         <properties> 

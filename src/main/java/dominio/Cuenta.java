@@ -3,10 +3,13 @@ package dominio;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.OneToOne;
 
@@ -21,7 +24,8 @@ public class Cuenta {
 	private String nombre;	
 	private BigDecimal valor;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="periodo_id", referencedColumnName="id")
 	private Periodo periodo;
 	
 	public Cuenta(String nombre, String fechaInicio, String fechaFin, int valor)
@@ -34,6 +38,10 @@ public class Cuenta {
 		this.nombre = nombre;
 		this.periodo = periodo;
 		this.valor = valorBigDecimal;
+	}
+	
+	public Cuenta()
+	{		
 	}
 	
 	public String getNombre() {
