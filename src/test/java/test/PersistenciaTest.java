@@ -82,20 +82,44 @@ public class PersistenciaTest
 	  // TODO: el test elimina los periodos pero no considera que hacer cuando una empresa o un indicador ya tienen un periodo.
 	  @After
 	  public void limpiar() 
-	  {		  
+	  {
+		  // Eliminar indicador
+		  String obtenerIndicadoresGrabados = "FROM Indicador";
+		  List<Indicador> indicadores = em.createQuery(obtenerIndicadoresGrabados, Indicador.class).getResultList();		  
+
+		  if(indicadores.size() > 0)
+		  {
+			  Indicador indicadorElem = (Indicador) indicadores.get(0);
+			  em.getTransaction().begin();
+			  em.remove(indicadorElem);
+			  em.getTransaction().commit();  
+		  }
+		  
+		  // Eliminar empresa
+		  String obtenerEmpresasGrabadas = "FROM Empresa";
+		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
+
+		  if(empresas.size() > 0)
+		  {
+			  Empresa empresaElem = (Empresa) empresas.get(0);
+			  em.getTransaction().begin();
+			  em.remove(empresaElem);
+			  em.getTransaction().commit();  
+		  }
+		  
+		  // Eliminar periodo creado.
 		  String obtenerPeriodoGrabado = "FROM Periodo WHERE fechaInicio='2007-01-01' AND fechaFin='2008-01-01'";		  
 		  List<Periodo> periodoList = em.createQuery(obtenerPeriodoGrabado, Periodo.class).getResultList();
-		  
-		  /*
+		  		  
 		  if(periodoList.size() > 0)
 		  {			
-			  System.out.println("limpiar()");
+			  System.out.println("Eliminar periodo");
 			  System.out.println("==================");
 			  Periodo periodoElem = (Periodo) periodoList.get(0);
 			  em.getTransaction().begin();
 			  em.remove(periodoElem);
 			  em.getTransaction().commit();  			  
-		  }*/
+		  }
 			  
 	  }
 }
