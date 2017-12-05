@@ -9,7 +9,6 @@
 
     create table Empresa (
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
-        cuentas varbinary(255),
         nombre varchar(255),
         primary key (id)
     );
@@ -29,4 +28,5 @@
     );
 
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);
+	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);	
 	ALTER TABLE Indicador ADD CONSTRAINT FK_Indicador_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);

@@ -37,9 +37,7 @@ public class Indicador implements ICalculable {
 		this.formula = formula;
 	}
 	
-	public Indicador () {
-		
-	}
+	public Indicador () {}
 	
 	public String getNombre() {
 		return nombre;

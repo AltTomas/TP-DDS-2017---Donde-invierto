@@ -19,11 +19,11 @@ public class Metodologia {
 	
 	private List<Condicion> condiciones = new ArrayList<Condicion>();
 	
-	public Metodologia(Condicion paramCondicion){
+	public Metodologia(Condicion paramCondicion) {
 		agregarCondicion(paramCondicion);
 	}
 	
-	public void agregarCondicion(Condicion paramCondicion){
+	public void agregarCondicion(Condicion paramCondicion) {
 		this.condiciones.add(paramCondicion);
 	}
 	

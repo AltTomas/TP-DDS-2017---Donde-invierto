@@ -46,7 +46,7 @@ public class Empresa {
 		this.cuentas.add(cuenta);
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cuentas")
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Cuenta> getCuentas(){
 		return this.cuentas;
 	}
