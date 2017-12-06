@@ -11,7 +11,8 @@
 		<class>dominio.Periodo</class>        
 		<class>dominio.Empresa</class>  
 		<class>dominio.Indicador</class>
-		<class>dominio.Cuenta</class>		
+		<class>dominio.Cuenta</class>	
+		<class>dominio.Metodologia</class>	
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
               	
         <properties> 

@@ -1,9 +1,11 @@
 package test;
 
+// Periodo.
 import dominio.Periodo;
 import dominio.Empresa;
 import dominio.Indicador;
 import dominio.Cuenta;
+import dominio.Metodologia;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -96,8 +98,22 @@ public class PersistenciaTest
 		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
 		  Assert.assertTrue(empresas.size() > 0);		  
 	  }
-	  
-	  
+	  	  
+	  @Test
+	  public void testPersisteMetodologia() 
+	  {	  	  		  
+		  Metodologia metodologia = new Metodologia("Metodologia 1" /*, null*/);
+		  		  
+		  String obtenerMetodologiasGrabadas = "FROM Metodologia";
+  		  
+		  em.getTransaction().begin();
+		  em.persist(metodologia);
+		  em.flush();
+		  em.getTransaction().commit();
+
+		  List<Metodologia> metodologias = em.createQuery(obtenerMetodologiasGrabadas, Metodologia.class).getResultList();		  
+		  Assert.assertTrue(metodologias.size() > 0);		  
+	  }	  
 
 	  // TODO: el test elimina los periodos pero no considera que hacer cuando una empresa o un indicador ya tienen un periodo.
 	  @After
@@ -153,6 +169,20 @@ public class PersistenciaTest
 			  em.remove(cuentaElem);
 			  em.getTransaction().commit();  			  
 		  }*/
+		  
+		 		  
+		  // Eliminar metodologia creada.
+		  String obtenerMetodologiaGrabada = "FROM Metodologia";		  
+		  List<Metodologia> metodologiaList = em.createQuery(obtenerMetodologiaGrabada, Metodologia.class).getResultList();	
+  		  
+		  if(metodologiaList.size() > 0)
+		  {			
+			  Metodologia metodologiaElem = (Metodologia) metodologiaList.get(0);
+			  em.getTransaction().begin();
+			  em.remove(metodologiaElem);
+			  em.getTransaction().commit();  			  
+		  }
+		  
 			  
 	  }
 }

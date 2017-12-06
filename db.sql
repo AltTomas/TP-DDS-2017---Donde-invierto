@@ -26,6 +26,12 @@
         periodo_id integer,
         primary key (id)
     );
+    
+    create table Metodologia (
+        id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
+		metodologia VARCHAR(255),
+        primary key (id)
+    );
 
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);	

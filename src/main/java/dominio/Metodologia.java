@@ -10,32 +10,52 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Metodologia")
+@Table(name="metodologia")
 public class Metodologia {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id;	
+    private String nombre;
+    
+	//private List<Condicion> condiciones = new ArrayList<Condicion>();
 	
-	private List<Condicion> condiciones = new ArrayList<Condicion>();
-	
-	public Metodologia(Condicion paramCondicion) {
-		agregarCondicion(paramCondicion);
+	public String getNombre() {
+		return this.nombre;
 	}
 	
+	public void setNombre(String nombre) {
+		this.nombre = nombre; 
+	}
+	
+	public Metodologia(String nombre /*, Condicion paramCondicion*/) {
+		
+		this.nombre = nombre;
+		
+		/*
+		if(paramCondicion != null)
+			agregarCondicion(paramCondicion);*/
+	}
+	
+	public Metodologia() {}
+		
+	/*
 	public void agregarCondicion(Condicion paramCondicion) {
 		this.condiciones.add(paramCondicion);
-	}
+	}*/
 	
+	/*
 	public void eliminarCondicion(Condicion paramCondicion) {
 		this.condiciones.remove(paramCondicion);
-	}
+	}*/
 	
-	public boolean convieneInvertir(Empresa empresa,Periodo periodo){
+	public boolean convieneInvertir(Empresa empresa,Periodo periodo) {
 		boolean valor = true;
-		for (Condicion condicion : condiciones) {
+		
+		/*for (Condicion condicion : condiciones) {
 			valor = valor && condicion.aplicarCondicion(empresa, periodo);
-		}
+		}*/
+		
 		return valor;
 	}
 	
