@@ -12,7 +12,8 @@
 		<class>dominio.Empresa</class>
 		<class>dominio.Indicador</class>
 		<class>dominio.Cuenta</class>   
-		<class>dominio.Metodologia</class>       		          
+		<class>dominio.Metodologia</class>   
+		<class>dominio.Condicion</class>    		          
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
             	    	 
         <properties> 

@@ -28,31 +28,30 @@ public class Metodologia {
 		this.nombre = nombre; 
 	}
 	
-	public Metodologia(String nombre /*, Condicion paramCondicion*/) {
+	public Metodologia(String nombre, Condicion paramCondicion) {
 		
 		this.nombre = nombre;
 		
-		/*
 		if(paramCondicion != null)
-			agregarCondicion(paramCondicion);*/
+			System.out.println("-----");
+			//agregarCondicion(paramCondicion);
 	}
 	
 	public Metodologia() {}
-		
-	/*
+			
 	public void agregarCondicion(Condicion paramCondicion) {
-		this.condiciones.add(paramCondicion);
-	}*/
+		/*this.condiciones.add(paramCondicion);*/
+	}
 	
-	/*
 	public void eliminarCondicion(Condicion paramCondicion) {
-		this.condiciones.remove(paramCondicion);
-	}*/
+		/*this.condiciones.remove(paramCondicion);*/
+	}
 	
 	public boolean convieneInvertir(Empresa empresa,Periodo periodo) {
 		boolean valor = true;
-		
-		/*for (Condicion condicion : condiciones) {
+		valor = false;
+		/*
+		for (Condicion condicion : condiciones) {
 			valor = valor && condicion.aplicarCondicion(empresa, periodo);
 		}*/
 		

@@ -54,23 +54,22 @@ public class Indicador implements ICalculable {
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
-
-	/*
+	
 	public void agregarIndicador(Indicador indicador){
-		this.indicadores.add(indicador);
+		//this.indicadores.add(indicador);
 	}
 	
 	public void eliminarIndicador(Indicador indicador){
-		this.indicadores.remove(indicador);
+		//this.indicadores.remove(indicador);
 	}
 	
 	public void agregarCuenta(Cuenta cuenta){
-		this.cuentas.add(cuenta);
+		//this.cuentas.add(cuenta);
 	}
 	
 	public void eliminarCuenta(Cuenta cuenta){
-		this.cuentas.remove(cuenta);
-	}*/
+		//this.cuentas.remove(cuenta);
+	}
 	
 	public BigDecimal calcular(Periodo periodo){
 		if (periodo.estaComprendidoEntre(this.periodo)){

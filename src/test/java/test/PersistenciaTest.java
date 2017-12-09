@@ -5,8 +5,10 @@ import dominio.Periodo;
 import dominio.Empresa;
 import dominio.Indicador;
 import dominio.Cuenta;
+import dominio.Condicion;
 import dominio.Metodologia;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class PersistenciaTest
      EntityManager em = null;		 
      Periodo periodo;
      Cuenta cuenta;
+     Empresa empresa;
      
 	 @Before
 	 public void cargaDatos() 
@@ -85,7 +88,7 @@ public class PersistenciaTest
 	  @Test
 	  public void testPersisteEmpresa() 
 	  {		  	  		  
-		  Empresa empresa = new Empresa("Umbrella Corporation");
+		  empresa = new Empresa("Umbrella Corporation");
 		  empresa.agregarCuenta(cuenta);
 		  
 		  String obtenerEmpresasGrabadas = "FROM Empresa";
@@ -102,7 +105,8 @@ public class PersistenciaTest
 	  @Test
 	  public void testPersisteMetodologia() 
 	  {	  	  		  
-		  Metodologia metodologia = new Metodologia("Metodologia 1" /*, null*/);
+		  Condicion condicion = new Condicion(cuenta, empresa, new BigDecimal(1000.0));
+		  Metodologia metodologia = new Metodologia("Metodologia 1", condicion);
 		  		  
 		  String obtenerMetodologiasGrabadas = "FROM Metodologia";
   		  
@@ -130,8 +134,7 @@ public class PersistenciaTest
 			  em.remove(indicadorElem);
 			  em.getTransaction().commit();  
 		  }
-		  
-		  /*
+		  		  
 		  // Eliminar empresa
 		  String obtenerEmpresasGrabadas = "FROM Empresa";
 		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
@@ -142,7 +145,7 @@ public class PersistenciaTest
 			  em.getTransaction().begin();
 			  em.remove(empresaElem);
 			  em.getTransaction().commit();  
-		  }*/
+		  }
 		  
 		  // Eliminar periodo creado.
 		  String obtenerPeriodoGrabado = "FROM Periodo WHERE fechaInicio='2007-01-01' AND fechaFin='2008-01-01'";		  
@@ -156,8 +159,6 @@ public class PersistenciaTest
 			  em.getTransaction().commit();  			  
 		  }
 		  
-		  
-		  /*
 		  // Eliminar cuenta creada.
 		  String obtenerCuentaGrabada = "FROM Cuenta";		  
 		  List<Cuenta> cuentaList = em.createQuery(obtenerCuentaGrabada, Cuenta.class).getResultList();	
@@ -168,8 +169,7 @@ public class PersistenciaTest
 			  em.getTransaction().begin();
 			  em.remove(cuentaElem);
 			  em.getTransaction().commit();  			  
-		  }*/
-		  
+		  }		  
 		 		  
 		  // Eliminar metodologia creada.
 		  String obtenerMetodologiaGrabada = "FROM Metodologia";		  
@@ -182,7 +182,6 @@ public class PersistenciaTest
 			  em.remove(metodologiaElem);
 			  em.getTransaction().commit();  			  
 		  }
-		  
-			  
+		  			  
 	  }
 }

@@ -30,9 +30,9 @@ public class MetodologiaTest
   	BigDecimal valor = new BigDecimal(4500);
 	
     Empresa empresa = new Empresa("Empresa Test");	
-    //Condicion condicion = new Condicion(cuenta, empresa, valor);
+    Condicion condicion = new Condicion(cuenta, empresa, valor);
 	
-	metodologia = new Metodologia("Metodologia 1" /*, condicion*/);	
+	metodologia = new Metodologia("Metodologia 1" , condicion);	
   }
 
   
@@ -45,9 +45,9 @@ public class MetodologiaTest
 	LocalDate fechaFin = LocalDate.parse("2008-01-01");
 	Periodo periodo = new Periodo(fechaInicio, fechaFin); 	 
   
-	//boolean conviene = metodologia.convieneInvertir(empresa, periodo);
+	boolean conviene = metodologia.convieneInvertir(empresa, periodo);
 	
-	//assertFalse(conviene);
+	assertFalse(conviene);
   }
   
 }
