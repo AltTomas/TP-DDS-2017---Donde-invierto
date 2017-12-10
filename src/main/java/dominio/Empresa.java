@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
 import javax.persistence.FetchType;
-
+import javax.persistence.Column;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name="empresa")
@@ -22,7 +24,7 @@ public class Empresa {
     private int id;
 	
 	private String nombre;
-		
+	    
 	private ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>(); 
 	
 	public Empresa(String paramNombre)
@@ -30,9 +32,7 @@ public class Empresa {
 		this.nombre = paramNombre;
 	}
 	
-	public Empresa()
-	{		
-	}
+	public Empresa(){}
 	
 	public String getNombre() {
 		return this.nombre;
@@ -46,7 +46,8 @@ public class Empresa {
 		this.cuentas.add(cuenta);
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "cuenta_id", referencedColumnName = "cuenta_id")
 	public List<Cuenta> getCuentas(){
 		return this.cuentas;
 	}

@@ -11,8 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table(name="cuenta")
@@ -24,15 +24,11 @@ public class Cuenta {
     
 	private String nombre;	
 	private BigDecimal valor;
-	
+		
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="periodo_id", referencedColumnName="id")
 	private Periodo periodo;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="empresa_id")
-	private Empresa empresa;	
-	
+		
 	public Cuenta(String nombre, String fechaInicio, String fechaFin, int valor)
 	{
 		LocalDate cuentaFechaInicio = LocalDate.parse(fechaInicio);
@@ -54,7 +50,7 @@ public class Cuenta {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+			
 	public Periodo getPeriodo() {
 		return periodo;
 	}
