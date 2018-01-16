@@ -134,7 +134,8 @@ public class PersistenciaTest
 			  em.remove(indicadorElem);
 			  em.getTransaction().commit();  
 		  }
-		  		  
+		  		
+		  /*
 		  // Eliminar empresa
 		  String obtenerEmpresasGrabadas = "FROM Empresa";
 		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
@@ -145,7 +146,7 @@ public class PersistenciaTest
 			  em.getTransaction().begin();
 			  em.remove(empresaElem);
 			  em.getTransaction().commit();  
-		  }
+		  }*/
 		  
 		  // Eliminar periodo creado.
 		  String obtenerPeriodoGrabado = "FROM Periodo WHERE fechaInicio='2007-01-01' AND fechaFin='2008-01-01'";		  

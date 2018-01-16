@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -28,7 +28,11 @@ public class Cuenta {
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="periodo_id", referencedColumnName="id")
 	private Periodo periodo;
-		
+	
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="empresa_id", referencedColumnName="id")
+	private Empresa empresa;
+	
 	public Cuenta(String nombre, String fechaInicio, String fechaFin, int valor)
 	{
 		LocalDate cuentaFechaInicio = LocalDate.parse(fechaInicio);
@@ -59,6 +63,14 @@ public class Cuenta {
 		this.periodo = periodo;
 	}
 		
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setPeriodo(Empresa empresa) {
+		this.empresa = empresa;
+	}
+			
 	public BigDecimal calcular(Periodo periodo) {
 		
 		if (periodo.estaComprendidoEntre(this.periodo)) {
