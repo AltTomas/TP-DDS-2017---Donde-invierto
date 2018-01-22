@@ -10,12 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.FetchType;
 import javax.persistence.Column;
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 
-@Entity
+@Entity(name="Empresa")
 @Table(name="empresa")
 public class Empresa {
 	
@@ -46,7 +47,7 @@ public class Empresa {
 		this.cuentas.add(cuenta);
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "cuenta_id", referencedColumnName = "cuenta_id")
 	public List<Cuenta> getCuentas(){
 		return this.cuentas;

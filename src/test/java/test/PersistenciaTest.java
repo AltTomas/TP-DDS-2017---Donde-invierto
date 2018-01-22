@@ -34,10 +34,10 @@ public class PersistenciaTest
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");
 		em = emf.createEntityManager();
 	 }
-	  
-	  @Test
-	  public void testPersistePeriodo()
-	  {	  		  
+	  	
+	 @Test
+	 public void testPersistePeriodo()
+	 {	  		  
 		  // Persistir período.	  
 		  LocalDate fechaInicio = LocalDate.parse("2007-01-01");
 		  LocalDate fechaFin = LocalDate.parse("2008-01-01");
@@ -52,7 +52,7 @@ public class PersistenciaTest
 		  List<Periodo> periodos = em.createQuery(obtenerPeriodoGrabado, Periodo.class).getResultList();		  
 		  Assert.assertTrue(periodos.size() > 0);
 	  }
-	  	  	  
+	  
 	  @Test
 	  public void testPersisteIndicador() 
 	  {				  
@@ -67,8 +67,9 @@ public class PersistenciaTest
 
 		  List<Indicador> indicadores = em.createQuery(obtenerIndicadoresGrabados, Indicador.class).getResultList();		  
 		  Assert.assertTrue(indicadores.size() > 0);		  
-	  }	  
+	  }	
 	  
+	 
 	  @Test
 	  public void testPersisteCuenta() 
 	  {				  
@@ -77,18 +78,23 @@ public class PersistenciaTest
 		  String obtenerCuentasGrabadas = "FROM Cuenta";
   		  
 		  em.getTransaction().begin();
+		  em.persist(cuenta.getPeriodo());
+		  em.flush();
+		  em.getTransaction().commit();
+		  
+		  em.getTransaction().begin();
 		  em.persist(cuenta);
 		  em.flush();
 		  em.getTransaction().commit();
 
 		  List<Cuenta> cuentas = em.createQuery(obtenerCuentasGrabadas, Cuenta.class).getResultList();		  
 		  Assert.assertTrue(cuentas.size() > 0);		  
-	  }
-	  
+	  }	 
+	 
 	  @Test
 	  public void testPersisteEmpresa() 
 	  {		  	  		  
-		  empresa = new Empresa("Umbrella Corporation");
+		  empresa = new Empresa("Umbrella Corporation");		  		  				  
 		  empresa.agregarCuenta(cuenta);
 		  
 		  String obtenerEmpresasGrabadas = "FROM Empresa";
@@ -97,11 +103,11 @@ public class PersistenciaTest
 		  em.persist(empresa);
 		  em.flush();
 		  em.getTransaction().commit();
-
+		  		  
 		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
 		  Assert.assertTrue(empresas.size() > 0);		  
 	  }
-	  	  
+	  	  	 
 	  @Test
 	  public void testPersisteMetodologia() 
 	  {	  	  		  
@@ -117,7 +123,7 @@ public class PersistenciaTest
 
 		  List<Metodologia> metodologias = em.createQuery(obtenerMetodologiasGrabadas, Metodologia.class).getResultList();		  
 		  Assert.assertTrue(metodologias.size() > 0);		  
-	  }	  
+	  }
 
 	  // TODO: el test elimina los periodos pero no considera que hacer cuando una empresa o un indicador ya tienen un periodo.
 	  @After
@@ -148,6 +154,7 @@ public class PersistenciaTest
 			  em.getTransaction().commit();  
 		  }*/
 		  
+		  /*
 		  // Eliminar periodo creado.
 		  String obtenerPeriodoGrabado = "FROM Periodo WHERE fechaInicio='2007-01-01' AND fechaFin='2008-01-01'";		  
 		  List<Periodo> periodoList = em.createQuery(obtenerPeriodoGrabado, Periodo.class).getResultList();
@@ -170,7 +177,8 @@ public class PersistenciaTest
 			  em.getTransaction().begin();
 			  em.remove(cuentaElem);
 			  em.getTransaction().commit();  			  
-		  }		  
+		  }		
+		  */  
 		 		  
 		  // Eliminar metodologia creada.
 		  String obtenerMetodologiaGrabada = "FROM Metodologia";		  

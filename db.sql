@@ -4,6 +4,7 @@
         nombre VARCHAR(255),
         valor numeric(19,2),
         periodo_id integer,
+        empresa_id integer,
         primary key (id)
     );
 
@@ -15,8 +16,8 @@
 
     create table Periodo (
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
-        fechaFin varbinary(255),
-        fechaInicio varbinary(255),
+        fechaFin DATETIME,
+        fechaInicio DATETIME,
         primary key (id)
     );
 

@@ -11,10 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name="Cuenta")
 @Table(name="cuenta")
 public class Cuenta {
 	
@@ -24,13 +24,13 @@ public class Cuenta {
     
 	private String nombre;	
 	private BigDecimal valor;
-		
-	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="periodo_id", referencedColumnName="id")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "periodo_id")
 	private Periodo periodo;
-	
-	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="empresa_id", referencedColumnName="id")
+			
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "empresa_id")
 	private Empresa empresa;
 	
 	public Cuenta(String nombre, String fechaInicio, String fechaFin, int valor)
@@ -62,12 +62,13 @@ public class Cuenta {
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
-		
+	
+	
 	public Empresa getEmpresa() {
 		return empresa;
 	}
 
-	public void setPeriodo(Empresa empresa) {
+	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
 			
@@ -81,5 +82,4 @@ public class Cuenta {
 		}		
 	}
 	
-
 }
