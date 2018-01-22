@@ -93,17 +93,38 @@ public class PersistenciaTest
 	 
 	  @Test
 	  public void testPersisteEmpresa() 
-	  {		  	  		  
-		  empresa = new Empresa("Umbrella Corporation");		  		  				  
-		  empresa.agregarCuenta(cuenta);
-		  
+	  {		
 		  String obtenerEmpresasGrabadas = "FROM Empresa";
-  		  
+		  
+		  empresa = new Empresa("Umbrella Corporation");		  		  
+		  
+		  if(cuenta == null)
+		  {
+			  cuenta = new Cuenta("Cuenta 1", "2007-01-01", "2007-01-02", 1);
+			  
+			  em.getTransaction().begin();
+			  em.persist(cuenta.getPeriodo());
+			  em.flush();
+			  em.getTransaction().commit();
+			  
+			  em.getTransaction().begin();
+			  em.persist(cuenta.getPeriodo());
+			  em.flush();
+			  em.getTransaction().commit();			  
+		  }
+		  
+		  empresa.agregarCuenta(cuenta);
+		  		  
 		  em.getTransaction().begin();
 		  em.persist(empresa);
 		  em.flush();
-		  em.getTransaction().commit();
-		  		  
+		  em.getTransaction().commit();		  		  		  		  
+		  
+		  em.getTransaction().begin();
+		  cuenta.setEmpresa(empresa);
+		  em.flush();
+		  em.getTransaction().commit();		  		  		  		  
+		  
 		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
 		  Assert.assertTrue(empresas.size() > 0);		  
 	  }
@@ -129,6 +150,7 @@ public class PersistenciaTest
 	  @After
 	  public void limpiar() 
 	  {
+		  /*
 		  // Eliminar indicador
 		  String obtenerIndicadoresGrabados = "FROM Indicador";
 		  List<Indicador> indicadores = em.createQuery(obtenerIndicadoresGrabados, Indicador.class).getResultList();		  
@@ -139,7 +161,7 @@ public class PersistenciaTest
 			  em.getTransaction().begin();
 			  em.remove(indicadorElem);
 			  em.getTransaction().commit();  
-		  }
+		  }*/
 		  		
 		  /*
 		  // Eliminar empresa
@@ -179,7 +201,8 @@ public class PersistenciaTest
 			  em.getTransaction().commit();  			  
 		  }		
 		  */  
-		 		  
+		 
+		  /*
 		  // Eliminar metodologia creada.
 		  String obtenerMetodologiaGrabada = "FROM Metodologia";		  
 		  List<Metodologia> metodologiaList = em.createQuery(obtenerMetodologiaGrabada, Metodologia.class).getResultList();	
@@ -190,7 +213,7 @@ public class PersistenciaTest
 			  em.getTransaction().begin();
 			  em.remove(metodologiaElem);
 			  em.getTransaction().commit();  			  
-		  }
+		  }*/
 		  			  
 	  }
 }

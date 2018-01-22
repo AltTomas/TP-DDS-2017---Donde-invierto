@@ -10,9 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import dominio.Empresa;
 
 @Entity(name="Cuenta")
 @Table(name="cuenta")
@@ -20,17 +23,12 @@ public class Cuenta {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     
 	private String nombre;	
 	private BigDecimal valor;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "periodo_id")
-	private Periodo periodo;
-			
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "empresa_id")
+	private Periodo periodo;			
 	private Empresa empresa;
 	
 	public Cuenta(String nombre, String fechaInicio, String fechaFin, int valor)
@@ -47,6 +45,18 @@ public class Cuenta {
 	
 	public Cuenta(){}
 	
+    @Id  
+    @GeneratedValue(strategy=GenerationType.AUTO)  
+    public Long getId()  
+    {  
+      return id;  
+    }  
+	  
+    public void setId(Long id)  
+	{  
+      this.id = id;  
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -55,6 +65,8 @@ public class Cuenta {
 		this.nombre = nombre;
 	}
 			
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "periodo_id")
 	public Periodo getPeriodo() {
 		return periodo;
 	}
@@ -63,7 +75,8 @@ public class Cuenta {
 		this.periodo = periodo;
 	}
 	
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "empresa_id")
 	public Empresa getEmpresa() {
 		return empresa;
 	}
