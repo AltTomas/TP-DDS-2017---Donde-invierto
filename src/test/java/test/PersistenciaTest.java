@@ -118,15 +118,13 @@ public class PersistenciaTest
 		  em.getTransaction().begin();
 		  em.persist(empresa);
 		  em.flush();
-		  em.getTransaction().commit();		  		  		  		  
-		  
-		  em.getTransaction().begin();
-		  cuenta.setEmpresa(empresa);
-		  em.flush();
-		  em.getTransaction().commit();		  		  		  		  
-		  
-		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();		  
-		  Assert.assertTrue(empresas.size() > 0);		  
+		  em.getTransaction().commit();		  		  		  		    		  		  		  
+		  		  
+		  List<Empresa> empresas = em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();	
+		  Empresa empresaGrabada = empresas.get(0);
+		  		  
+		  Assert.assertTrue(empresas.size() > 0);
+		  Assert.assertTrue(empresaGrabada.getCuentas().size() == 1);
 	  }
 	  	  	 
 	  @Test

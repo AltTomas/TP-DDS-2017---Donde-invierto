@@ -57,6 +57,7 @@ public class Empresa {
 	}
 	
 	public void agregarCuenta(Cuenta cuenta){
+		cuenta.setEmpresa(this);
 		this.cuentas.add(cuenta);
 	}
 	
