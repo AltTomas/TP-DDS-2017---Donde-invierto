@@ -3,19 +3,17 @@ package dominio;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import dominio.Empresa;
+import dominio.Indicador;
 
 @Entity(name="Cuenta")
 @Table(name="cuenta")
@@ -30,6 +28,7 @@ public class Cuenta {
 
 	private Periodo periodo;			
 	private Empresa empresa;
+	private Indicador indicador;
 	
 	public Cuenta(String nombre, String fechaInicio, String fechaFin, int valor)
 	{
@@ -75,14 +74,28 @@ public class Cuenta {
 		this.periodo = periodo;
 	}
 	
+	/* Empresa */
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "empresa_id")
 	public Empresa getEmpresa() {
 		return empresa;
-	}
+	}		
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+	
+	/* Indicador */
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "indicador_id")
+	public Indicador getIndicador() {
+		return indicador;
+	}
+	
+	public void setIndicador(Indicador indicador) {
+		this.indicador = indicador;
 	}
 			
 	public BigDecimal calcular(Periodo periodo) {

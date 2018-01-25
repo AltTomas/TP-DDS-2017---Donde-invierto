@@ -5,6 +5,7 @@
         valor numeric(19,2),
         periodo_id integer,
         empresa_id integer,
+        indicador_id integer,
         primary key (id)
     );
 
@@ -44,6 +45,7 @@
 
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);	
+  	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Indicador FOREIGN KEY (indicador_id) REFERENCES Indicador(id);	
 	ALTER TABLE Indicador ADD CONSTRAINT FK_Indicador_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);
 
 	-- Foreign keys de condicion.

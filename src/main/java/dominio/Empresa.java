@@ -10,11 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.FetchType;
-import javax.persistence.Column;
 import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name="empresa")
@@ -66,7 +62,7 @@ public class Empresa {
 		return this.cuentas;
 	}
     
-   	public void setCuentas(List<Cuenta> cuentas){
+   	public void setCuentas(List<Cuenta> cuentas) {
    		this.cuentas = cuentas;
    	}
 	

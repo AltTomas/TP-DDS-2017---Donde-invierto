@@ -52,24 +52,7 @@ public class PersistenciaTest
 		  List<Periodo> periodos = em.createQuery(obtenerPeriodoGrabado, Periodo.class).getResultList();		  
 		  Assert.assertTrue(periodos.size() > 0);
 	  }
-	  
-	  @Test
-	  public void testPersisteIndicador() 
-	  {				  
-		  Indicador indicador = new Indicador("Indicador Test", periodo, "");	 			 
-		  
-		  String obtenerIndicadoresGrabados = "FROM Indicador";
-  		  
-		  em.getTransaction().begin();
-		  em.persist(indicador);
-		  em.flush();
-		  em.getTransaction().commit();
-
-		  List<Indicador> indicadores = em.createQuery(obtenerIndicadoresGrabados, Indicador.class).getResultList();		  
-		  Assert.assertTrue(indicadores.size() > 0);		  
-	  }	
-	  
-	 
+	  	  	 
 	  @Test
 	  public void testPersisteCuenta() 
 	  {				  
@@ -90,6 +73,41 @@ public class PersistenciaTest
 		  List<Cuenta> cuentas = em.createQuery(obtenerCuentasGrabadas, Cuenta.class).getResultList();		  
 		  Assert.assertTrue(cuentas.size() > 0);		  
 	  }	 
+	  
+	  @Test
+	  public void testPersisteIndicador() 
+	  {				  		 		  
+		  if(cuenta == null)
+		  {
+			  cuenta = new Cuenta("Cuenta 1", "2007-01-01", "2007-01-02", 1);
+			  
+			  em.getTransaction().begin();
+			  em.persist(cuenta.getPeriodo());
+			  em.flush();
+			  em.getTransaction().commit();
+			  
+			  em.getTransaction().begin();
+			  em.persist(cuenta);
+			  em.flush();
+			  em.getTransaction().commit();			  
+		  }
+		  
+		  Indicador indicador = new Indicador("Indicador Test", periodo, "");	 			 
+		  indicador.agregarCuenta(cuenta);
+		  		  
+		  String obtenerIndicadoresGrabados = "FROM Indicador";
+  		  		  
+		  em.getTransaction().begin();
+		  em.persist(indicador);		  
+		  em.flush();
+		  em.getTransaction().commit();
+
+		  List<Indicador> indicadores = em.createQuery(obtenerIndicadoresGrabados, Indicador.class).getResultList();
+		  		  		  
+		  Assert.assertTrue(indicadores.size() > 0);
+		  Assert.assertTrue(indicadores.get(0).getCuentas().size() == 1);
+	  }
+	  
 	 
 	  @Test
 	  public void testPersisteEmpresa() 
@@ -108,7 +126,7 @@ public class PersistenciaTest
 			  em.getTransaction().commit();
 			  
 			  em.getTransaction().begin();
-			  em.persist(cuenta.getPeriodo());
+			  em.persist(cuenta);
 			  em.flush();
 			  em.getTransaction().commit();			  
 		  }
