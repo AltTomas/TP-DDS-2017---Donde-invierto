@@ -1,5 +1,40 @@
 
-<p class='center'>$empresa</p>
+<div class="container" >
 
+  
 
+#if($empresaList == "error")
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+	<div class="alert alert-danger" role="alert">
+  No se encontró la empresa solicitada!
+</div>	
+</div>
+</div>
 
+	
+ #else
+ 
+ <table class="table">
+ <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Cuenta</th>
+    </tr>
+  </thead>
+ 
+ #foreach( $empresa in $empresaList )
+	 #foreach( $cuenta in $empresa.getCuentas())
+    <tr><td>$foreach.count</td>
+    <td>$empresa.getNombre()</td>
+    <td>$cuenta.getNombre()</td>
+    </tr>
+    
+   #end
+
+ #end
+#end
+</table>
+
+</div>

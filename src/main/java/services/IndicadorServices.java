@@ -13,7 +13,7 @@ import dominio.Cuenta;
 import dominio.Empresa;
 
 
-public class EmpresaServices {
+public class IndicadorServices {
 	
 	 public EntityManager em() 
 	 {	 	 
@@ -24,7 +24,7 @@ public class EmpresaServices {
 		return em;
 	 }
 	
-	public Empresa createEmpresa(String nombre){
+	public Empresa createIndicador(String nombre){
 			
 		Empresa empresa = new Empresa(nombre.toUpperCase());
 		
@@ -34,13 +34,7 @@ public class EmpresaServices {
 		return empresa;
 	}
 	
-	public void addCuenta(String nombreEmpresa, Cuenta cuenta) {
-		
-	return;
-	
-	}
-	
-	public List<Empresa> getAllEmpresas() {
+	public List<Empresa> getAllIndicadores() {
 		
 		String obtenerEmpresasGrabadas = "FROM Empresa";
 		
@@ -49,16 +43,11 @@ public class EmpresaServices {
 		return empresas;
 	}
 	
-	public void getEmpresa(String nombre) {
+	public void getIndicador(String nombre) {
 		
 		return;
 		
 	}
-	public void getCuentas(String nombreEmpresa){
-				
-		return;
-		
-		
-	}
+	
 
 }

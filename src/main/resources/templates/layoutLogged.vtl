@@ -21,7 +21,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/empresas/ingresar">Empresa</a>
           <a class="dropdown-item" href="#">Metodología</a>
-          <a class="dropdown-item" href="#">Cuenta</a>
+          <a class="dropdown-item" href="/cuenta/ingresar">Cuenta</a>
           <a class="dropdown-item" href="#">Indicador</a>
         </div>
       </li>
@@ -32,14 +32,15 @@
       
     </ul>
     
-     <form class="form-inline my-2 my-lg-0" method="POST">
-      <input class="form-control mr-sm-2" type="text" placeholder="Usuario" aria-label="Usuario" id="loginImput" name="usuario">
-       <input class="form-control mr-sm-2" type="password" placeholder="Contraseña" aria-label="Contraseña" id="loginImput" name="pass">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color:white; border-color:white;">Log-In</button>
-    </form>
-  
-       
-      
+    <ul> 
+    <li class="nav-item">
+ 	<a class="nav-item" style="color:white;">Bienvenido $usuario !</a>
+ 	<form class="form-inline my-2 my-lg-0" method="POST">
+ 	<button class="btn btn-outline-succes my-2 my-sm-0" type="submit" style="color:white; border-color:white;">Salir</button>
+ 	</form>
+    </ul> 
+
+          
   </div>
 </nav>
 

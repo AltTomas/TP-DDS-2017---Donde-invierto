@@ -70,6 +70,10 @@ public class Cuenta {
 	public void setPeriodo(Empresa empresa) {
 		this.empresa = empresa;
 	}
+	
+	public BigDecimal getValor() {
+		return this.valor;
+	}
 			
 	public BigDecimal calcular(Periodo periodo) {
 		

@@ -15,6 +15,8 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import dominio.Empresa;
 import services.EmpresaServices;
+import services.IndicadorServices;
+import services.MetodologiaServices;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import util.RenderUtil;
@@ -22,18 +24,18 @@ import util.RenderUtil;
 
 
 
-public class EmpresaController {
+public class MetodologiaController {
 	
 	
 	String layout = "templates/layoutLogged.vtl";
 	Map<String, String> model = new HashMap<String, String>();
 	
-	public EmpresaController(final EmpresaServices empresaService) {
+	public MetodologiaController(final MetodologiaServices metodologiaServices) {
 	
 	
 		
 		
-	before("/empresas/*", (req, res) ->{
+	before("/metodologias/*", (req, res) ->{
 		
 		if(req.cookie("lgwapp.adb") == null) {
 			res.redirect("/");
@@ -51,11 +53,11 @@ public class EmpresaController {
 		
 	});
 	
-get("/empresas/buscar", (req, res)-> {
+get("/metodologias/buscar", (req, res)-> {
 		
 		 VelocityContext context = new VelocityContext();
 		 
-		 String result = new RenderUtil().getTempRes("templates/buscarEmpresa.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/buscarMetodologia.vtl", context);
 		  
 		  
 		  model.put("template", result);
@@ -64,37 +66,37 @@ get("/empresas/buscar", (req, res)-> {
 	        new ModelAndView(model, layout));
 	});
 	
-	get("/empresas", (req, res) -> {
+	get("/metodologias", (req, res) -> {
 		
 		
 		 VelocityContext context = new VelocityContext();
 		 		
-		 String empresa =  req.queryParams("empresa");
+		 String metodologia =  req.queryParams("metodologia");
 		  String all = req.queryParams("all");
 		  
 		  if(all != null) {
 			  if(all.equals("yes")) {
 			 			  
-				  context.put("empresaList", empresaService.getAllEmpresas());
+				  context.put("empresaList", metodologiaServices.getAllMetodologia());
 			  }
 		  }
 		  		else {
-		  	if(empresa != null) {
+		  	if(metodologia != null) {
 				
 			  String emp = "asd";
 			  
 			   if(emp == null) {
-				   context.put("empresaList", "error");
+				   context.put("metodologiasList", "error");
 			   }
 			   
 			   else {
-				   context.put("empresaList", emp);
+				   context.put("metodologiasList", emp);
 			   }
 			  
 		  } 
 		}
 		 
-		 String result = new RenderUtil().getTempRes("templates/empresa.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/metodologia.vtl", context);
 		 
 		  model.put("template", result);
 		
@@ -102,13 +104,13 @@ get("/empresas/buscar", (req, res)-> {
 			        new ModelAndView(model, layout));
 		});
 	
-	get("/empresas/ingresar", (req,res) -> {
+	get("/metodologias/ingresar", (req,res) -> {
 		
 		
 		
 		 VelocityContext context = new VelocityContext();
 		 
-		 String result = new RenderUtil().getTempRes("templates/ingresarEmpresa.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/ingresarMetodologia.vtl", context);
 		 
 		  model.put("template", result);
 		
@@ -118,42 +120,38 @@ get("/empresas/buscar", (req, res)-> {
 	});
 	
 	
-	post("/empresas/ingresar", (req,res) -> {
+	post("/metodologias/ingresar", (req,res) -> {
 		
-	 String empresa = req.queryParams("nombre");
+	 String metodologia = req.queryParams("metodologia");
 		 
-		 empresaService.createEmpresa(empresa);
+	 metodologiaServices.createMetodologia(metodologia);
 		 
 		 res.status(201);
-		 res.redirect("/empresas/ingresar");
+		 res.redirect("/metodologias/ingresar");
 		 
-		 return empresa;
+		 return metodologia;
 		
 	});
 		
-	get("/empresas/:empresa", (req, res) -> {
+	get("/metodologias/:metodologia", (req, res) -> {
 		
-				
-		
-		
+						
 		 VelocityContext context = new VelocityContext();
 			 
-		  String empresa =  req.params("empresa");
+		 String metodologia = req.queryParams("metodologia");
 		 
-		  			
-			 String emp = "asd";
+		  String emp = "asd";
 			  
-			   if(emp == null) {
-				   context.put("empresaList", "error");
-			   }
-			   
-			   else {
-				   context.put("empresaList", emp);
-			   }
-			  
+		  if(emp == null) {
+			   context.put("metodologiasList", "error");
+		   }
+		   
+		   else {
+			   context.put("metodologiasList", emp);
+		   }  
 		  
 		  
-		 String result = new RenderUtil().getTempRes("templates/empresa.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/metodologias.vtl", context);
 		  
 		 		  
 		  model.put("template", result);

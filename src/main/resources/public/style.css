@@ -1,0 +1,76 @@
+#imputNew{
+
+	margin-bottom: 12px;
+	margin-top: 0px;
+
+}
+
+#imputNew:focus {
+    outline: none;
+    border-color: rgb(46, 142, 165);
+    box-shadow: 0 0 10px rgb(46, 142, 165);
+}
+
+
+
+#imputNewForm{
+
+	margin-top: 70px;
+
+	background-color: rgba(130, 138, 145, 0.2);
+
+	padding-bottom: 15px;
+
+	border-radius: 15px;
+}
+
+body{
+
+	background-color: rgba(216, 247, 255,0.4);
+}
+
+.jumbotron{
+	  background-color: transparent;
+}
+
+#topNavbar{
+
+	background-color: rgb(56, 168, 196);
+}
+
+#searchNavBar{
+
+
+	background-color: rgb(182, 226, 237);
+
+}
+
+#imputButton{
+
+	background-color: rgb(56, 168, 196);
+
+	border-color: rgb(56, 168, 196);
+}
+
+#imputButton:focus { 
+    outline: none;
+    border-color: rgb(46, 142, 165);
+    box-shadow: 0 0 10px rgb(46, 142, 165);
+}
+
+#loginImput:focus { 
+    outline: none;
+    border-color: rgba(50, 50, 50, 0.2);
+    box-shadow: 0 0 10px rgb(237, 237, 237);
+}
+
+#loginImput{
+
+	border-color: rgba(0,0,0,0.3);
+}
+
+#notFound{
+	
+	padding-top:40px;
+
+}

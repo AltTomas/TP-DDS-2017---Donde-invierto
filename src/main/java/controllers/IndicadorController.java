@@ -15,6 +15,7 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import dominio.Empresa;
 import services.EmpresaServices;
+import services.IndicadorServices;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import util.RenderUtil;
@@ -22,18 +23,18 @@ import util.RenderUtil;
 
 
 
-public class EmpresaController {
+public class IndicadorController {
 	
 	
 	String layout = "templates/layoutLogged.vtl";
 	Map<String, String> model = new HashMap<String, String>();
 	
-	public EmpresaController(final EmpresaServices empresaService) {
+	public IndicadorController(final IndicadorServices indicadorServices) {
 	
 	
 		
 		
-	before("/empresas/*", (req, res) ->{
+	before("/indicadores/*", (req, res) ->{
 		
 		if(req.cookie("lgwapp.adb") == null) {
 			res.redirect("/");
@@ -51,11 +52,11 @@ public class EmpresaController {
 		
 	});
 	
-get("/empresas/buscar", (req, res)-> {
+get("/indicador/buscar", (req, res)-> {
 		
 		 VelocityContext context = new VelocityContext();
 		 
-		 String result = new RenderUtil().getTempRes("templates/buscarEmpresa.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/buscarMetodologia.vtl", context);
 		  
 		  
 		  model.put("template", result);
@@ -64,37 +65,37 @@ get("/empresas/buscar", (req, res)-> {
 	        new ModelAndView(model, layout));
 	});
 	
-	get("/empresas", (req, res) -> {
+	get("/indocadores", (req, res) -> {
 		
 		
 		 VelocityContext context = new VelocityContext();
 		 		
-		 String empresa =  req.queryParams("empresa");
+		 String indicador =  req.queryParams("indicador");
 		  String all = req.queryParams("all");
 		  
 		  if(all != null) {
 			  if(all.equals("yes")) {
 			 			  
-				  context.put("empresaList", empresaService.getAllEmpresas());
+				  context.put("empresaList", indicadorServices.getAllIndicadores());
 			  }
 		  }
 		  		else {
-		  	if(empresa != null) {
+		  	if(indicador != null) {
 				
 			  String emp = "asd";
 			  
 			   if(emp == null) {
-				   context.put("empresaList", "error");
+				   context.put("indicadoresList", "error");
 			   }
 			   
 			   else {
-				   context.put("empresaList", emp);
+				   context.put("indicadoresList", emp);
 			   }
 			  
 		  } 
 		}
 		 
-		 String result = new RenderUtil().getTempRes("templates/empresa.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/indicador.vtl", context);
 		 
 		  model.put("template", result);
 		
@@ -102,13 +103,13 @@ get("/empresas/buscar", (req, res)-> {
 			        new ModelAndView(model, layout));
 		});
 	
-	get("/empresas/ingresar", (req,res) -> {
+	get("/indicadores/ingresar", (req,res) -> {
 		
 		
 		
 		 VelocityContext context = new VelocityContext();
 		 
-		 String result = new RenderUtil().getTempRes("templates/ingresarEmpresa.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/ingresarIndicador.vtl", context);
 		 
 		  model.put("template", result);
 		
@@ -118,42 +119,38 @@ get("/empresas/buscar", (req, res)-> {
 	});
 	
 	
-	post("/empresas/ingresar", (req,res) -> {
+	post("/indicadores/ingresar", (req,res) -> {
 		
-	 String empresa = req.queryParams("nombre");
+	 String indicador = req.queryParams("indicador");
 		 
-		 empresaService.createEmpresa(empresa);
+		 indicadorServices.createIndicador(indicador);
 		 
 		 res.status(201);
 		 res.redirect("/empresas/ingresar");
 		 
-		 return empresa;
+		 return indicador;
 		
 	});
 		
-	get("/empresas/:empresa", (req, res) -> {
+	get("/indicadores/:indicador", (req, res) -> {
 		
-				
-		
-		
+						
 		 VelocityContext context = new VelocityContext();
 			 
-		  String empresa =  req.params("empresa");
+		 String indicador = req.queryParams("indicador");
 		 
-		  			
-			 String emp = "asd";
+		  String emp = "asd";
 			  
-			   if(emp == null) {
-				   context.put("empresaList", "error");
-			   }
-			   
-			   else {
-				   context.put("empresaList", emp);
-			   }
-			  
+		  if(emp == null) {
+			   context.put("indicadoresList", "error");
+		   }
+		   
+		   else {
+			   context.put("indicadoresList", emp);
+		   }  
 		  
 		  
-		 String result = new RenderUtil().getTempRes("templates/empresa.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/indicador.vtl", context);
 		  
 		 		  
 		  model.put("template", result);
