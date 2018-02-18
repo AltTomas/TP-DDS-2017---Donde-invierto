@@ -87,8 +87,14 @@ public class Cuenta {
 	}
 	
 
+	/* Valor */
+	
 	public BigDecimal getValor() {
 		return this.valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 	
 	/* Indicador */
