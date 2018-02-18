@@ -1,8 +1,5 @@
 package services;
 
-import java.util.ArrayList;
-
-import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,8 +25,8 @@ public class EmpresaServices {
 			
 		Empresa empresa = new Empresa(nombre.toUpperCase());
 		
-		em().getTransaction().begin();
-		em().persist(empresa);
+		//em().getTransaction().begin();
+		//em().persist(empresa);
 		
 		return empresa;
 	}
