@@ -12,23 +12,24 @@ import dominio.Empresa;
 
 public class EmpresaServices {
 	
-	 public EntityManager em() 
-	 {	 	 
-		 EntityManager em = null;
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");
-		em = emf.createEntityManager();
-		
-		return em;
-	 }
+   private EntityManager em;
+   
+   public EmpresaServices() {	   
+	  
+	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");			 	 
+	  this.em = emf.createEntityManager();		
+   }
 	
-	public Empresa createEmpresa(String nombre){
+   public Empresa createEmpresa(String nombre){
 			
-		Empresa empresa = new Empresa(nombre.toUpperCase());
+	   Empresa empresa = new Empresa(nombre.toUpperCase());				
+				
+	   em.getTransaction().begin();
+	   em.persist(empresa);
+	   em.flush();
+	   em.getTransaction().commit();
 		
-		//em().getTransaction().begin();
-		//em().persist(empresa);
-		
-		return empresa;
+	   return empresa;
 	}
 	
 	public void addCuenta(String nombreEmpresa, Cuenta cuenta) {
