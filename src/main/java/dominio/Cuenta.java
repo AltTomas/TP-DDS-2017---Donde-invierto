@@ -86,7 +86,6 @@ public class Cuenta {
 		this.empresa = empresa;
 	}
 	
-
 	/* Valor */
 	
 	public BigDecimal getValor() {

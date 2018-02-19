@@ -1,4 +1,3 @@
-
     create table Cuenta (
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
         nombre VARCHAR(255),
@@ -35,19 +34,7 @@
         primary key (id)
     );
     
-	create table Condicion (
-		id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
-		cuenta_id integer,
-		empresa_id integer,	
-		valor DECIMAL(10, 0),	
-		primary key (id)
-	);
-
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);	
   	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Indicador FOREIGN KEY (indicador_id) REFERENCES Indicador(id);	
-	ALTER TABLE Indicador ADD CONSTRAINT FK_Indicador_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);
-
-	-- Foreign keys de condicion.
-	ALTER TABLE Condicion ADD CONSTRAINT FK_Condicion_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);
-	ALTER TABLE Condicion ADD CONSTRAINT FK_Condicion_Cuenta FOREIGN KEY (cuenta_id) REFERENCES Cuenta(id);		
+	ALTER TABLE Indicador ADD CONSTRAINT FK_Indicador_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);	

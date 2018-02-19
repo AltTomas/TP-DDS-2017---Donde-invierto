@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 
 import dominio.Periodo;
 import dominio.Indicador;
-import dominio.Condicion;
 import dominio.Cuenta;
 import dominio.Empresa;
 

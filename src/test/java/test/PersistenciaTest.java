@@ -5,7 +5,6 @@ import dominio.Periodo;
 import dominio.Empresa;
 import dominio.Indicador;
 import dominio.Cuenta;
-import dominio.Condicion;
 import dominio.Metodologia;
 
 import java.math.BigDecimal;
@@ -148,8 +147,7 @@ public class PersistenciaTest
 	  @Test
 	  public void testPersisteMetodologia() 
 	  {	  	  		  
-		  Condicion condicion = new Condicion(cuenta, empresa, new BigDecimal(1000.0));
-		  Metodologia metodologia = new Metodologia("Metodologia 1", condicion);
+		  Metodologia metodologia = new Metodologia("Metodologia 1");
 		  		  
 		  String obtenerMetodologiasGrabadas = "FROM Metodologia";
   		  

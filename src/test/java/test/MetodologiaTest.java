@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.math.BigDecimal;
 
 import dominio.Periodo;
-import dominio.Condicion;
 import dominio.Cuenta;
 import dominio.Empresa;
 import dominio.Metodologia;
@@ -30,9 +29,8 @@ public class MetodologiaTest
   	BigDecimal valor = new BigDecimal(4500);
 	
     Empresa empresa = new Empresa("Empresa Test");	
-    Condicion condicion = new Condicion(cuenta, empresa, valor);
 	
-	metodologia = new Metodologia("Metodologia 1" , condicion);	
+	metodologia = new Metodologia("Metodologia 1");	
   }
 
   
