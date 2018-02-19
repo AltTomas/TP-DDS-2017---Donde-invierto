@@ -52,11 +52,16 @@ public class EmpresaServices {
 		return;
 		
 	}
-	public void getCuentas(String nombreEmpresa){
+	
+	public Empresa getCuentas(String nombreEmpresa) {
 				
-		return;
+  	  String obtenerEmpresa = "FROM Empresa WHERE nombre = " + nombreEmpresa;
+  	  List<Empresa> empresas= em.createQuery(obtenerEmpresa, Empresa.class).getResultList();	
 		
-		
+  	  if(empresas.size() == 0)
+  		  return null;
+  	    	   	 
+	  return empresas.get(0);				
 	}
 
 }

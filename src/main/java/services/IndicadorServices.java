@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import dominio.Empresa;
 import dominio.Indicador;
 
 public class IndicadorServices {
@@ -37,8 +38,16 @@ public class IndicadorServices {
 		List<Indicador> indicadores = em.createQuery(obtenerIndicadoresGrabados, Indicador.class).getResultList();			
 		return indicadores;
 	}
-	
-	public void getIndicador(String nombre) {		
-		return;		
+		
+	public Indicador getIndicador(String nombre) {
+		
+		String obtenerIndicador = "FROM Indicador WHERE nombre = " + nombre;
+	  	List<Indicador> indicadores = em.createQuery(obtenerIndicador, Indicador.class).getResultList();	
+			
+	  	if(indicadores.size() == 0)
+	  	   return null;
+	  	    	   	 
+		return indicadores.get(0);				
 	}
+	
 }

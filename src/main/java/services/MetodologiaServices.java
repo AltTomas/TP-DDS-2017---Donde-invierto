@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import dominio.Indicador;
 import dominio.Metodologia;
 
 public class MetodologiaServices {
@@ -40,8 +41,15 @@ public class MetodologiaServices {
 		return metodologias;
 	}
 	
-	public void getMetodologia(String nombre) {		
-		return;		
+	public Metodologia getMetodologia(String nombre) {
+		
+		String obtenerMetodologia = "FROM Metodologia WHERE nombre = " + nombre;
+	  	List<Metodologia> metodologias = em.createQuery(obtenerMetodologia, Metodologia.class).getResultList();	
+			
+	  	if(metodologias.size() == 0)
+	  	   return null;
+	  	    	   	 
+		return metodologias.get(0);				
 	}
 	
 }
