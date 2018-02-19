@@ -42,7 +42,7 @@ public class EmpresaServices {
 		
 		String obtenerEmpresasGrabadas = "FROM Empresa";
 		
-		List<Empresa> empresas=	em().createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();
+		List<Empresa> empresas=	em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();
 			
 		return empresas;
 	}

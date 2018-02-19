@@ -9,45 +9,39 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import dominio.Cuenta;
-import dominio.Empresa;
-
+import dominio.Metodologia;
 
 public class MetodologiaServices {
 	
-	 public EntityManager em() 
-	 {	 	 
-		 EntityManager em = null;
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");
-		em = emf.createEntityManager();
-		
-		return em;
-	 }
+    private EntityManager em;
+	   
+	public MetodologiaServices() {	   		 
+	   EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");			 	 
+	   this.em = emf.createEntityManager();		
+	}			
 	
-	public Empresa createMetodologia(String nombre){
+	public Metodologia createMetodologia(String nombre){
 			
-		Empresa empresa = new Empresa(nombre.toUpperCase());
+  	    Metodologia metodologia = new Metodologia(nombre.toUpperCase());
 		
-		em().getTransaction().begin();
-		em().persist(empresa);
-		
-		return empresa;
+     	em.getTransaction().begin();
+		em.persist(metodologia);
+		em.flush();
+		em.getTransaction().commit();
+  	    
+		return metodologia;
 	}
 	
-	public List<Empresa> getAllMetodologia() {
+	public List<Metodologia> getAllMetodologia() {
 		
-		String obtenerEmpresasGrabadas = "FROM Empresa";
+		String obtenerEmpresasGrabadas = "FROM Metodologia";		
+		List<Metodologia> metodologias=	em.createQuery(obtenerEmpresasGrabadas, Metodologia.class).getResultList();
 		
-		List<Empresa> empresas=	em().createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();
-			
-		return empresas;
+		return metodologias;
 	}
 	
-	public void getMetodologia(String nombre) {
-		
-		return;
-		
+	public void getMetodologia(String nombre) {		
+		return;		
 	}
 	
-
 }

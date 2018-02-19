@@ -1,7 +1,6 @@
 package services;
 
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,45 +8,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import dominio.Cuenta;
-import dominio.Empresa;
-
+import dominio.Indicador;
 
 public class IndicadorServices {
 	
-	 public EntityManager em() 
-	 {	 	 
-		 EntityManager em = null;
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");
-		em = emf.createEntityManager();
+   private EntityManager em;
+	   
+   public IndicadorServices() {	   		 
+	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");			 	 
+	  this.em = emf.createEntityManager();		
+	}
 		
-		return em;
-	 }
-	
-	public Empresa createIndicador(String nombre){
-			
-		Empresa empresa = new Empresa(nombre.toUpperCase());
+	public Indicador createIndicador(String nombre){
+					
+       // TODO: completar período y fórmula.
+	   Indicador indicador = new Indicador(nombre, null, "");	 			 
+	   
+	   em.getTransaction().begin();
+	   em.persist(indicador);		  
+	   em.flush();
+	   em.getTransaction().commit();
 		
-		em().getTransaction().begin();
-		em().persist(empresa);
-		
-		return empresa;
+	   return indicador;
 	}
 	
-	public List<Empresa> getAllIndicadores() {
-		
-		String obtenerEmpresasGrabadas = "FROM Empresa";
-		
-		List<Empresa> empresas=	em().createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();
-			
-		return empresas;
+	public List<Indicador> getAllIndicadores() {		
+		String obtenerIndicadoresGrabados = "FROM Indicador";		
+		List<Indicador> indicadores = em.createQuery(obtenerIndicadoresGrabados, Indicador.class).getResultList();			
+		return indicadores;
 	}
 	
-	public void getIndicador(String nombre) {
-		
-		return;
-		
+	public void getIndicador(String nombre) {		
+		return;		
 	}
-	
-
 }
