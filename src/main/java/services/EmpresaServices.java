@@ -52,7 +52,9 @@ public class EmpresaServices {
 		return empresas;
 	}
 	
+
 	public List<Empresa> getEmpresa(String nombre) 
+
 	{
 				
   	  String obtenerEmpresa = "FROM Empresa WHERE nombre = " +  "'" + nombre + "'";
@@ -62,7 +64,9 @@ public class EmpresaServices {
   		  return null;
   	  }
   	    	   	 
+
 	  return empresas;			
+
 	}
 	
 }
