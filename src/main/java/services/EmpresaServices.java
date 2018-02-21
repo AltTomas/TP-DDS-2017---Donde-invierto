@@ -45,7 +45,7 @@ public class EmpresaServices {
         
         // Persistir empresa.
         em.getTransaction().begin();               
-		em.persist(empresa);
+		em.merge(empresa);
 		em.flush();
 		em.getTransaction().commit();
 	}
