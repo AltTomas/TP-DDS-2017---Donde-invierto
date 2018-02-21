@@ -1,8 +1,5 @@
 package dominio;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,7 +10,6 @@ import javax.persistence.Table;
 import javax.persistence.ManyToOne;
 
 import dominio.Empresa;
-import dominio.Indicador;
 
 @Entity(name="Cuenta")
 @Table(name="cuenta")
@@ -22,24 +18,19 @@ public class Cuenta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-	private String nombre;	
-	private BigDecimal valor;
-
-	private Periodo periodo;			
+    private String nombre;	
+	private double valor;
+	private String periodo;			
 	private Empresa empresa;
-	private Indicador indicador;
 	
-	public Cuenta(String nombre, String fechaInicio, String fechaFin, int valor)
+	
+	public Cuenta(String nombre, String periodo, double valor)
 	{
-		LocalDate cuentaFechaInicio = LocalDate.parse(fechaInicio);
-		LocalDate cuentaFechaFin = LocalDate.parse(fechaFin);			  
-        Periodo periodo = new Periodo(cuentaFechaInicio, cuentaFechaFin);
-        BigDecimal valorBigDecimal = new BigDecimal(valor);
+		
 		
 		this.nombre = nombre;
 		this.periodo = periodo;
-		this.valor = valorBigDecimal;
+		this.valor = valor;
 	}
 	
 	public Cuenta(){}
@@ -63,16 +54,7 @@ public class Cuenta {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-			
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "periodo_id")
-	public Periodo getPeriodo() {
-		return periodo;
-	}
 
-	public void setPeriodo(Periodo periodo) {
-		this.periodo = periodo;
-	}
 	
 	/* Empresa */
 	
@@ -88,35 +70,69 @@ public class Cuenta {
 	
 	/* Valor */
 	
-	public BigDecimal getValor() {
+	public double getValor() {
 		return this.valor;
 	}
 
-	public void setValor(BigDecimal valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 	
-	/* Indicador */
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "indicador_id")
-	public Indicador getIndicador() {
-		return indicador;
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
 	}
 	
-	public void setIndicador(Indicador indicador) {
-		this.indicador = indicador;
-
+	public String getPeriodo () {
+		return this.periodo;
 	}
-			
-	public BigDecimal calcular(Periodo periodo) {
+	
+	public String periodoToEval() {
 		
-		if (periodo.estaComprendidoEntre(this.periodo)) {
-		  return this.valor;
+		switch (this.periodo.toUpperCase()) {
+		case "ENERO":
+			
+			return "ENE";
+		case "FEBRERO":
+			
+			return "FEB";
+		case "MARZO":
+			
+			return "MAR";
+			
+		case "ABRIL":
+			
+			return "ABR";
+			
+		case "MAYO":
+			
+			return "MAY";
+			
+		case "JUNIO":
+				
+			return "JUN";
+		case "JULIO":
+			
+			return "JUL";
+		case "AGOSTO":
+			
+			return "AGO";
+		case "SEPTIEMBRE":
+			
+			return "SEP";
+		case "OCTUBRE":
+			
+			return "OCT";
+		case "NOVIEMBRE":
+			
+			return "NOV";
+		case "DICIEMBRE":
+		
+			return "DIC";
+		default:
+			
+			return null;
 		}
-		else {
-		  return BigDecimal.ZERO;
-		}		
+		
 	}
 	
 }

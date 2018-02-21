@@ -2,8 +2,8 @@
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
         nombre VARCHAR(255),
         valor numeric(19,2),
-        periodo_id integer,
-        empresa_id integer,
+        periodo VARCHAR(255),
+        empresa_id integer,cuenta
         indicador_id integer,
         primary key (id)
     );
@@ -14,27 +14,19 @@
         primary key (id)
     );
 
-    create table Periodo (
-        id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
-        fechaFin DATETIME,
-        fechaInicio DATETIME,
-        primary key (id)
-    );
-
+    
     create table Indicador (
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
         formula VARCHAR(255),
-        periodo_id integer,
         primary key (id)
     );
     
     create table Metodologia (
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
-		metodologia VARCHAR(255),
+		formula VARCHAR(255),
         primary key (id)
     );
     
-	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);
+	
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);	
-  	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Indicador FOREIGN KEY (indicador_id) REFERENCES Indicador(id);	
-	ALTER TABLE Indicador ADD CONSTRAINT FK_Indicador_Periodo FOREIGN KEY (periodo_id) REFERENCES Periodo(id);	
+	

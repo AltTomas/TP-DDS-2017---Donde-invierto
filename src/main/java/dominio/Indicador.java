@@ -1,42 +1,23 @@
 package dominio;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.OneToOne;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
 
-import dominio.Cuenta;
+import util.DDSParser;
 
 @Entity(name="Indicador")
 @Table(name="indicador")
-public class Indicador implements ICalculable {
+public class Indicador {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="periodo_id", referencedColumnName="id")
-	private Periodo periodo;
-
 	private String nombre;
-	private List<Cuenta> cuentas = new ArrayList<Cuenta>(); 
     private String formula;
     
-	// TODO: wat. 
-	//private List<Indicador> indicadores = new ArrayList<Indicador>();  
-	
     @Id  
     @GeneratedValue(strategy=GenerationType.AUTO)  
     public Long getId()  
@@ -49,9 +30,8 @@ public class Indicador implements ICalculable {
       this.id = id;  
 	}  
     
-	public Indicador(String paramNombre, Periodo paramPeriodo, String formula) {
-		this.nombre = paramNombre;
-		this.periodo = paramPeriodo;	
+	public Indicador(String paramNombre, String formula) {
+		this.nombre = paramNombre;	
 		this.formula = formula;
 	}
 	
@@ -78,69 +58,12 @@ public class Indicador implements ICalculable {
 		this.nombre = nombre;
 	}
 	
-	/* Periodo */
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "periodo_id")
-	public Periodo getPeriodo() {
-		return periodo;
-	}
-
-	public void setPeriodo(Periodo periodo) {
-		this.periodo = periodo;
-	}
-	
-	/*
-	public void agregarIndicador(Indicador indicador){
-		this.indicadores.add(indicador);
-	}
-	
-	public void eliminarIndicador(Indicador indicador){
-		this.indicadores.remove(indicador);
-	}*/
-	
-	public void agregarCuenta(Cuenta cuenta){
-		this.cuentas.add(cuenta);
-		cuenta.setIndicador(this);
-	}
-	
-	public void eliminarCuenta(Cuenta cuenta){
-		this.cuentas.remove(cuenta);
-	}
-	
-   @OneToMany(targetEntity=Cuenta.class, mappedBy="indicador", cascade = CascadeType.ALL, orphanRemoval = true)
-   public List<Cuenta> getCuentas(){
-	  return this.cuentas;
-   }
-	    
-   public void setCuentas(List<Cuenta> cuentas){
-	   		this.cuentas = cuentas;
-   }
-	       		
-   public BigDecimal calcular(Periodo periodo) {
-	   
-	  if (periodo.estaComprendidoEntre(this.periodo)) {
-			return this.calcularValorIndicadores().add(this.calcularValorCuentas());
-	  }
-	  else {
-	  	return BigDecimal.ZERO;
-	 }
-   }
-
-	public BigDecimal calcularValorCuentas() {
-		return BigDecimal.ZERO;
-	}
-
-	public BigDecimal calcularValorIndicadores() {
-		return BigDecimal.ZERO;
-	}
+	public double getValor(Empresa empresa) {
 		
-    public boolean estaEnPeriodo(Periodo periodo)
-	{
-	   if(this.periodo.estaComprendidoEntre(periodo))
-		   return true;
-	   else
-		   return false;
-	}		
+		DDSParser parser = new DDSParser();
+		
+		return parser.calcular(this.formula, empresa);
+	}
+	
 }
 

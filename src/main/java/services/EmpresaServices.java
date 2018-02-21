@@ -20,8 +20,8 @@ public class EmpresaServices {
 	  this.em = emf.createEntityManager();		
    }
 	
-   public Empresa createEmpresa(String nombre){
-			
+   public Empresa createEmpresa(String nombre)
+   {			
 	   Empresa empresa = new Empresa(nombre.toUpperCase());				
 				
 	   em.getTransaction().begin();
@@ -32,35 +32,37 @@ public class EmpresaServices {
 	   return empresa;
 	}
 	
-	public void addCuenta(String nombreEmpresa, Cuenta cuenta) {
-		
-	return;
-	
+    public void addCuenta(Empresa empresa, Cuenta cuenta) 
+    {		
+    	// Persistir cuenta.
+    	em.getTransaction().begin();
+		em.persist(cuenta);
+		em.flush();
+		em.getTransaction().commit();
+                     
+		// Agregar cuenta a empresa.
+        empresa.agregarCuenta(cuenta);
 	}
 	
-	public List<Empresa> getAllEmpresas() {
-		
+	public List<Empresa> getAllEmpresas() 
+	{		
 		String obtenerEmpresasGrabadas = "FROM Empresa";
-		
 		List<Empresa> empresas=	em.createQuery(obtenerEmpresasGrabadas, Empresa.class).getResultList();
-			
+		
 		return empresas;
 	}
 	
-	public Empresa getEmpresa(String nombreEmpresa) {
+	public List<Empresa> getEmpresa(String nombre) 
+	{
 				
-  	  String obtenerEmpresa = "FROM Empresa WHERE nombre = " + nombreEmpresa;
+  	  String obtenerEmpresa = "FROM Empresa WHERE nombre = " +  "'" + nombre + "'";
   	  List<Empresa> empresas= em.createQuery(obtenerEmpresa, Empresa.class).getResultList();	
 		
-  	  if(empresas.size() == 0)
+  	  if(empresas.isEmpty()) {
   		  return null;
+  	  }
   	    	   	 
-	  return empresas.get(0);				
+	  return empresas;			
 	}
 	
-	// TODO: ???
-	public void getCuentas() {
-		return;
-	}
-
 }

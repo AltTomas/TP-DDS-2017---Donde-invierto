@@ -5,7 +5,7 @@
 <div class="mx-auto" style="width: 400px;" id="notFound">
 <div class="d-inline-flex p-2">
   <div class="alert alert-danger" role="alert">
-  No se encontró la empresa solicitada!
+  La empresa no tiene ninguna cuenta!
 </div>
 </div>
 </div>
@@ -16,17 +16,19 @@
  <table class="table">
  <thead>
     <tr>
-      <th>#</th>
-      <th>Nombre</th>
+      <th>$empresa</th>
       <th>Cuenta</th>
+      <th>Valor</th>
+      <th>Periodo</th>
     </tr>
   </thead>
  
- #foreach( $empresa in $empresaList )
+ #foreach( $cuenta in $listaCuentas )
 
-    <tr><td>$foreach.count</td>
-    <td>$empresa.getNombre()</td>
-    <td><a href="empresas/:$empresa.getNombre()/cuentas">Ver cuentas</a></td>
+    <tr><td></td>
+    <td>$cuenta.getNombre()</td>
+    <td>$cuenta.getValor()</td>
+    <td>$cuenta.getPeriodo()</td>
     </tr>
     
 

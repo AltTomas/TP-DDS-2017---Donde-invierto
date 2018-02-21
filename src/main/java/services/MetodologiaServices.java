@@ -1,15 +1,11 @@
 package services;
 
-import java.util.ArrayList;
-
-import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import dominio.Indicador;
 import dominio.Metodologia;
 
 public class MetodologiaServices {
@@ -21,9 +17,9 @@ public class MetodologiaServices {
 	   this.em = emf.createEntityManager();		
 	}			
 	
-	public Metodologia createMetodologia(String nombre){
+	public Metodologia createMetodologia(String nombre, String formula){
 			
-  	    Metodologia metodologia = new Metodologia(nombre.toUpperCase());
+  	    Metodologia metodologia = new Metodologia(nombre.toUpperCase(), formula);
 		
      	em.getTransaction().begin();
 		em.persist(metodologia);
@@ -41,15 +37,15 @@ public class MetodologiaServices {
 		return metodologias;
 	}
 	
-	public Metodologia getMetodologia(String nombre) {
+	public List<Metodologia> getMetodologia(String nombre) {
 		
-		String obtenerMetodologia = "FROM Metodologia WHERE nombre = " + nombre;
+		String obtenerMetodologia = "FROM Metodologia WHERE nombre = " + "'" + nombre + "'";
 	  	List<Metodologia> metodologias = em.createQuery(obtenerMetodologia, Metodologia.class).getResultList();	
-			
-	  	if(metodologias.size() == 0)
-	  	   return null;
-	  	    	   	 
-		return metodologias.get(0);				
+			  	    	   	 
+	  	if(metodologias.isEmpty()) {
+	  		return null;
+	  	}
+		return metodologias;				
 	}
 	
 }

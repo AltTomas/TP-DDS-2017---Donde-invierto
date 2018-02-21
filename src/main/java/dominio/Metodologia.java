@@ -14,6 +14,7 @@ public class Metodologia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;	
     private String nombre;
+    private String formula;
     	
 	public String getNombre() {
 		return this.nombre;
@@ -23,21 +24,20 @@ public class Metodologia {
 		this.nombre = nombre; 
 	}
 	
-	public Metodologia(String nombre) {		
-		this.nombre = nombre;		
+	public Metodologia(String nombre, String formula) {		
+		this.nombre = nombre;	
+		this.formula = formula;
 	}
 	
 	public Metodologia() {}
-					
-	public boolean convieneInvertir(Empresa empresa,Periodo periodo) {
-		boolean valor = true;
-		valor = false;
-		/*
-		for (Condicion condicion : condiciones) {
-			valor = valor && condicion.aplicarCondicion(empresa, periodo);
-		}*/
-		
-		return valor;
+	
+	public void setFormula(String formula) {
+		this.formula = formula;
 	}
+	
+	public String getFormula() {
+		return this.formula;
+	}
+	
 	
 }

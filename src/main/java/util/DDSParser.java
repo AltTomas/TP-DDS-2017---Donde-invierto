@@ -4,7 +4,10 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import dominio.Cuenta;
 import dominio.Empresa;
+import dominio.Indicador;
+import services.IndicadorServices;
 
 
 public class DDSParser {
@@ -352,7 +355,7 @@ public String getValues(String formula, Empresa empresa) {
 			
 			if(!(splittedArr[i].equals("true") || splittedArr[i].equals("false"))) {
 			
-			splittedArr[i] = "999";
+			splittedArr[i] = searchValue(splittedArr[i], empresa);
 			}
 			
 		}	
@@ -362,6 +365,35 @@ public String getValues(String formula, Empresa empresa) {
 	
 	
 	}
+
+public String searchValue(String id, Empresa empresa) {
+	
+	List<Cuenta> listaCuentas = empresa.getCuentas();
+	
+	for (int i = 0; i < listaCuentas.size(); i++) {
+		
+		if(listaCuentas.get(i).getNombre().equals(id) & id.substring(id.length()-3).equals(listaCuentas.get(i).periodoToEval())){
+			
+			return Double.toString(listaCuentas.get(i).getValor());
+			
+		}
+		
+	}
+	
+	List<Indicador> listaIndicadores = new IndicadorServices().getAllIndicadores();
+	
+	for (int i = 0; i < listaIndicadores.size(); i++) {
+		
+		if(listaIndicadores.get(i).getNombre().equals(id)) {
+			
+			return Double.toString(this.calcular(id, empresa));
+			
+		}
+		
+	}
+	
+	return null;
+}
 }
 	
 

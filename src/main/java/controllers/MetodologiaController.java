@@ -3,19 +3,11 @@ package controllers;
 
 import static spark.Spark.*;
 
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
-import org.apache.velocity.runtime.RuntimeConstants;
-import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
-
-import dominio.Empresa;
-import services.EmpresaServices;
-import services.IndicadorServices;
+import dominio.Metodologia;
 import services.MetodologiaServices;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -77,20 +69,20 @@ get("/metodologias/buscar", (req, res)-> {
 		  if(all != null) {
 			  if(all.equals("yes")) {
 			 			  
-				  context.put("empresaList", metodologiaServices.getAllMetodologia());
+				  context.put("metodologiaList", metodologiaServices.getAllMetodologia());
 			  }
 		  }
 		  		else {
 		  	if(metodologia != null) {
 				
-			  String emp = "asd";
+			  List<Metodologia> emp = metodologiaServices.getMetodologia(metodologia);
 			  
 			   if(emp == null) {
-				   context.put("metodologiasList", "error");
+				   context.put("metodologiaList", "error");
 			   }
 			   
 			   else {
-				   context.put("metodologiasList", emp);
+				   context.put("metodologiaList", emp);
 			   }
 			  
 		  } 
@@ -123,8 +115,9 @@ get("/metodologias/buscar", (req, res)-> {
 	post("/metodologias/ingresar", (req,res) -> {
 		
 	 String metodologia = req.queryParams("metodologia");
-		 
-	 metodologiaServices.createMetodologia(metodologia);
+	 String formula = req.queryParams("formula");
+	 
+	 metodologiaServices.createMetodologia(metodologia, formula);
 		 
 		 res.status(201);
 		 res.redirect("/metodologias/ingresar");
@@ -140,7 +133,7 @@ get("/metodologias/buscar", (req, res)-> {
 			 
 		 String metodologia = req.queryParams("metodologia");
 		 
-		  String emp = "asd";
+		 List<Metodologia> emp = metodologiaServices.getMetodologia(metodologia);
 			  
 		  if(emp == null) {
 			   context.put("metodologiasList", "error");

@@ -2,9 +2,12 @@ package mainApp;
 
 import controllers.CuentaController;
 import controllers.EmpresaController;
+import controllers.IndicadorController;
+import controllers.MetodologiaController;
 import controllers.indexController;
-import dominio.Cuenta;
 import services.EmpresaServices;
+import services.IndicadorServices;
+import services.MetodologiaServices;
 import spark.Spark;
 
 
@@ -16,14 +19,14 @@ public class App {
 		 Spark.staticFiles.location("/public"); 
 	
 		 EmpresaServices emserv = new EmpresaServices();		
-		 emserv.createEmpresa("test");
-		 emserv.createEmpresa("TEST2");
-		 Cuenta cuenta = new Cuenta();
-		 cuenta.setNombre("asd");
+		 IndicadorServices inserv = new IndicadorServices();
+		 MetodologiaServices mtserv = new MetodologiaServices();
 		 
 		 new EmpresaController(emserv);			
 		 new indexController();
 		 new CuentaController(emserv);
+		 new IndicadorController(inserv);
+		 new MetodologiaController(mtserv);
 	 
   }
 	

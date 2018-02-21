@@ -2,15 +2,10 @@ package controllers;
 
 import static spark.Spark.*;
 
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
-import org.apache.velocity.runtime.RuntimeConstants;
-import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import dominio.Empresa;
 import services.EmpresaServices;
@@ -66,7 +61,7 @@ public class EmpresaController {
 			} else {
 				if (empresa != null) {
 
-					String emp = "asd";
+					List<Empresa> emp = empresaService.getEmpresa(empresa);
 
 					if (emp == null) {
 						context.put("empresaList", "error");
@@ -111,23 +106,24 @@ public class EmpresaController {
 
 		});
 
-		get("/empresas/:empresa", (req, res) -> {
+		get("/empresas/:empresa/cuentas", (req, res) -> {
 
 			VelocityContext context = new VelocityContext();
 
 			String empresa = req.params("empresa");
 
-			String emp = "asd";
+			List<Empresa> emp = empresaService.getEmpresa(empresa.substring(1));
 
-			if (emp == null) {
+			if (emp == null | emp.get(0).getCuentas().isEmpty()) {
 				context.put("empresaList", "error");
 			}
 
 			else {
-				context.put("empresaList", emp);
+				context.put("empresa", empresa);
+				context.put("listaCuentas", emp.get(0).getCuentas());
 			}
 
-			String result = new RenderUtil().getTempRes("templates/empresa.vtl", context);
+			String result = new RenderUtil().getTempRes("templates/empresaCuenta.vtl", context);
 
 			model.put("template", result);
 

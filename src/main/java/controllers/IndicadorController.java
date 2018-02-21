@@ -3,17 +3,13 @@ package controllers;
 
 import static spark.Spark.*;
 
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
-import org.apache.velocity.runtime.RuntimeConstants;
-import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import dominio.Empresa;
+import dominio.Indicador;
 import services.EmpresaServices;
 import services.IndicadorServices;
 import spark.ModelAndView;
@@ -52,11 +48,11 @@ public class IndicadorController {
 		
 	});
 	
-get("/indicador/buscar", (req, res)-> {
+get("/indicadores/buscar", (req, res)-> {
 		
 		 VelocityContext context = new VelocityContext();
 		 
-		 String result = new RenderUtil().getTempRes("templates/buscarMetodologia.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/buscarIndicador.vtl", context);
 		  
 		  
 		  model.put("template", result);
@@ -65,7 +61,7 @@ get("/indicador/buscar", (req, res)-> {
 	        new ModelAndView(model, layout));
 	});
 	
-	get("/indocadores", (req, res) -> {
+	get("/indicadores", (req, res) -> {
 		
 		
 		 VelocityContext context = new VelocityContext();
@@ -76,20 +72,20 @@ get("/indicador/buscar", (req, res)-> {
 		  if(all != null) {
 			  if(all.equals("yes")) {
 			 			  
-				  context.put("empresaList", indicadorServices.getAllIndicadores());
+				  context.put("indicadorList", indicadorServices.getAllIndicadores());
 			  }
 		  }
 		  		else {
 		  	if(indicador != null) {
 				
-			  String emp = "asd";
-			  
+		  		List<Indicador> emp = indicadorServices.getIndicador(indicador);
+		  					  
 			   if(emp == null) {
-				   context.put("indicadoresList", "error");
+				   context.put("indicadorList", "error");
 			   }
 			   
 			   else {
-				   context.put("indicadoresList", emp);
+				   context.put("indicadorList", emp);
 			   }
 			  
 		  } 
@@ -122,35 +118,40 @@ get("/indicador/buscar", (req, res)-> {
 	post("/indicadores/ingresar", (req,res) -> {
 		
 	 String indicador = req.queryParams("indicador");
+	 String formula = req.queryParams("formula");
 		 
-		 indicadorServices.createIndicador(indicador);
+		 indicadorServices.createIndicador(indicador, formula);
 		 
 		 res.status(201);
-		 res.redirect("/empresas/ingresar");
+		 res.redirect("/indicadores/ingresar");
 		 
 		 return indicador;
 		
 	});
 		
-	get("/indicadores/:indicador", (req, res) -> {
+	get("/indicadores/calcular", (req, res) -> {
 		
 						
 		 VelocityContext context = new VelocityContext();
 			 
 		 String indicador = req.queryParams("indicador");
+		 String empresa = req.queryParams("empresa");
 		 
-		  String emp = "asd";
+		 Empresa empre = new EmpresaServices().getEmpresa(empresa).get(0);
+		 
+		 List<Indicador> emp = indicadorServices.getIndicador(indicador.substring(1));
 			  
 		  if(emp == null) {
-			   context.put("indicadoresList", "error");
+			   context.put("indicador", "error");
 		   }
 		   
 		   else {
-			   context.put("indicadoresList", emp);
+			   context.put("indicador", emp);
+			   context.put("valor", emp.get(0).getValor(empre));
 		   }  
 		  
 		  
-		 String result = new RenderUtil().getTempRes("templates/indicador.vtl", context);
+		 String result = new RenderUtil().getTempRes("templates/indicadorValor.vtl", context);
 		  
 		 		  
 		  model.put("template", result);

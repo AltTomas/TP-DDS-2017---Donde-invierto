@@ -1,0 +1,39 @@
+
+<div class="container" >
+
+  
+
+#if($indicadorList == "error")
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+	<div class="alert alert-danger" role="alert">
+  No se encontró el indicador indicado!
+</div>	
+</div>
+</div>
+
+	
+ #else
+ 
+ <table class="table">
+ <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Formula</th>
+    </tr>
+  </thead>
+
+ #foreach( $indicador in $indicadorList )
+
+    <tr><td>$foreach.count</td>
+    <td>$indicador.getNombre()</td>
+    <td>$indicador.getFormula()</td>
+    <td><a href="indicadores/:indicador.getNombre()/valor">Calcular Valor</a>
+    </tr>
+
+ #end
+#end
+</table>
+
+</div>

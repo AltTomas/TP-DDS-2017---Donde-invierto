@@ -1,7 +1,5 @@
 package services;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +8,7 @@ import javax.persistence.Persistence;
 
 import dominio.Empresa;
 import dominio.Indicador;
+import util.DDSParser;
 
 public class IndicadorServices {
 	
@@ -20,10 +19,10 @@ public class IndicadorServices {
 	  this.em = emf.createEntityManager();		
 	}
 		
-	public Indicador createIndicador(String nombre){
+	public Indicador createIndicador(String nombre, String formula){
 					
        // TODO: completar período y fórmula.
-	   Indicador indicador = new Indicador(nombre, null, "");	 			 
+	   Indicador indicador = new Indicador(nombre.toUpperCase(), formula);	 			 
 	   
 	   em.getTransaction().begin();
 	   em.persist(indicador);		  
@@ -39,15 +38,15 @@ public class IndicadorServices {
 		return indicadores;
 	}
 		
-	public Indicador getIndicador(String nombre) {
+	public List<Indicador> getIndicador(String nombre) {
 		
-		String obtenerIndicador = "FROM Indicador WHERE nombre = " + nombre;
+		String obtenerIndicador = "FROM Indicador WHERE nombre = " + "'" + nombre + "'";
 	  	List<Indicador> indicadores = em.createQuery(obtenerIndicador, Indicador.class).getResultList();	
 			
-	  	if(indicadores.size() == 0)
-	  	   return null;
-	  	    	   	 
-		return indicadores.get(0);				
+	  	if(indicadores.isEmpty()) {
+	  		return null;
+	  	}
+		return indicadores;		
 	}
 	
 }

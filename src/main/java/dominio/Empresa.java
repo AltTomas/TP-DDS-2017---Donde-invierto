@@ -1,6 +1,5 @@
 package dominio;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,12 +51,13 @@ public class Empresa {
 		this.nombre = paramNombre;
 	}
 	
+	
 	public void agregarCuenta(Cuenta cuenta){
 		cuenta.setEmpresa(this);
 		this.cuentas.add(cuenta);
 	}
 	
-    @OneToMany(targetEntity=Cuenta.class, mappedBy="empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(targetEntity=Cuenta.class, mappedBy="empresa", cascade = CascadeType.ALL, orphanRemoval = true)
 	public List<Cuenta> getCuentas(){
 		return this.cuentas;
 	}
@@ -70,11 +70,4 @@ public class Empresa {
 		this.cuentas.remove(calculo);
 	}
 	
-	public BigDecimal getValorCalculo(Cuenta calculo, Periodo periodo){
-		if (this.cuentas.contains(calculo)){
-			return calculo.calcular(periodo);
-		}else{
-			return BigDecimal.ZERO;
-		}
-	}
 }

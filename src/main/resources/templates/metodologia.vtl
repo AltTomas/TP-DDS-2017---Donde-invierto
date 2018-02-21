@@ -1,0 +1,38 @@
+
+<div class="container" >
+
+  
+
+#if($indicadorList == "error")
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+	<div class="alert alert-danger" role="alert">
+  No se encontró la metodología indicada!
+</div>	
+</div>
+</div>
+
+	
+ #else
+ 
+ <table class="table">
+ <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Formula</th>
+    </tr>
+  </thead>
+
+ #foreach( $metodologia in $metodologiaList )
+
+    <tr><td>$foreach.count</td>
+    <td>$metodologia.getNombre()</td>
+    <td>$metodologia.getFormula()</td>
+    </tr>
+
+ #end
+#end
+</table>
+
+</div>
