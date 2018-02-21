@@ -39,15 +39,9 @@ public class EmpresaServices {
 		em.persist(cuenta);
 		em.flush();
 		em.getTransaction().commit();
-
+                     
 		// Agregar cuenta a empresa.
         empresa.agregarCuenta(cuenta);
-        
-        // Persistir empresa.
-        em.getTransaction().begin();               
-		em.merge(empresa);
-		em.flush();
-		em.getTransaction().commit();
 	}
 	
 	public List<Empresa> getAllEmpresas() 
