@@ -25,12 +25,10 @@ public class Cuenta {
 	
 	
 	public Cuenta(String nombre, String periodo, double valor)
-	{
-		
-		
-		this.nombre = nombre;
-		this.periodo = periodo;
-		this.valor = valor;
+	{				
+	   this.nombre = nombre;
+	   this.periodo = periodo;
+	   this.valor = valor;
 	}
 	
 	public Cuenta(){}

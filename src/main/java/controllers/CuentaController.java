@@ -21,8 +21,7 @@ public class CuentaController{
 	
 	public CuentaController(final EmpresaServices cuentaServices) {
 		
-		
-		
+				
 		before("/cuenta/*", (req, res) ->{
 			
 			if(req.cookie("lgwapp.adb") == null) {
@@ -42,40 +41,42 @@ public class CuentaController{
 		});
 		
 		
-			get("/cuenta/ingresar", (req,res) -> {
+		get("/cuenta/ingresar", (req,res) -> {
 				
 				
-				 VelocityContext context = new VelocityContext();
-				 
-				 String result = new RenderUtil().getTempRes("templates/ingresarCuenta.vtl", context);
-				 
-				  model.put("template", result);
+		   VelocityContext context = new VelocityContext();				 
+           String result = new RenderUtil().getTempRes("templates/ingresarCuenta.vtl", context);
+           model.put("template", result);
 				
-				  return new VelocityTemplateEngine().render(
-					        new ModelAndView(model, layout));
-				
-			});
+		   return new VelocityTemplateEngine().render(new ModelAndView(model, layout));				
+       });
 
 
-			post("/cuenta/ingresar", (req,res) -> {
-				
-			 String empresa = req.queryParams("empresa");
-			 String nombre = req.queryParams("nombre");
-			 int valor = new Integer(req.queryParams("valor"));
-			 String periodo = req.queryParams("periodo");
-				 				 
-			 Cuenta cuenta = new Cuenta(nombre, periodo, valor);
+	   post("/cuenta/ingresar", (req,res) -> {
+						   		   
+		 String empresa = req.queryParams("empresa");
+		 String nombre = req.queryParams("nombre");
+		 int valor = new Integer(req.queryParams("valor"));
+		 String periodo = req.queryParams("periodo");				 				 
+
+		 System.out.println("...................");
+		 System.out.println(empresa);
+		 System.out.println(nombre);
+		 System.out.println(valor);
+		 System.out.println(periodo);		 
+		 System.out.println("...................");
+		 
+		 Cuenta cuenta = new Cuenta(nombre, periodo, valor);
+		 Empresa emp = new EmpresaServices().getEmpresa(empresa).get(0);
 			 
-			 Empresa emp = new EmpresaServices().getEmpresa(empresa).get(0);
-			 
-			cuentaServices.addCuenta(emp, cuenta);
+		 cuentaServices.addCuenta(emp, cuenta);
 			
-				 res.status(201);
-				 res.redirect("/ingresar/cuenta");
+		 res.status(201);
+		 res.redirect("/cuenta/ingresar");
 				 
-				 return cuenta;
-				
-			});
+		 return cuenta;
+		
+  	  });
 
 	}
 }

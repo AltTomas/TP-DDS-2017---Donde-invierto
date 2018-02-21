@@ -23,23 +23,23 @@ public class EmpresaServices {
    public Empresa createEmpresa(String nombre)
    {			
 	   Empresa empresa = new Empresa(nombre.toUpperCase());				
-				
+		   
 	   em.getTransaction().begin();
 	   em.persist(empresa);
 	   em.flush();
 	   em.getTransaction().commit();
-		
+	   		   
 	   return empresa;
 	}
 	
     public void addCuenta(Empresa empresa, Cuenta cuenta) 
-    {		
+    {	    	                      	 		
     	// Persistir cuenta.
     	em.getTransaction().begin();
 		em.persist(cuenta);
 		em.flush();
 		em.getTransaction().commit();
-                     
+        		
 		// Agregar cuenta a empresa.
         empresa.agregarCuenta(cuenta);
 	}

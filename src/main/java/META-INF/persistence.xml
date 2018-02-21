@@ -13,23 +13,22 @@
 		<class>dominio.Indicador</class>
 		<class>dominio.Cuenta</class>	
 		<class>dominio.Metodologia</class>	
-		<class>dominio.Condicion</class>		
+		<class>dominio.Condicion</class>
+				
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
               	
         <properties> 
 	    	<property name="hibernate.archive.autodetection" value="class"/>                
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ddstp" /> 
-            <property name="hibernate.connection.username" value="root" /> 
-            <property name="hibernate.connection.password" value="admin" />
-                            
+           <property name="hibernate.connection.username" value="root" /> 
+            <property name="hibernate.connection.password" value="ddstp" /> 
+                                       
             <property name="hibernate.show_sql" value="true" /> 
             <property name="hibernate.format_sql" value="false" /> 
             <property name="use_sql_comments" value="true" /> 
-            <property name="hibernate.hbm2ddl.auto" value="update" /> 
-            
-			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />
-            
+            <property name="hibernate.hbm2ddl.auto" value="update" />             
+			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />            
         </properties>
           
     </persistence-unit> 

@@ -3,7 +3,7 @@
         nombre VARCHAR(255),
         valor numeric(19,2),
         periodo VARCHAR(255),
-        empresa_id integer,cuenta
+        empresa_id integer,
         indicador_id integer,
         primary key (id)
     );

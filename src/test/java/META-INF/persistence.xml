@@ -5,7 +5,7 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
   
-    <persistence-unit name="ddstp" transaction-type="RESOURCE_LOCAL">
+   		<persistence-unit name="ddstp" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     	
 		<class>dominio.Periodo</class>  
@@ -21,7 +21,7 @@
           	<property name="hibernate.archive.autodetection" value="class"/>                
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ddstp" /> 
-            <property name="hibernate.connection.username" value="root" /> 
+           <property name="hibernate.connection.username" value="root" /> 
             <property name="hibernate.connection.password" value="ddstp" /> 
                                     
             <property name="hibernate.show_sql" value="true" /> 
