@@ -44,10 +44,11 @@ public class CuentaController{
 		get("/cuenta/ingresar", (req,res) -> {
 				
 				
+
 		   VelocityContext context = new VelocityContext();	
 		   
 		   context.put("empresaList", cuentaServices.getAllEmpresas());
-		   
+
            String result = new RenderUtil().getTempRes("templates/ingresarCuenta.vtl", context);
            model.put("template", result);
 				
@@ -63,6 +64,7 @@ public class CuentaController{
 		 String periodo = req.queryParams("periodo");				 				 
 		 
 		 Cuenta cuenta = new Cuenta(nombre.toUpperCase(), periodo, valor);
+
 		 Empresa emp = new EmpresaServices().getEmpresa(empresa).get(0);
 			 
 		 cuentaServices.addCuenta(emp, cuenta);

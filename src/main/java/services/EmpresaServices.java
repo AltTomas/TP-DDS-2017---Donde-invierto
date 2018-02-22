@@ -32,12 +32,14 @@ public class EmpresaServices {
 	   return empresa;
 	}
 	
+
     public Cuenta addCuenta(Empresa empresa, Cuenta cuenta) 
+
     {	    	                      	 		
     	// Persistir cuenta.
     	em.getTransaction().begin();
 		em.persist(cuenta);
-	
+
         		
 		// Agregar cuenta a empresa.
         empresa.agregarCuenta(cuenta);
