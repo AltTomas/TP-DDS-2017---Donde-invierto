@@ -1,40 +1,40 @@
-
-<div class="container" >
-
-  
-
-#if($indicadorList == "error")
-<div class="mx-auto" style="width: 400px;" id="notFound">
-<div class="d-inline-flex p-2">
-	<div class="alert alert-danger" role="alert">
-  No se encontró el indicador indicado!
-</div>	
-</div>
-</div>
-
+<div class="container">
 	
- #else
- 
-  <h3>Indicadores ingresados</h3>
-  
- <table class="table table-stripped" style="padding: 5px;">
- <thead class="thead-dark">
-    <tr>
-      <th>#</th>
-      <th>Nombre</th>
-      <th>Formula</th>
-    </tr>
-  </thead>
-
- #foreach( $indicador in $indicadorList )
-
-    <tr><td>$foreach.count</td>
-    <td>$indicador.getNombre()</td>
-    <td>$indicador.getFormula()</td>
-    </tr>
-
- #end
-#end
-</table>
+	#if($indicadorList == "error")
+	
+	<div class="mx-auto" style="width: 400px;" id="notFound">
+	  <div class="d-inline-flex p-2">
+		<div class="alert alert-danger" role="alert">
+	        No se encontró el indicador indicado!
+	    </div>	
+	  </div>
+	</div>
+			
+	#else
+	 
+	<h3>Indicadores ingresados</h3>
+	  
+	<table class="table table-stripped" style="padding: 5px;">
+	
+	 <thead class="thead-dark">
+	    <tr>
+	      <th>#</th>
+	      <th>Nombre</th>
+	      <th>Formula</th>
+	    </tr>
+	  </thead>
+	
+	 #foreach( $indicador in $indicadorList )
+	  
+	  <tr>
+	  	<td>$foreach.count</td>
+	    <td>$indicador.getNombre()</td>
+	    <td>$indicador.getFormula()</td>
+	  </tr>	
+	 #end
+	 
+   #end
+	
+   </table>
 
 </div>

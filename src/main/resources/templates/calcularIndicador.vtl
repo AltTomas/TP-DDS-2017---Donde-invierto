@@ -1,29 +1,34 @@
-
-
 <h3>Calcular indicador</h3>
 
 <div class="container" style="width:  300px; padding-top: 20px;" id="imputNewForm">
 
+  <form action="/indicadores/valor" id="ingresoDatos">
 
-<form action="/indicadores/valor" id="ingresoDatos">
-  <div class="form-group">
+     <div class="form-group">
   
-   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="indicador" style="margin-bottom: 10px;" required>
+   	   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="indicador" style="margin-bottom: 10px;" required>
          #foreach( $indicador in $indicadorList )
          
          <option value=$indicador.getNombre()>$indicador.getNombre()</option required>
          #end
-         </select>
-     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="empresa" style="margin-bottom: 10px;" required>
+       </select>
+         
+       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="empresa" style="margin-bottom: 10px;" required>
          #foreach( $empresa in $empresaList )
          
          <option value=$empresa.getNombre()>$empresa.getNombre()</option required>
          #end
-         </select>
-           <input type="number" class="form-control mr-sm-2" id="imputNew" aria-label="FI" placeholder="Periodo" name="periodo" min="1950" max="2017" maxlength="4" required> 
-         <div class="checkbox">
-   <label>  <input type="checkbox" name="all" value="yes" >  Cacular para todas las empresas</label>
-</div>     
-        <button type="submit" id="imputButton" class="btn btn-primary">Calcular</button>
-</form>
+       </select>
+       
+       <input type="number" class="form-control mr-sm-2" id="imputNew" aria-label="FI" placeholder="Periodo" name="periodo" min="1950" max="2017" maxlength="4" required> 
+     
+       <div class="checkbox">     
+     	  <label>
+     	    <input type="checkbox" name="all" value="yes" > Cacular para todas las empresas
+     	  </label>     
+       </div> 
+    
+       <button type="submit" id="imputButton" class="btn btn-primary">Calcular</button>
+   </form>
+   
 </div>
