@@ -9,6 +9,9 @@ import javax.persistence.Persistence;
 import dominio.Cuenta;
 import dominio.Empresa;
 
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
 
 public class EmpresaServices {
 	
@@ -62,17 +65,20 @@ public class EmpresaServices {
 	public List<Empresa> getEmpresa(String nombre) 
 
 	{
-				
-  	  String obtenerEmpresa = "FROM Empresa WHERE nombre = " +  "'" + nombre + "'";
-  	  List<Empresa> empresas= em.createQuery(obtenerEmpresa, Empresa.class).getResultList();	
 		
-  	  if(empresas.isEmpty()) {
-  		  return null;
-  	  }
+		/*
+		Config config = new Config();
+		config.useSingleServer().setAddress("127.0.0.1:6379");		 		
+	    RedissonClient client = Redisson.create(config);
+		*/
+		
+  	    String obtenerEmpresa = "FROM Empresa WHERE nombre = " +  "'" + nombre + "'";
+  	    List<Empresa> empresas= em.createQuery(obtenerEmpresa, Empresa.class).getResultList();	
+		
+  	    if(empresas.isEmpty())
+  		   return null;
   	    	   	 
-
-	  return empresas;			
-
+	  return empresas;
 	}
 	
 }
