@@ -56,9 +56,9 @@ public Boolean igual(String num1, String num2) {
 	
 	
 	
-	public Boolean evaluar(String formula, Empresa empresa) {
+	public Boolean evaluar(String formula, Empresa empresa, String periodo) {
 		
-		String redux1 = evalParen((getValues(formula, empresa)));
+		String redux1 = evalParen((getValues(formula, empresa, periodo)));
 		
 		String redux2 = reduxCalc(redux1.split("(?<=[|&<>=])|(?=[|&<>=])"));
 		
@@ -259,7 +259,7 @@ public String evalParen(String formula) {
 			
 			if(parenSplitL.get(i).equals("(")) {
 				
-				Boolean resultado = evaluar(parenSplitL.get(i+1), null);
+				Boolean resultado = evaluar(parenSplitL.get(i+1), null, null);
 				
 				parenSplitL.set(i+1, Boolean.toString(resultado));
 				
@@ -286,7 +286,7 @@ public String reduxCalc(String[] result) {
 		if(result[i].length()>1) {
 			
 			if(!(result[i].equals("true") || result[i].equals("false"))) {
-				result[i] = String.valueOf(calcular(result[i], null));
+				result[i] = String.valueOf(calcular(result[i], null, null));
 				
 			}
 			

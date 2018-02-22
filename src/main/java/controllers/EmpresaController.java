@@ -113,13 +113,13 @@ public class EmpresaController {
 			String empresa = req.params("empresa");
 
 			List<Empresa> emp = empresaService.getEmpresa(empresa.substring(1));
-
+					
 			if (emp == null | emp.get(0).getCuentas().isEmpty()) {
 				context.put("empresaList", "error");
 			}
 
 			else {
-				context.put("empresa", empresa);
+				context.put("empresa", empresa.substring(1));
 				context.put("listaCuentas", emp.get(0).getCuentas());
 			}
 

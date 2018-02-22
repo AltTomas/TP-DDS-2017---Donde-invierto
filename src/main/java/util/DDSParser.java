@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import dominio.Cuenta;
 import dominio.Empresa;
 import dominio.Indicador;
@@ -57,9 +59,9 @@ public double potencia(String num1, String num2) {
 		return Math.pow(op1, op2);
 	}
 	
-public double calcular(String formula, Empresa empresa) {
+public double calcular(String formula, Empresa empresa, String periodo) {
 						
-		String parenRedux = reduxParen(getValues(formula, empresa));
+		String parenRedux = reduxParen(getValues(formula, empresa, periodo));
 		
 		String[] result = parenRedux.split("(?<=[-+])|(?=[-+])");
 						
@@ -238,7 +240,7 @@ public String reduxParen(String formula) {
 			
 			if(parenSplitL.get(i).equals("(")) {
 				
-				double resultado = calcular(parenSplitL.get(i+1), null);
+				double resultado = calcular(parenSplitL.get(i+1), null, null);
 				
 				parenSplitL.set(i+1, Double.toString(resultado));
 				
@@ -345,55 +347,65 @@ for (int i = 1; i < array.length; i++) {
 	return stringFinal;
 }
 
-public String getValues(String formula, Empresa empresa) {
+public String getValues(String formula, Empresa empresa, String periodo) {
 	
 	String[] splittedArr = formula.split("(?<=[*/()+-])|(?=[*/()+-])|(?<=\\^|(?=\\^))|(?<=[|&<>=])|(?=[|&<>=])");
 	
 	for (int i = 0; i < splittedArr.length; i++) {
 		
+		
+		
+		if(!(splittedArr[i] == null)) {
+		
 		if(!(splittedArr[i].matches("-?\\d+(\\.\\d+)?") || splittedArr[i].matches("[*/+-^()|&<>=]"))) {
 			
 			if(!(splittedArr[i].equals("true") || splittedArr[i].equals("false"))) {
-			
-			splittedArr[i] = searchValue(splittedArr[i], empresa);
-			}
-			
-		}	
-	}	
+				
+				 if(searchValue(splittedArr[i], empresa, periodo).equals("-1")) {
+					 
+					 return "0";
+					 
+				 }
+			splittedArr[i] = searchValue(splittedArr[i], empresa, periodo);
+				
+				}
+				
+			}	
+		}
+	}
 	
 	return arrayToString(splittedArr);
 	
 	
 	}
 
-public String searchValue(String id, Empresa empresa) {
+public String searchValue(String id, Empresa empresa, String periodo) {
 	
-	List<Cuenta> listaCuentas = empresa.getCuentas();
+	List<Cuenta> lc = empresa.getCuentas();
 	
-	for (int i = 0; i < listaCuentas.size(); i++) {
+	for (int i = 0; i < lc.size(); i++) {
 		
-		if(listaCuentas.get(i).getNombre().equals(id) & id.substring(id.length()-3).equals(listaCuentas.get(i).periodoToEval())){
+		if(lc.get(i).getNombre().equals(id) & lc.get(i).getPeriodo().equals(periodo)) {
 			
-			return Double.toString(listaCuentas.get(i).getValor());
+			return Double.toString(lc.get(i).getValor());
+		}							
+	}
+	
+	
+	List<Indicador> li = new IndicadorServices().getAllIndicadores();
+	
+	for (int i = 0; i < li.size(); i++) {
+		
+		if(li.get(i).getNombre().equals(StringUtils.substringBefore(id, "_"))) {
 			
+			return Double.toString(li.get(i).getValor(empresa, StringUtils.substringAfter(id, "_")));
 		}
 		
 	}
+	return "-1";
 	
-	List<Indicador> listaIndicadores = new IndicadorServices().getAllIndicadores();
-	
-	for (int i = 0; i < listaIndicadores.size(); i++) {
-		
-		if(listaIndicadores.get(i).getNombre().equals(id)) {
-			
-			return Double.toString(this.calcular(id, empresa));
-			
-		}
-		
-	}
-	
-	return null;
 }
+
 }
 	
 

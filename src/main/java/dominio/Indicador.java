@@ -58,11 +58,11 @@ public class Indicador {
 		this.nombre = nombre;
 	}
 	
-	public double getValor(Empresa empresa) {
+	public double getValor(Empresa empresa, String periodo) {
 		
 		DDSParser parser = new DDSParser();
 		
-		return parser.calcular(this.formula, empresa);
+		return parser.calcular(this.formula, empresa, periodo);
 	}
 	
 }

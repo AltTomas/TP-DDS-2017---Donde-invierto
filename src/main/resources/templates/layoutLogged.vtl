@@ -2,8 +2,10 @@
 <html>
 <head>
     <title>Analizador de la bolsa</title>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400|Raleway:300" rel="stylesheet">
 </head>
 <body>
 
@@ -33,25 +35,29 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/empresas/buscar">Empresa</a>
           <a class="dropdown-item" href="/metodologias/buscar">Metodología</a>
-          <a class="dropdown-item" href="/cuenta/buscar">Cuenta</a>
           <a class="dropdown-item" href="/indicadores/buscar">Indicador</a>
         </div>
       </li>
       
-      
-      <li class="nav-item" >
-        <a class="nav-link" href="#" style="color:white;">Analizar Empresa</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+         	Analizar
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/indicadores/calcular">Calcular indicador</a>
+          <a class="dropdown-item" href="/metodologias/calcular">Analizar Empresa</a>
+          
+        </div>
       </li>
-      
+            
     </ul>
     
-    <ul> 
-    <li class="nav-item">
- 	<a class="nav-item" style="color:white;">Bienvenido $usuario !</a>
- 	<form class="form-inline my-2 my-lg-0" method="POST">
- 	<button class="btn btn-outline-succes my-2 my-sm-0" type="submit" style="color:white; border-color:white;">Salir</button>
+   
+ 	<a class="nav-item" style="color:white;">Bienvenido $usuario!</a>
+ 	<form class="form-inline" method="POST">
+ 	<button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="color:white; border-color:white; margin-left:8px;">Salir</button>
  	</form>
-    </ul> 
+    
 
           
   </div>

@@ -60,6 +60,20 @@ public class indexController {
 		  return null;
 		  
 	  });
+
+	  
+	  post("/welcome", (req, res) -> {
+		  
+			 
+		  res.removeCookie("lgwapp.adb");
+		  
+		  res.redirect("/");
+		  
+		  return null;
+		  
+		  
+	  });
+	  
 	  
 	  get("/welcome", (req,res) -> {
 		  
@@ -89,6 +103,7 @@ public class indexController {
 	       );
 		  
 	  });
+	  
 	  
 	  
   }

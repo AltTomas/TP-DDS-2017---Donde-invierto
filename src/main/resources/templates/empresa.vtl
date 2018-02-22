@@ -12,16 +12,18 @@
 
 
  #else
+ <h3>Empresas ingresadas</h3>
  
- <table class="table">
- <thead>
+ 
+ <table class="table table-stripped" style="padding: 5px;">
+ <thead class="thead-dark">
     <tr>
       <th>#</th>
       <th>Nombre</th>
       <th>Cuenta</th>
     </tr>
   </thead>
- 
+ <tbody>
  #foreach( $empresa in $empresaList )
 
     <tr><td>$foreach.count</td>
@@ -32,7 +34,9 @@
 
 
  #end
+ </tbody>
 #end
 </table>
+
 
 </div>

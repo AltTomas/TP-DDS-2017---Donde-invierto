@@ -1,0 +1,28 @@
+
+
+<h3>Analizar empresa</h3>
+
+<div class="container" style="width:  300px; padding-top: 20px;" id="imputNewForm">
+
+
+<form action="/metodologias/valor" id="ingresoDatos">
+  <div class="form-group">
+  
+   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="metodologia" style="margin-bottom: 10px;" required>
+         #foreach( $metodologia in $metodologiaList )         
+         <option value=$metodologia.getNombre()>$metodologia.getNombre()</option required>
+         #end
+         </select>
+     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="empresa" style="margin-bottom: 10px;" required>
+         #foreach( $empresa in $empresaList )
+         
+         <option value=$empresa.getNombre()>$empresa.getNombre()</option required>
+         #end
+         </select>
+           <input type="number" class="form-control mr-sm-2" id="imputNew" aria-label="FI" placeholder="Periodo" name="periodo" min="1950" max="2017" maxlength="4" required> 
+         <div class="checkbox">
+   <label>  <input type="checkbox" name="all" value="yes" >  Calcular para todas las empresas</label>
+</div>     
+        <button type="submit" id="imputButton" class="btn btn-primary">Calcular</button>
+</form>
+</div>

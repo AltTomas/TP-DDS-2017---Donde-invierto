@@ -5,12 +5,22 @@
 
 }
 
+h3{
+	margin-top:50px;
+
+}
+
+.table{
+	margin-top:50px;
+	font-family: 'Montserrat', sans-serif;
+	width: 800px;
+	}
+
 #imputNew:focus {
     outline: none;
     border-color: rgb(46, 142, 165);
     box-shadow: 0 0 10px rgb(46, 142, 165);
 }
-
 
 
 #imputNewForm{
@@ -27,6 +37,8 @@
 body{
 
 	background-color: rgba(216, 247, 255,0.4);
+	font-family: 'Raleway', sans-serif;
+	
 }
 
 .jumbotron{

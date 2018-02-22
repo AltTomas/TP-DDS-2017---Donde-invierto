@@ -1,0 +1,57 @@
+<div class="container" >
+
+  
+
+#if($indicadorList == "error")
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+	<div class="alert alert-danger" role="alert">
+  No se encontró el indicador indicado!
+</div>	
+</div>
+</div>
+
+#elseif($indicadorList == "nocuenta")
+
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+	<div class="alert alert-danger" role="alert">
+  La empresa no tiene las cuentas que este indicador requiere!
+</div>	
+</div>
+</div>
+
+#elseif($indicadorList == "nocuentaall")
+
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+	<div class="alert alert-danger" role="alert">
+  Ninguna de las empresas tiene las cuentas que este indicador requiere!
+</div>	
+</div>
+</div>
+	
+ #else
+ 
+ <h3>Valor del Indicador $indicador </h3>
+ 
+ <table class="table table-stripped" style="padding: 5px;">
+ <thead class="thead-dark">
+    <tr>
+      <th>Empresa</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+
+ #foreach( $valor in $valoresList )
+
+    
+    <td>$valor.getNombreEmpresa()</td>
+    <td>$valor.getValor()</td>
+    </tr>
+
+ #end
+#end
+</table>
+
+</div>

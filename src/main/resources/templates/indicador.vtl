@@ -15,8 +15,10 @@
 	
  #else
  
- <table class="table">
- <thead>
+  <h3>Indicadores ingresados</h3>
+  
+ <table class="table table-stripped" style="padding: 5px;">
+ <thead class="thead-dark">
     <tr>
       <th>#</th>
       <th>Nombre</th>
@@ -29,7 +31,6 @@
     <tr><td>$foreach.count</td>
     <td>$indicador.getNombre()</td>
     <td>$indicador.getFormula()</td>
-    <td><a href="indicadores/:indicador.getNombre()/valor">Calcular Valor</a>
     </tr>
 
  #end

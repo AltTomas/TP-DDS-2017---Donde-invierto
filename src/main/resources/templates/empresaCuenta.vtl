@@ -13,10 +13,11 @@
 
  #else
  
- <table class="table">
- <thead>
+ <h3>Cuentas de $empresa</h3>
+ 
+ <table class="table table-stripped" style="padding: 5px;">
+ <thead class="thead-dark">
     <tr>
-      <th>$empresa</th>
       <th>Cuenta</th>
       <th>Valor</th>
       <th>Periodo</th>
@@ -25,7 +26,7 @@
  
  #foreach( $cuenta in $listaCuentas )
 
-    <tr><td></td>
+    <tr>
     <td>$cuenta.getNombre()</td>
     <td>$cuenta.getValor()</td>
     <td>$cuenta.getPeriodo()</td>

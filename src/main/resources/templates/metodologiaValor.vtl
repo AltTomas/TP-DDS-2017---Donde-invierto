@@ -1,9 +1,8 @@
-
 <div class="container" >
 
   
 
-#if($indicadorList == "error")
+#if($metodologiaList == "error")
 <div class="mx-auto" style="width: 400px;" id="notFound">
 <div class="d-inline-flex p-2">
 	<div class="alert alert-danger" role="alert">
@@ -11,25 +10,31 @@
 </div>	
 </div>
 </div>
-
 	
  #else
  
-  <h3>Metodologías ingresadas</h3>
+ <h3>Análisis de la metodología $metodologia </h3>
+ 
  <table class="table table-stripped" style="padding: 5px;">
  <thead class="thead-dark">
     <tr>
-      <th>#</th>
-      <th>Nombre</th>
-      <th>Formula</th>
+      <th>Empresa</th>
+      <th>Resultado</th>
     </tr>
   </thead>
 
- #foreach( $metodologia in $metodologiaList )
+ #foreach( $valor in $valoresList )
 
-    <tr><td>$foreach.count</td>
-    <td>$metodologia.getNombre()</td>
-    <td>$metodologia.getFormula()</td>
+    
+    <td>$valor.getNombreEmpresa()</td>
+    <td>
+    #if($valor.getValorM())
+    		Se cumplieron todas las condiciones
+    	#else
+    		No se cumplieron todas las condiciones
+    	#end
+    		
+    </td>
     </tr>
 
  #end

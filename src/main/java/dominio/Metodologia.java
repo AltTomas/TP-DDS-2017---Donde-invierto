@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import util.DDSParserM;
+
 @Entity
 @Table(name="metodologia")
 public class Metodologia {
@@ -39,5 +41,12 @@ public class Metodologia {
 		return this.formula;
 	}
 	
+	public Boolean getValor(Empresa empresa, String periodo) {
+		
+		DDSParserM parser = new DDSParserM();
+		
+		return parser.evaluar(this.formula, empresa, periodo);
+		
+	}
 	
 }

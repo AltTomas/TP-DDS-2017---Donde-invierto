@@ -25,12 +25,10 @@ public class Cuenta {
 	
 	
 	public Cuenta(String nombre, String periodo, double valor)
-	{
-		
-		
-		this.nombre = nombre;
-		this.periodo = periodo;
-		this.valor = valor;
+	{				
+	   this.nombre = nombre;
+	   this.periodo = periodo;
+	   this.valor = valor;
 	}
 	
 	public Cuenta(){}
@@ -86,53 +84,5 @@ public class Cuenta {
 		return this.periodo;
 	}
 	
-	public String periodoToEval() {
-		
-		switch (this.periodo.toUpperCase()) {
-		case "ENERO":
-			
-			return "ENE";
-		case "FEBRERO":
-			
-			return "FEB";
-		case "MARZO":
-			
-			return "MAR";
-			
-		case "ABRIL":
-			
-			return "ABR";
-			
-		case "MAYO":
-			
-			return "MAY";
-			
-		case "JUNIO":
-				
-			return "JUN";
-		case "JULIO":
-			
-			return "JUL";
-		case "AGOSTO":
-			
-			return "AGO";
-		case "SEPTIEMBRE":
-			
-			return "SEP";
-		case "OCTUBRE":
-			
-			return "OCT";
-		case "NOVIEMBRE":
-			
-			return "NOV";
-		case "DICIEMBRE":
-		
-			return "DIC";
-		default:
-			
-			return null;
-		}
-		
-	}
 	
 }
