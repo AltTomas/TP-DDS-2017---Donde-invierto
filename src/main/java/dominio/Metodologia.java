@@ -11,7 +11,7 @@ import util.DDSParserM;
 @Entity
 @Table(name="metodologia")
 public class Metodologia {
-	
+	 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;	

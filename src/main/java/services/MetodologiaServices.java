@@ -11,7 +11,7 @@ import dominio.Metodologia;
 public class MetodologiaServices {
 	
     private EntityManager em;
-	   
+	
 	public MetodologiaServices() {	   		 
 	   EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");			 	 
 	   this.em = emf.createEntityManager();		

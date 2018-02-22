@@ -27,7 +27,7 @@ public class Empresa {
 	{
 		this.nombre = paramNombre;
 	}
-		
+ 
 	public Empresa(){}
 	
     @Id  

@@ -9,8 +9,8 @@ import com.google.gson.Gson;
 public class JSONLoader 
 {
 
-  private String FilePath = null;  
-  private FileToStringReader Reader = null;
+   private String FilePath = null;  
+   private FileToStringReader Reader = null;
   
   public JSONLoader(String filePath, FileToStringReader reader)
   {

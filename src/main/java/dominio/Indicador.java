@@ -11,7 +11,7 @@ import util.DDSParser;
 @Entity(name="Indicador")
 @Table(name="indicador")
 public class Indicador {
-	
+	 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

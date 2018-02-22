@@ -7,7 +7,7 @@ import java.util.List;
 import dominio.Empresa;
 
 public class DDSParserM extends DDSParser{
-
+ 
 	private static final String OR = "|";
 	private static final String AND = "&";
 	private static final String MENOR = "<";

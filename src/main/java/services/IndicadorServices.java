@@ -19,7 +19,6 @@ public class IndicadorServices {
 		
 	public Indicador createIndicador(String nombre, String formula){
 					
-       // TODO: completar período y fórmula.
 	   Indicador indicador = new Indicador(nombre.toUpperCase(), formula);	 			 
 	   
 	   em.getTransaction().begin();

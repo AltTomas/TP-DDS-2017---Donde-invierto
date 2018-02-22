@@ -12,7 +12,7 @@ import services.EmpresaServices;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import util.RenderUtil;
-
+ 
 public class EmpresaController {
 
 	String layout = "templates/layoutLogged.vtl";

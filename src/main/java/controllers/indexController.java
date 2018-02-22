@@ -18,10 +18,8 @@ public class indexController {
 		
 	String layout = "templates/layout.vtl";	
 	String layoutLogged = "templates/layoutLogged.vtl";
-	
-	
-	
-	  get("/", (req, res) -> {
+			
+	get("/", (req, res) -> {
 		
 		  Map<String, String> model = new HashMap<String, String>();
 		  

@@ -7,14 +7,12 @@ public class Values {
 	Boolean valorM;
 	
 	
-	public Values(String nombreEmpresa, double valor) {
-		
+	public Values(String nombreEmpresa, double valor) {		
 		this.nombreEmpresa = nombreEmpresa;
-		this.valor = valor;
-		
+		this.valor = valor;		
 	}
-	public Values(String nombreEmpresa, Boolean valorm) {
-		
+	
+	public Values(String nombreEmpresa, Boolean valorm) {		
 		this.nombreEmpresa = nombreEmpresa;
 		this.valorM = valorm;
 	}
@@ -22,9 +20,11 @@ public class Values {
 	public Boolean getValorM() {
 		return valorM;
 	}
+	
 	public void setValorM(Boolean valorM) {
 		this.valorM = valorM;
 	}
+	
 	public String getNombreEmpresa() {
 		return nombreEmpresa;
 	}
