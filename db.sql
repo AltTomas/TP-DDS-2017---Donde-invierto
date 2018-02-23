@@ -1,4 +1,5 @@
-    create table Cuenta (
+    -- BASE DE DATOS
+	create table Cuenta (
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
         nombre VARCHAR(255),
         valor numeric(19,2),
