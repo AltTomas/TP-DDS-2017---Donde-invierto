@@ -1,0 +1,20 @@
+#if($existe)
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+  <div class="alert alert-danger" role="alert">
+  La cuenta $cuenta en la empresa $empresa en el período $periodo ya se encuentra ingresada!
+</div>
+</div>
+</div>
+
+#elseif($creado)
+	
+	<div class="mx-auto" style="width: 400px;" id="createdOk">
+<div class="d-inline-flex p-2">
+  <div class="alert alert-success" role="alert">
+  La cuenta $cuenta en la empresa $empresa en el período $periodo se ingresó correctamente!
+</div>
+</div>
+</div>
+
+#end

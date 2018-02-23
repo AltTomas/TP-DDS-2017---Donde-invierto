@@ -102,6 +102,35 @@ public class indexController {
 		  
 	  });
 	  
+ get("/comousar", (req,res) -> {
+		  
+		  Map<String, String> model = new HashMap<String, String>();
+		  
+		  VelocityContext context = new VelocityContext();
+		  
+		  String user = req.cookie("lgwapp.adb");
+		  
+		  if(user == null) {
+			 
+			res.redirect("/");
+		  }
+		  else {
+			  
+			  model.put("usuario", user);
+			  
+		  }
+		 
+		  String result = new RenderUtil().getTempRes("templates/comoUsar.vtl", context);
+			 
+		  model.put("template", result);
+		  
+	      
+	      return new VelocityTemplateEngine().render(
+	        new ModelAndView(model, layoutLogged)
+	       );
+		  
+	  });
+	  
 	  
 	  
   }

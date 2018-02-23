@@ -1,7 +1,6 @@
 <div class="container" style="width:  300px; padding-top: 20px;" id="imputNewForm">
   <form method="post" action="/cuenta/ingresar">
-
-      <!--    
+  
         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="empresa" style="margin-bottom: 10px;" required>
          #foreach( $empresa in $empresaList )
          
@@ -11,14 +10,7 @@
         <input type="text" class="form-control mr-sm-2" id="imputNew" aria-label="CuentaN" placeholder="Cuenta" name="nombre" required>
         <input type="number" class="form-control mr-sm-2" id="imputNew" aria-label="Valor" placeholder="Valor" name="valor" min="0" required>
         <input type="number" class="form-control mr-sm-2" id="imputNew" aria-label="FI" placeholder="Periodo" name="periodo" min="1950" max="2017" maxlength="4" required>     
-     -->
-          
-     <div class="form-group">
-        <input type="text" class="form-control mr-sm-2" id="imputNew" aria-label="EmpresaN" placeholder="Empresa" name="empresa">
-        <input type="text" class="form-control mr-sm-2" id="imputNew" aria-label="CuentaN" placeholder="Cuenta" name="nombre">
-        <input type="number" class="form-control mr-sm-2" id="imputNew" aria-label="Valor" placeholder="Valor" name="valor">
-        <input type="month" class="form-control mr-sm-2" id="imputNew" aria-label="FI" placeholder="Periodo" name="periodo">     
-     </div>
+  
  
      
      <button type="submit" class="btn btn-primary" id="imputButton">Ingresar</button>

@@ -1,0 +1,38 @@
+[
+  {
+    "nombre": "Indicador Test",
+    "periodo": {
+      "fechaInicio": {
+        "year": 2007,
+        "month": 1,
+        "day": 1
+      },
+      "fechaFin": {
+        "year": 2008,
+        "month": 1,
+        "day": 1
+      }
+    },
+    "indicadores": [],
+    "cuentas": [],
+    "formula": "a+b"
+  },
+  {
+    "nombre": "Indicador Test2",
+    "periodo": {
+      "fechaInicio": {
+        "year": 2009,
+        "month": 1,
+        "day": 1
+      },
+      "fechaFin": {
+        "year": 2010,
+        "month": 1,
+        "day": 1
+      }
+    },
+    "indicadores": [],
+    "cuentas": [],
+    "formula": "(Valor+Valor1)*2"
+  }
+]

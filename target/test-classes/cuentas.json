@@ -1,0 +1,26 @@
+[
+    {
+		"nombre": "empresa1",
+		"cuentas": [{
+			"nombre": "cuenta1",
+			"valor": 150,
+			"fechaInicio": "1992-01-01",
+			"fechaFin": "2007-12-03"
+		}]
+	},
+	{
+		"nombre": "empresa2",
+		"cuentas": [{
+			"nombre": "IngresoNetoEnOperacionesContinuas",
+			"valor": 2000,
+			"fechaInicio": "1992-01-01",
+			"fechaFin": "1992-12-31"
+		},
+		{
+			"nombre": "IngresoNetoEnOperacionesDiscontinuas",
+			"valor": 1000,
+			"fechaInicio": "1992-01-01",
+			"fechaFin": "1992-12-31"
+		}]
+	}
+]

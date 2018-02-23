@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
 import dominio.Empresa;
@@ -118,15 +120,40 @@ get("/indicadores/buscar", (req, res)-> {
 	
 	post("/indicadores/ingresar", (req,res) -> {
 		
-	 String indicador = req.queryParams("indicador");
-	 String formula = req.queryParams("formula");
-		 
-		 indicadorServices.createIndicador(indicador, formula);
-		 
-		 res.status(201);
-		 res.redirect("/indicadores/ingresar");
-		 
-		 return indicador;
+VelocityContext context = new VelocityContext();
+		
+		String indicador = req.queryParams("indicador");
+		String formula = req.queryParams("formula");
+		
+		List<Indicador> indicadores= indicadorServices.getAllIndicadores();
+		
+		for (int i = 0; i < indicadores.size(); i++) {
+			
+			if(indicadores.get(i).getNombre().equals(indicador.toUpperCase())) {
+				context.put("existe", true);
+				context.put("metodologia", StringUtils.capitalize(indicador.toLowerCase()));
+			
+			String result = new RenderUtil().getTempRes("templates/ingresarMetodologiaOk.vtl", context);
+
+			model.put("template", result);
+			
+
+			return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
+			}
+		}
+	
+		
+		indicadorServices.createIndicador(indicador, formula);
+		context.put("creado", true);
+		context.put("metodologia", StringUtils.capitalize(indicador.toLowerCase()));
+		res.status(201);
+					
+		
+		String result = new RenderUtil().getTempRes("templates/ingresarMetodologiaOk.vtl", context);
+
+		model.put("template", result);
+
+		return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
 		
 	});
 		

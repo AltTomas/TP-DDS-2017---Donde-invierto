@@ -5,6 +5,8 @@ import static spark.Spark.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 import dominio.Cuenta;
 import dominio.Empresa;
@@ -57,7 +59,8 @@ public class CuentaController{
 
 
 	   post("/cuenta/ingresar", (req,res) -> {
-						   		   
+		
+		   VelocityContext context = new VelocityContext();	
 		 String empresa = req.queryParams("empresa");
 		 String nombre = req.queryParams("nombre");
 		 int valor = new Integer(req.queryParams("valor"));
@@ -67,12 +70,39 @@ public class CuentaController{
 
 		 Empresa emp = new EmpresaServices().getEmpresa(empresa).get(0);
 			 
+		 
+			 for (int i = 0; i < emp.getCuentas().size(); i++) {
+				
+				 if(emp.getCuentas().get(i).getNombre().equals(nombre.toUpperCase()) & emp.getCuentas().get(i).getPeriodo().equals(periodo)) {
+					  context.put("empresa", StringUtils.capitalize(empresa.toLowerCase()));
+					   context.put("cuenta", StringUtils.capitalize(nombre.toLowerCase()));
+					   context.put("periodo", periodo);
+					   context.put("existe", true);
+					   
+			       String result = new RenderUtil().getTempRes("templates/ingresarCuentaOk.vtl", context);
+			       model.put("template", result);
+							
+					   return new VelocityTemplateEngine().render(new ModelAndView(model, layout));	
+				 }
+				 
+			}
 		 cuentaServices.addCuenta(emp, cuenta);
+		 
+		 context.put("empresa", StringUtils.capitalize(empresa.toLowerCase()));
+		   context.put("cuenta", StringUtils.capitalize(nombre.toLowerCase()));
+		   context.put("periodo", periodo);
+		   context.put("creado", true);
 			
 		 res.status(201);
-		 res.redirect("/cuenta/ingresar");
-				 
-		 return cuenta;
+				   
+		   context.put("empresaList", cuentaServices.getAllEmpresas());
+
+		   String result = new RenderUtil().getTempRes("templates/ingresarCuentaOk.vtl", context);
+		   model.put("template", result);
+				
+		   return new VelocityTemplateEngine().render(new ModelAndView(model, layout));	
+		
+		 
 		
   	  });
 

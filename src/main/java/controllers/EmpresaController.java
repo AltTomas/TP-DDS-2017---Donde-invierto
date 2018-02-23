@@ -5,6 +5,8 @@ import static spark.Spark.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
 import dominio.Empresa;
@@ -96,13 +98,37 @@ public class EmpresaController {
 		post("/empresas/ingresar", (req, res) -> {
 
 			String empresa = req.queryParams("nombre");
+			VelocityContext context = new VelocityContext();
+			
+			List<Empresa> empresas = empresaService.getAllEmpresas();
+			
+			for (int i = 0; i < empresas.size(); i++) {
+				
+				if(empresas.get(i).getNombre().equals(empresa.toUpperCase())) {
+					context.put("existe", true);
+					context.put("empresa", StringUtils.capitalize(empresa.toLowerCase()));
+				
+				String result = new RenderUtil().getTempRes("templates/ingresarEmpresaOk.vtl", context);
 
+				model.put("template", result);
+				
+
+				return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
+				}
+			}
+		
+			
 			empresaService.createEmpresa(empresa);
-
+			context.put("creado", true);
+			context.put("empresa", StringUtils.capitalize(empresa.toLowerCase()));
 			res.status(201);
-			res.redirect("/empresas/ingresar");
+						
+			
+			String result = new RenderUtil().getTempRes("templates/ingresarEmpresaOk.vtl", context);
 
-			return empresa;
+			model.put("template", result);
+
+			return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
 
 		});
 

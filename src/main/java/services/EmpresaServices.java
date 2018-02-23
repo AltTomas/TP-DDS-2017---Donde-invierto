@@ -90,9 +90,9 @@ public class EmpresaServices {
   		   return null;
   	  
   	    // Empresa encontrada. Ponerla en la cache de redis.
-  	    empresaEncontrada = empresas.get(0);
-  	    String valorAGuardar = gson.toJson(empresaEncontrada);
-  	    jedis.set(empresaEncontrada.getNombre(), valorAGuardar);
+  	   // empresaEncontrada = empresas.get(0);
+  	   // String valorAGuardar = gson.toJson(empresaEncontrada);
+  	   // jedis.set(empresaEncontrada.getNombre(), valorAGuardar);
   	    
 	  return empresas;
 	}

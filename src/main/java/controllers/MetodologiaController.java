@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
 import dominio.Empresa;
@@ -119,15 +121,40 @@ get("/metodologias/buscar", (req, res)-> {
 	
 	post("/metodologias/ingresar", (req,res) -> {
 		
-	 String metodologia = req.queryParams("metodologia");
-	 String formula = req.queryParams("formula");
-	 
-	 metodologiaServices.createMetodologia(metodologia, formula);
-		 
-		 res.status(201);
-		 res.redirect("/metodologias/ingresar");
-		 
-		 return metodologia;
+		VelocityContext context = new VelocityContext();
+		
+		String metodologia = req.queryParams("metodologia");
+		String formula = req.queryParams("formula");
+		
+		List<Metodologia> metodologias = metodologiaServices.getAllMetodologia();
+		
+		for (int i = 0; i < metodologias.size(); i++) {
+			
+			if(metodologias.get(i).getNombre().equals(metodologia.toUpperCase())) {
+				context.put("existe", true);
+				context.put("metodologia", StringUtils.capitalize(metodologia.toLowerCase()));
+			
+			String result = new RenderUtil().getTempRes("templates/ingresarMetodologiaOk.vtl", context);
+
+			model.put("template", result);
+			
+
+			return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
+			}
+		}
+	
+		
+		metodologiaServices.createMetodologia(metodologia, formula);
+		context.put("creado", true);
+		context.put("metodologia", StringUtils.capitalize(metodologia.toLowerCase()));
+		res.status(201);
+					
+		
+		String result = new RenderUtil().getTempRes("templates/ingresarMetodologiaOk.vtl", context);
+
+		model.put("template", result);
+
+		return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
 		
 	});
 		
@@ -201,7 +228,8 @@ get("/metodologias/buscar", (req, res)-> {
 			   context.put("metodologia", emp.get(0).getNombre());
 			   context.put("valoresList", listaValores);
 			  }
-		     
+		  
+		  		     
 		  
 		  
 		 String result = new RenderUtil().getTempRes("templates/metodologiaValor.vtl", context);
