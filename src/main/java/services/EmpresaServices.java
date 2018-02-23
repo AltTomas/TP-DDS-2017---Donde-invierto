@@ -1,6 +1,7 @@
 package services;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,18 +10,18 @@ import javax.persistence.Persistence;
 import dominio.Cuenta;
 import dominio.Empresa;
 
-import org.redisson.Redisson;
-import org.redisson.api.RedissonClient;
-import org.redisson.config.Config;
+import com.google.gson.Gson;
+import redis.clients.jedis.Jedis;
 
 public class EmpresaServices {
 	
-   private EntityManager em;
+   private EntityManager em;   
+   private Gson gson;
    
-   public EmpresaServices() {	   
-	  
+   public EmpresaServices() {	   	  
 	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");			 	 
-	  this.em = emf.createEntityManager();		
+	  this.em = emf.createEntityManager();	
+	  this.gson = new Gson();
    }
 	
    public Empresa createEmpresa(String nombre)
@@ -63,21 +64,36 @@ public class EmpresaServices {
 	
 
 	public List<Empresa> getEmpresa(String nombre) 
-
-	{
-		
-		/*
-		Config config = new Config();
-		config.useSingleServer().setAddress("127.0.0.1:6379");		 		
-	    RedissonClient client = Redisson.create(config);
-		*/
-		
+	{		
+		// Lista de empresas y empresa individual.
+		List<Empresa> empresas;
+		Empresa empresaEncontrada; 
+				
+		//
+		Jedis jedis = new Jedis("localhost");		
+		String value = jedis.get(nombre);	    
+	    
+		if(value != null)
+		{
+			//
+			empresas = new ArrayList<Empresa>();
+			empresaEncontrada = this.gson.fromJson(value, Empresa.class);
+			empresas.add(empresaEncontrada);
+			
+			return empresas;
+		}
+				
   	    String obtenerEmpresa = "FROM Empresa WHERE nombre = " +  "'" + nombre + "'";
-  	    List<Empresa> empresas= em.createQuery(obtenerEmpresa, Empresa.class).getResultList();	
+  	    empresas = em.createQuery(obtenerEmpresa, Empresa.class).getResultList();	
 		
   	    if(empresas.isEmpty())
   		   return null;
-  	    	   	 
+  	  
+  	    // Empresa encontrada. Ponerla en la cache de redis.
+  	    empresaEncontrada = empresas.get(0);
+  	    String valorAGuardar = gson.toJson(empresaEncontrada);
+  	    jedis.set(empresaEncontrada.getNombre(), valorAGuardar);
+  	    
 	  return empresas;
 	}
 	

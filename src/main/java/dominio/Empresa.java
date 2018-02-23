@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
-
+ 
 @Entity
 @Table(name="empresa")
 public class Empresa {
