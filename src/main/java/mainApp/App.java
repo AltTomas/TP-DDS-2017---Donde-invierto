@@ -7,6 +7,7 @@ import controllers.CuentaController;
 import controllers.EmpresaController;
 import controllers.IndicadorController;
 import controllers.MetodologiaController;
+import controllers.UploadController;
 import controllers.indexController;
 
 //Servicios.
@@ -29,5 +30,6 @@ public class App
 	   new CuentaController(emserv);
 	   new IndicadorController(inserv);
 	   new MetodologiaController(mtserv);
+	   new UploadController();
    }
 }

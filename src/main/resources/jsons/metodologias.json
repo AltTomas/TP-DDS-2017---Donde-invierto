@@ -1,0 +1,18 @@
+[
+  {
+    "nombre": "Metodologia1",
+    "formula": "Indicador1_2015>Indicador1_2016&Indicador1_2016>Indicador1_2017"
+  },
+  {
+    "nombre": "Metodologia2",
+    "formula": "Indicador1_2015>Indicador2_2015&Indicador2_2015<Indicador1_2014"
+  },
+  {
+    "nombre": "Metodologia3",
+    "formula": "Indicador4_2015=Indicador4_2016 & Indicador3_2017>Indicador1_2015"
+  },
+  {
+    "nombre": "MetodologiaFAIL",
+    "formula": "Indicador4_2013=Indicador3_2011"
+  }
+]

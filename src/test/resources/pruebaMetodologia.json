@@ -1,0 +1,10 @@
+[
+  {
+    "nombre": "MetodologiaTest1",
+    "formula": "a>b"
+  },
+  {
+    "nombre": "MetodologiaTest2",
+    "formula": "(Valor>Valor1)&2<1"
+  }
+]

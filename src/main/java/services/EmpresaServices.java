@@ -22,6 +22,7 @@ public class EmpresaServices {
 	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");			 	 
 	  this.em = emf.createEntityManager();	
 	  this.gson = new Gson();
+	  
    }
 	
    public Empresa createEmpresa(String nombre)

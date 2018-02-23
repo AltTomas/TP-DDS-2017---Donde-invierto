@@ -1,0 +1,351 @@
+[
+    {
+		"nombre": "Google",
+		"cuentas": [{
+			"nombre": "INEOC",
+			"valor": 15000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 14500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 15000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 16000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 15000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 14500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 15000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 16000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 5000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 6000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 7000,
+			"periodo": "2017"
+		}]
+	},
+	{
+		"nombre": "Microsoft",
+		"cuentas": [{
+			"nombre": "INEOC",
+			"valor": 11000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 13500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 12000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 17000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 10000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 12500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 14000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 9000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 9000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 8000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 10000,
+			"periodo": "2017"
+		}]
+	},
+	 {
+		"nombre": "AMD",
+		"cuentas": [{
+			"nombre": "INEOC",
+			"valor": 19000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 18500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 19000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 19000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 15600,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 14500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 16000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 17000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 10000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 12000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 12500,
+			"periodo": "2017"
+		}]
+	},
+	{
+		"nombre": "Intel",
+		"cuentas": [{
+			"nombre": "INEOC",
+			"valor": 15000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 16500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 13000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 11100,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 12000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 14500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 11000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 8000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 8000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 9000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 4500,
+			"periodo": "2017"
+		}]
+	},
+	 {
+		"nombre": "Oracle",
+		"cuentas": [{
+			"nombre": "INEOC",
+			"valor": 15000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 14500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 15000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 16000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 15000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 14500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 15000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 16000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 5000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 6000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 7000,
+			"periodo": "2017"
+		}]
+	},
+	{
+		"nombre": "SAP",
+		"cuentas": [{
+			"nombre": "INEOC",
+			"valor": 19000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 20500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 18000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOC",
+			"valor": 20000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 19000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 18500,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 19000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "INEOD",
+			"valor": 19500,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 15000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 16000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 17000,
+			"periodo": "2017"
+		}]
+	}
+	
+]

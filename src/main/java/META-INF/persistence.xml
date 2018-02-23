@@ -27,7 +27,8 @@
             <property name="hibernate.format_sql" value="false" /> 
             <property name="use_sql_comments" value="true" /> 
             <property name="hibernate.hbm2ddl.auto" value="update" />             
-			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />            
+			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" /> 
+			 <property name="connection.pool_size" value=45>           
         </properties>
           
     </persistence-unit> 

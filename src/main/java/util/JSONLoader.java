@@ -2,6 +2,8 @@ package util;
 
 import dominio.Empresa;
 import dominio.Indicador;
+import dominio.Metodologia;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import com.google.gson.Gson;
@@ -49,4 +51,17 @@ public class JSONLoader
     return indicadores;
   }
 
+  
+  public ArrayList<Metodologia> MetodologiasFromJSONFile()
+  {	
+    String contenido = this.Reader.ReadFile(this.FilePath);
+
+    Gson gson = new Gson();
+	Metodologia[] arrayMetodologia = gson.fromJson(contenido, Metodologia[].class);	
+	ArrayList<Metodologia> metodologias = new ArrayList<Metodologia>(Arrays.asList(arrayMetodologia));
+	
+    return metodologias;
+  }
+
+  
 }

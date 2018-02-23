@@ -396,7 +396,7 @@ public String searchValue(String id, Empresa empresa, String periodo) {
 	
 	for (int i = 0; i < li.size(); i++) {
 		
-		if(li.get(i).getNombre().equals(StringUtils.substringBefore(id, "_"))) {
+		if(li.get(i).getNombre().equals(StringUtils.substringBefore(id, "_").toUpperCase())) {
 			
 			return Double.toString(li.get(i).getValor(empresa, StringUtils.substringAfter(id, "_")));
 		}

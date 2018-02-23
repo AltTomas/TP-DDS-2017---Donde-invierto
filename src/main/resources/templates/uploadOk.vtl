@@ -1,0 +1,37 @@
+#if($vacio)
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+  <div class="alert alert-danger" role="alert">
+  El archivo se encontraba vacio!
+</div>
+</div>
+</div>
+
+#elseif($subido)
+	
+	<div class="mx-auto" style="width: 400px;" id="createdOk">
+<div class="d-inline-flex p-2">
+  <div class="alert alert-success" role="alert">
+  El archivo se subió correctamente!
+</div>
+</div>
+</div>
+
+#elseif($errorfile)
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+  <div class="alert alert-danger" role="alert">
+  Hubo un error al subir el archivo, intentelo nuevamente.
+</div>
+</div>
+</div>
+
+#elseif($nofile)
+<div class="mx-auto" style="width: 400px;" id="notFound">
+<div class="d-inline-flex p-2">
+  <div class="alert alert-danger" role="alert">
+  No ingresó ningún path.
+</div>
+</div>
+</div>
+#end

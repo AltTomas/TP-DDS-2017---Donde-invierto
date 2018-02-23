@@ -1,0 +1,31 @@
+<form method="post" action="/upload" style="margin:50px;">
+ 
+  <div class="form-group">
+    <label for="exampleInputFile">Ingrese el path del archivo a subir.</label>
+    <input type="text" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="file">
+    
+  </div>
+  <fieldset class="form-group">
+    <legend>¿Qué va a subir?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="radio" id="optionsRadios1" value="metodologia" checked>
+       	Metodologias
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="radio" id="optionsRadios2" value="indicador">
+        Indicadores
+      </label>
+    </div>
+    <div class="form-check disabled">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="radio" id="optionsRadios3" value="empresa">
+        Empresas/Cuentas
+      </label>
+    </div>
+  </fieldset>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
