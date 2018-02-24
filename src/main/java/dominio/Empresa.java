@@ -15,7 +15,7 @@ import javax.persistence.CascadeType;
 @Table(name="empresa")
 public class Empresa {
 	
-    @Id
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	

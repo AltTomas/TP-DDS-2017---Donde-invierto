@@ -21,13 +21,10 @@ public class DDSParser {
 	private static final String RESTA = "-";
 	private static final String DIV = "/";
 	private static final String MULT = "*";
-
-	// Variables de serialización y guardado (Gson/Jedis).
-	private Gson gson;
+	
 	private Jedis jedis;
 	
 	public DDSParser() {
-		this.gson = new Gson();
 		this.jedis = new Jedis("localhost");		
 	}
 	

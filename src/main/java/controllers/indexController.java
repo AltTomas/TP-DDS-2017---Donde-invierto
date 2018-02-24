@@ -10,7 +10,7 @@ import org.apache.velocity.VelocityContext;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import util.RenderUtil;
-
+ 
 
 public class indexController {
 

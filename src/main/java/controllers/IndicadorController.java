@@ -20,8 +20,6 @@ import spark.template.velocity.VelocityTemplateEngine;
 import util.RenderUtil;
 import util.Values;
 
-
-
 public class IndicadorController {
 	
 	
