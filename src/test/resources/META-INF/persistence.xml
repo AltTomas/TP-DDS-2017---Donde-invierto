@@ -5,7 +5,7 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
    
-    <persistence-unit name="ddstp" transaction-type="RESOURCE_LOCAL">
+        <persistence-unit name="ddstp" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     	
 		<class>dominio.Periodo</class>
@@ -16,8 +16,7 @@
 		<class>dominio.Condicion</class>    		          
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
             	    	 
-        <properties> 
-        
+        <properties>         
           	<property name="hibernate.archive.autodetection" value="class"/>                
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ddstp" /> 
@@ -26,10 +25,8 @@
             <property name="hibernate.show_sql" value="true" /> 
             <property name="hibernate.format_sql" value="true" /> 
             <property name="use_sql_comments" value="true" /> 
-            <property name="hibernate.hbm2ddl.auto" value="update" />
-            
-			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />
-            
+            <property name="hibernate.hbm2ddl.auto" value="update" />            
+			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />            
         </properties>
           
     </persistence-unit> 
