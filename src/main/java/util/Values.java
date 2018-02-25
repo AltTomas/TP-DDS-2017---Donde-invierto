@@ -1,10 +1,13 @@
 package util;
- 
+
+import dominio.Empresa;
+
 public class Values {
 	
 	String nombreEmpresa;
 	double valor;
 	Boolean valorM;
+	Empresa empresa;
 	
 	
 	public Values(String nombreEmpresa, double valor) {		
@@ -15,6 +18,19 @@ public class Values {
 	public Values(String nombreEmpresa, Boolean valorm) {		
 		this.nombreEmpresa = nombreEmpresa;
 		this.valorM = valorm;
+	}
+	
+	public Values(Empresa empresa, double valor) {		
+		this.empresa = empresa;
+		this.valor = valor;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	public Boolean getValorM() {

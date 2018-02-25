@@ -392,6 +392,10 @@ public class DDSParser {
 
 	public String searchValue(String id, Empresa empresa, String periodo) {
 
+		if(id.equals("ANTIG")) {
+			return Integer.toString(empresa.getAntiguedad());
+		}
+		
 		List<Cuenta> lc = empresa.getCuentas();
 
 		for (int i = 0; i < lc.size(); i++) {
