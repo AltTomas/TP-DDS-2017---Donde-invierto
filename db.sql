@@ -25,10 +25,9 @@
     
     create table Metodologia (
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
-		formula VARCHAR(255),
+		formula LONGTEXT,
         primary key (id)
     );
-    
-	
+    	
 	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);	
 	

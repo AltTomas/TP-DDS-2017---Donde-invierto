@@ -25,9 +25,17 @@ public class UploadController {
 
 	String layout = "templates/layoutLogged.vtl";
 	Map<String, String> model = new HashMap<String, String>();
-
+	public EmpresaServices empresaService;
+	public IndicadorServices indicadorService;
+	public MetodologiaServices metodologiaService;
+	
 	public UploadController() {
-
+		
+		// Inicializar servicios.
+		this.empresaService = new EmpresaServices();
+		this.indicadorService = new IndicadorServices();
+		this.metodologiaService = new MetodologiaServices(); 
+		
 		before("/upload/*", (req, res) -> {
 
 			if (req.cookie("lgwapp.adb") == null) {
@@ -127,7 +135,7 @@ public class UploadController {
 	public int uploadEmpresa(String filePath) {
 
 		ArrayList<Empresa> empresas = null;
-		List<Empresa> empresasC = new EmpresaServices().getAllEmpresas();
+		List<Empresa> empresasC = this.empresaService.getAllEmpresas();
 		Boolean existe = false;
 		Empresa newEmpresa = null;
 
@@ -162,7 +170,7 @@ public class UploadController {
 				newEmpresa = empresa;
 				existe = false;
 			} else {
-				newEmpresa = new EmpresaServices().createEmpresa(empresa.getNombre(), empresa.getAntiguedad());
+				newEmpresa = this.empresaService.createEmpresa(empresa.getNombre(), empresa.getAntiguedad());
 			}
 
 			uploadCuentas(newEmpresa, empresa.getCuentas());
@@ -182,14 +190,11 @@ public class UploadController {
 		if (cuentasC.isEmpty()) {
 
 			for (int i = 0; i < cuentas.size(); i++) {
-
-				new EmpresaServices().addCuenta(empresaC, cuentas.get(i));
-
+			  this.empresaService.addCuenta(empresaC, cuentas.get(i));
 			}
 
 			return true;
 		}
-
 		else {
 
 			for (int i = 0; i < cuentas.size(); i++) {
@@ -207,7 +212,7 @@ public class UploadController {
 					}
 				}
 				if (!existe) {
-					new EmpresaServices().addCuenta(empresaC, cuenta);
+					this.empresaService.addCuenta(empresaC, cuenta);
 					existe = false;
 				}
 
@@ -251,12 +256,9 @@ public class UploadController {
 
 			}
 
-			if (!existe) {
-
-				new IndicadorServices().createIndicador(indicador.getNombre(), indicador.getFormula());
-
+			if (!existe) {				
+				this.indicadorService.createIndicador(indicador.getNombre(), indicador.getFormula());
 			}
-
 		}
 
 		return 2;
@@ -268,7 +270,7 @@ public class UploadController {
 		ArrayList<Metodologia> metodologias = null;
 		FileToStringReader reader = new FileToStringReader();
 		JSONLoader loader = new JSONLoader(filePath, reader);
-		List<Metodologia> metodologiasC = new MetodologiaServices().getAllMetodologia();
+		List<Metodologia> metodologiasC = this.metodologiaService.getAllMetodologia();
 		Boolean existe = false;
 
 		try {
@@ -296,9 +298,7 @@ public class UploadController {
 			}
 
 			if (!existe) {
-
-				new MetodologiaServices().createMetodologia(metodologia.getNombre(), metodologia.getFormula());
-
+				this.metodologiaService.createMetodologia(metodologia.getNombre(), metodologia.getFormula());
 			}
 
 		}
