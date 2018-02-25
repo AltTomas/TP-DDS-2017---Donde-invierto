@@ -1,7 +1,8 @@
 package util;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 
 import dominio.Empresa;
 import util.DDSParserM;
@@ -16,14 +17,13 @@ public class Evaluador {
 		
 		for (int i = 0; i < condiciones.length; i++) {
 			
-			if(!(condiciones[i]==null | condiciones[i]=="")){
+			if(!(condiciones[i]==null | condiciones[i].equals("") | condiciones[i].equals("&"))){
 				
 				List<Posiciones> posiciones = new ArrayList<Posiciones>();
 				
 				for (int j = 0; j < empresas.size(); j++) {
 					
 					Boolean res = new DDSParserM().evaluar(condiciones[i], empresas.get(j), "2017");
-					
 					
 					
 					posiciones.add(new Posiciones(empresas.get(j), condiciones[i], Boolean.toString(res)));	
@@ -52,19 +52,55 @@ public class Evaluador {
 	
 	public List<Values> finalSort(ArrayList<ArrayList<Values>> listaValores){
 		
-		ArrayList<Values> finalVal = new ArrayList<Values>();
+		ArrayList<Values> finalVal = listaValores.get(0);
 		
-		for (int i = 0; i < listaValores.size(); i++) {
+		for (int i = 1; i < listaValores.size(); i++) {
 			
 			ArrayList<Values> valuesLis = listaValores.get(i);
 			
-			for (int j = 0; j < valuesLis.size(); j++) {
-				
-				
-				
+				for (int j = 0; j < valuesLis.size(); j++) {
+					
+					String empresa = valuesLis.get(j).getEmpresa().getNombre();
+					
+						for (int k = 0; k < finalVal.size(); k++) {
+							
+							if(finalVal.get(k).getEmpresa().getNombre().equals(empresa)) {
+								
+								double posicion = finalVal.get(k).getValor() + valuesLis.get(j).getValor();
+								
+								finalVal.get(k).setValor(posicion);								
+							}
+							
+					}
 			}
 			
 		}
+		
+		for (int i = 0; i < finalVal.size(); i++) {
+			
+			double posicion = Math.floor(finalVal.get(i).getValor() / 4);
+			
+			finalVal.get(i).setValor(posicion);
+			
+		}
+		
+		Values[] arr = new Values[finalVal.size()];
+		
+		arr = finalVal.toArray(arr);
+		
+		int n = finalVal.size();
+		
+		 for (int i = 0; i < n-1; i++) {
+	            for (int j = 0; j < n-i-1; j++) {
+	            	
+	                if (arr[j].getValor() > arr[j+1].getValor())
+	                {
+	                     Values temp = arr[j];
+	                    arr[j] = arr[j+1];
+	                    arr[j+1] = temp;
+	                }
+	           }
+		 }
 		
 		
 		
@@ -94,28 +130,69 @@ public class Evaluador {
 		                    arr[j+1] = temp;
 		                }
 		        
-		        		if(arr[j].getCondicion().startsWith("MAY")){
+		        		if(arr[j].getCondicion().startsWith("MAY")){		        			
 		        			
-		        			if(Integer.parseInt(arr[j].getValor()) < Integer.parseInt(arr[j+1].getValor())) {
+		        			if(StringUtils.substringAfter(arr[j].getCondicion(), "_").equals("ANTIG")){
+		        			
+		        				if(arr[j].getEmpresa().getAntiguedad() < arr[j+1].getEmpresa().getAntiguedad()) {
 		        			Posiciones temp = arr[j];
 		                    arr[j] = arr[j+1];
 		                    arr[j+1] = temp;
 		                    
+		        				}
+		        			}
+		        			else {
+		        				
+		        				String value1 = new DDSParser().searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),"2017");
+		        				String value2 = new DDSParser().searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),"2017");
+		        				
+		        				int value1i = Integer.parseInt(value1);
+		        				int value2i = Integer.parseInt(value2);
+		        				
+		        				if(value1i < value2i) {
+				        			Posiciones temp = arr[j];
+				                    arr[j] = arr[j+1];
+				                    arr[j+1] = temp;
+				                    
+				        				}
+		        				
 		        			}
 		        			
+		        	
 		        		}
 		        		
 		        		if(arr[j].getCondicion().startsWith("MEN")){
 		        			
-		        			if(Integer.parseInt(arr[j].getValor()) > Integer.parseInt(arr[j+1].getValor())) {
-		        			Posiciones temp = arr[j];
-		                    arr[j] = arr[j+1];
-		                    arr[j+1] = temp;
-		                    
+		        			if(StringUtils.substringAfter(arr[j].getCondicion(), "_").equals("ANTIG")){
+			        			
+			        			if(arr[j].getEmpresa().getAntiguedad() > arr[j+1].getEmpresa().getAntiguedad()) {
+			        			Posiciones temp = arr[j];
+			                    arr[j] = arr[j+1];
+			                    arr[j+1] = temp;
+			                    
+			        				}
 		        			}
+			        			
+			        			else {
+			        				
+			        				String value1 = new DDSParser().searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),"2017");
+			        				String value2 = new DDSParser().searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),"2017");
+			        				
+			        				double value1i = Double.parseDouble(value1);
+			        				double value2i = Double.parseDouble(value2);
+			        				
+			        				if(value1i > value2i) {
+					        			Posiciones temp = arr[j];
+					                    arr[j] = arr[j+1];
+					                    arr[j+1] = temp;
+					                    
+					        				}
+			        				
+			        			}
 		        			
 		        		}
-		            }
+		            
+		           }
 		        }
 		        
 		        ArrayList<Values> returnLis = new ArrayList<Values>();

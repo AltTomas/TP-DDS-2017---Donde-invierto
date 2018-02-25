@@ -1,303 +1,532 @@
 [
     {
-		"nombre": "Google",
-		"antiguedad": 2,
+		"nombre": "GOOGLE",
+		"antiguedad": 15,
 		"cuentas": [
 		{
-			"nombre": "INEOC",
-			"valor": 14500,
-			"periodo": "2015"
+			"nombre": "BENEAI",
+			"valor": 2000,
+			"periodo": "2007"
 		},
 		{
-			"nombre": "INEOC",
-			"valor": 15000,
-			"periodo": "2016"
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2007"
 		},
 		{
-			"nombre": "INEOC",
-			"valor": 16000,
-			"periodo": "2017"
+			"nombre": "BENEAI",
+			"valor": 3000,
+			"periodo": "2008"
 		},
 		{
-			"nombre": "INEOD",
-			"valor": 14500,
-			"periodo": "2015"
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2008"
 		},
 		{
-			"nombre": "INEOD",
-			"valor": 15000,
-			"periodo": "2016"
+			"nombre": "BENEAI",
+			"valor": 4000,
+			"periodo": "2009"
 		},
 		{
-			"nombre": "INEOD",
-			"valor": 16000,
-			"periodo": "2017"
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2009"
 		},
 		{
-			"nombre": "EBITDA",
+			"nombre": "BENEAI",
 			"valor": 5000,
-			"periodo": "2015"
+			"periodo": "2010"
 		},
 		{
-			"nombre": "EBITDA",
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "BENEAI",
 			"valor": 6000,
-			"periodo": "2016"
+			"periodo": "2011"
 		},
 		{
-			"nombre": "EBITDA",
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "BENEAI",
 			"valor": 7000,
-			"periodo": "2017"
-		}]
-	},
-	{
-		"nombre": "Microsoft",
-		"antiguedad": 5,
-		"cuentas": [
-		{
-			"nombre": "INEOC",
-			"valor": 13500,
-			"periodo": "2015"
+			"periodo": "2012"
 		},
 		{
-			"nombre": "INEOC",
-			"valor": 12000,
-			"periodo": "2016"
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2012"
 		},
 		{
-			"nombre": "INEOC",
-			"valor": 17000,
-			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 12500,
-			"periodo": "2015"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 14000,
-			"periodo": "2016"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 9000,
-			"periodo": "2017"
-		},
-		{
-			"nombre": "EBITDA",
-			"valor": 9000,
-			"periodo": "2015"
-		},
-		{
-			"nombre": "EBITDA",
+			"nombre": "BENEAI",
 			"valor": 8000,
-			"periodo": "2016"
+			"periodo": "2013"
 		},
 		{
-			"nombre": "EBITDA",
-			"valor": 10000,
-			"periodo": "2017"
-		}]
-	},
-	 {
-		"nombre": "AMD",
-		"antiguedad": 8,
-		"cuentas": [
-		{
-			"nombre": "INEOC",
-			"valor": 18500,
-			"periodo": "2015"
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2013"
 		},
 		{
-			"nombre": "INEOC",
-			"valor": 19000,
-			"periodo": "2016"
+			"nombre": "BENEAI",
+			"valor": 9000,
+			"periodo": "2014"
 		},
 		{
-			"nombre": "INEOC",
-			"valor": 19000,
-			"periodo": "2017"
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2014"
 		},
 		{
-			"nombre": "INEOD",
-			"valor": 14500,
-			"periodo": "2015"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 16000,
-			"periodo": "2016"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 17000,
-			"periodo": "2017"
-		},
-		{
-			"nombre": "EBITDA",
+			"nombre": "BENEAI",
 			"valor": 10000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "EBITDA",
-			"valor": 12000,
-			"periodo": "2016"
-		},
-		{
-			"nombre": "EBITDA",
-			"valor": 12500,
-			"periodo": "2017"
-		}]
-	},
-	{
-		"nombre": "Intel",
-		"antiguedad": 24,
-		"cuentas": [
-		{
-			"nombre": "INEOC",
-			"valor": 16500,
+			"nombre": "FONPRO",
+			"valor": 1000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "INEOC",
-			"valor": 13000,
-			"periodo": "2016"
-		},
-		{
-			"nombre": "INEOC",
-			"valor": 11100,
-			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 14500,
-			"periodo": "2015"
-		},
-		{
-			"nombre": "INEOD",
+			"nombre": "BENEAI",
 			"valor": 11000,
 			"periodo": "2016"
 		},
 		{
-			"nombre": "INEOD",
-			"valor": 8000,
-			"periodo": "2017"
-		},
-		{
-			"nombre": "EBITDA",
-			"valor": 8000,
-			"periodo": "2015"
-		},
-		{
-			"nombre": "EBITDA",
-			"valor": 9000,
+			"nombre": "FONPRO",
+			"valor": 1000,
 			"periodo": "2016"
 		},
 		{
-			"nombre": "EBITDA",
-			"valor": 4500,
-			"periodo": "2017"
-		}]
-	},
-	 {
-		"nombre": "Oracle",
-		"antiguedad": 34,
-		"cuentas": [
-		{
-			"nombre": "INEOC",
-			"valor": 14500,
-			"periodo": "2015"
-		},
-		{
-			"nombre": "INEOC",
-			"valor": 15000,
-			"periodo": "2016"
-		},
-		{
-			"nombre": "INEOC",
-			"valor": 16000,
+			"nombre": "BENEAI",
+			"valor": 12000,
 			"periodo": "2017"
 		},
 		{
-			"nombre": "INEOD",
-			"valor": 14500,
-			"periodo": "2015"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 15000,
-			"periodo": "2016"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 16000,
+			"nombre": "FONPRO",
+			"valor": 1000,
 			"periodo": "2017"
 		},
 		{
-			"nombre": "EBITDA",
+			"nombre": "PROPDEU",
+			"valor": 20,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 2000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 3000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 4000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "MARGENC",
 			"valor": 5000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 6000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 7000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 8000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 9000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 10000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "EBITDA",
-			"valor": 6000,
+			"nombre": "MARGENC",
+			"valor": 11000,
 			"periodo": "2016"
 		},
 		{
-			"nombre": "EBITDA",
-			"valor": 7000,
+			"nombre": "MARGENC",
+			"valor": 12000,
 			"periodo": "2017"
-		}]
+		}
+		
+		]
 	},
-	{
-		"nombre": "SAP",
-        "antiguedad": 18,
+	{	"nombre": "MICROSOFT",
+		"antiguedad": 11,
 		"cuentas": [
 		{
-			"nombre": "INEOC",
-			"valor": 20500,
+			"nombre": "BENEAI",
+			"valor": 2000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 3000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 4000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 5000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 6000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 7000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 8000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 9000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 10000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "INEOC",
-			"valor": 18000,
-			"periodo": "2016"
-		},
-		{
-			"nombre": "INEOC",
-			"valor": 20000,
-			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 18500,
+			"nombre": "FONPRO",
+			"valor": 1000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "INEOD",
-			"valor": 19000,
+			"nombre": "BENEAI",
+			"valor": 11000,
 			"periodo": "2016"
 		},
 		{
-			"nombre": "INEOD",
-			"valor": 19500,
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 12000,
 			"periodo": "2017"
 		},
 		{
-			"nombre": "EBITDA",
-			"valor": 15000,
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "PROPDEU",
+			"valor": 100,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 2000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 3000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 4000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 5000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 6000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 7000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 8000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 9000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 10000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "EBITDA",
-			"valor": 16000,
+			"nombre": "MARGENC",
+			"valor": 11000,
 			"periodo": "2016"
 		},
 		{
-			"nombre": "EBITDA",
-			"valor": 17000,
+			"nombre": "MARGENC",
+			"valor": 12000,
 			"periodo": "2017"
-		}]
+		}
+		
+		]
+	},
+	{	"nombre": "INTEL",
+		"antiguedad": 5,
+		"cuentas": [
+		{
+			"nombre": "BENEAI",
+			"valor": 2000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 3000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 1500,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 5000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 1000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 7000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 8000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 9000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 10000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 11000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "BENEAI",
+			"valor": 12000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "FONPRO",
+			"valor": 1000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "PROPDEU",
+			"valor": 200,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 2000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 3000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 4000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 5000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 1000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 7000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 8000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 9000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 10000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 11000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "MARGENC",
+			"valor": 12000,
+			"periodo": "2017"
+		}
+		
+		]
 	}
 	
 ]

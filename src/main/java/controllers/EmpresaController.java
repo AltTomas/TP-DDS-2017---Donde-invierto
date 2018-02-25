@@ -98,6 +98,7 @@ public class EmpresaController {
 		post("/empresas/ingresar", (req, res) -> {
 
 			String empresa = req.queryParams("nombre");
+			Integer antiguedad = Integer.parseInt(req.queryParams("antiguedad"));
 			VelocityContext context = new VelocityContext();
 			
 			List<Empresa> empresas = empresaService.getAllEmpresas();
@@ -118,7 +119,7 @@ public class EmpresaController {
 			}
 		
 			
-			empresaService.createEmpresa(empresa);
+			empresaService.createEmpresa(empresa, antiguedad);
 			context.put("creado", true);
 			context.put("empresa", StringUtils.capitalize(empresa.toLowerCase()));
 			res.status(201);

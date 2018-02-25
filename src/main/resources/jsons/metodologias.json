@@ -1,18 +1,10 @@
 [
   {
-    "nombre": "Metodologia1",
-    "formula": "Indicador1_2015>Indicador1_2016&Indicador1_2016>Indicador1_2017"
+    "nombre": "WARRENBUF",
+    "formula": "(ROE_2007<ROE_2008&ROE2008<ROE_2009&ROE_2009<ROE_2010&ROE2010<ROE_2011&ROE_2011<ROE_2012&ROE2012<ROE_2013&ROE_2013<ROE_2014&ROE2014<ROE_2015&ROE_2015<ROE_2016&ROE2016<ROE_2017)&(ANTIG>10)&(MAY_ANTIG)&(MEN_PROPDEU)&(MARGEN_2007<MARGEN_2008&MARGEN2008<MARGEN_2009&MARGEN_2009<MARGEN_2010&MARGEN2010<MARGEN_2011&MARGEN_2011<MARGEN_2012&MARGEN2012<MARGEN_2013&MARGEN_2013<MARGEN_2014&MARGEN2014<MARGEN_2015&MARGEN_2015<MARGEN_2016&MARGEN2016<MARGEN_2017)"
   },
   {
-    "nombre": "Metodologia2",
-    "formula": "Indicador1_2015>Indicador2_2015&Indicador2_2015<Indicador1_2014"
-  },
-  {
-    "nombre": "Metodologia3",
-    "formula": "Indicador4_2015=Indicador4_2016 & Indicador3_2017>Indicador1_2015"
-  },
-  {
-    "nombre": "MetodologiaFAIL",
-    "formula": "Indicador4_2013=Indicador3_2011"
+  	"nombre": "TESTMET",
+  	"formula": "(ROE_2017>ROE_2016&ROE_2016>ROE_2015)&(ANTIG>9)&(MAY_ANTIG)&(MEN_PROPDEU)&(MARGEN_2015>MARGEN_2014&MARGEN_2016>MARGEN_2015)"
   }
 ]

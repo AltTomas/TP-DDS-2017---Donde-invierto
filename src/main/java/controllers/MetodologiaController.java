@@ -17,6 +17,7 @@ import services.EmpresaServices;
 import services.MetodologiaServices;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
+import util.Evaluador;
 import util.RenderUtil;
 import util.Values;
 
@@ -178,54 +179,44 @@ get("/metodologias/buscar", (req, res)-> {
 		VelocityContext context = new VelocityContext();
 		 
 		 String metodologia = req.queryParams("metodologia");
-		 String empresa = req.queryParams("empresa");
-		 String periodo = req.queryParams("periodo");
+		 String empresas = req.queryParams("empresa");
 		 String all = req.queryParams("all");
-		 
-		 Empresa empre = new EmpresaServices().getEmpresa(empresa).get(0);
-		 
-		 List<Metodologia> emp = metodologiaServices.getMetodologia(metodologia);
-			  
-		  if(emp == null) {
-			   context.put("indicadorList", "error");
-		   }
-		   
-		   else if (all != null ) {
-			   
-			   if (all.equals("yes")){
-			   
-			   List<Empresa> empresas = new EmpresaServices().getAllEmpresas();
-			   
-			   List<Values> listaValores = new ArrayList<Values>();
-			   
-			   for (int i = 0; i < empresas.size(); i++) {
+		
+		 if (all != null) {
+				if (all.equals("yes")) {
 					
-				  		
-			   		Values valor = new Values(empresas.get(i).getNombre(), emp.get(0).getValor(empresas.get(i), periodo) );
-			   		listaValores.add(valor);
-			   		   					
-			   }
-			   
-			   if(listaValores.isEmpty()) {
-				   context.put("indicadorList", "nocuentaall");
-			   }
-			   else {
-			   context.put("valoresList", listaValores);
-			   context.put("metodologia", emp.get(0).getNombre());
-			   
-			   	}
-			  }
-		   }
-			   						  
-			  else {
-				  
-				  List<Values> listaValores = new ArrayList<Values>();
-				  Values valor = new Values(empre.getNombre(), emp.get(0).getValor(empre, periodo));
-				  listaValores.add(valor);
-			   context.put("metodologia", emp.get(0).getNombre());
-			   context.put("valoresList", listaValores);
-			  }
-		  
+					List<Empresa> empresasL = new EmpresaServices().getAllEmpresas();
+					
+					String formula = metodologiaServices.getMetodologia(metodologia).get(0).getFormula();
+					
+					List<Values> finalVal = new Evaluador().evaluador(empresasL, formula);
+					
+					context.put("finalList", finalVal);
+					context.put("metodologia", metodologia);
+				}
+				
+		}
+		 
+		 else {
+			 
+			 String[] emps = empresas.split(",");
+			 
+			 List<Empresa> empresasL = new ArrayList<Empresa>();
+			 
+			 for (int i = 0; i < emps.length; i++) {
+				
+				 empresasL.add(new EmpresaServices().getEmpresa(emps[i]).get(0));
+				 
+			}
+			 
+			 List<Values> finalVal = new Evaluador().evaluador(empresasL, metodologia);
+				
+				context.put("finalList", finalVal);
+				context.put("metodologia", metodologia);
+			 
+		 }
+		 
+		 
 		  		     
 		  
 		  

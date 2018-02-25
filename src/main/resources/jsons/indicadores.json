@@ -1,23 +1,17 @@
 [
   {
-    "nombre": "Indicador1",
-    "formula": "INEOC*INEOD/EBITDA"
+    "nombre": "ROE",
+    "formula": "BENEAI/FONPRO"
   },
   {
-    "nombre": "Indicador2",
-    "formula": "(INEOC+EBITDA)/(INEOD+EBITDA)"
+    "nombre": "PROPDEU",
+    "formula": "DEUDA/EQUIDAD"
   },
+  
   {
-    "nombre": "Indicador3",
-    "formula": "(INEOC^2)*4/(INEOD^2)*EBITDA"
-  },
-  {
-    "nombre": "Indicador4",
-    "formula": "INEOC-INEOD"
-  },
-  {
-    "nombre": "IndicadorFAIL",
-    "formula": "INEOS - INED"
+    "nombre": "MARGEN",
+    "formula": "MARGENC"
   }
+  
   
 ]

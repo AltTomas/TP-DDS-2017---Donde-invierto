@@ -12,14 +12,9 @@
            #end
        </select>
        
-       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="empresa" style="margin-bottom: 10px;" required>
-         #foreach( $empresa in $empresaList )        
-         <option value=$empresa.getNombre()>$empresa.getNombre()</option required>
-         #end
-       </select>
+       <input type="text" class="form-control mr-sm-2" id="imputNew" aria-label="FI" placeholder="Empresas" name="empresas" required>
        
-       <input type="number" class="form-control mr-sm-2" id="imputNew" aria-label="FI" placeholder="Periodo" name="periodo" min="1950" max="2017" maxlength="4" required>
-        
+      
     <div class="checkbox">    
        <label>  
     	<input type="checkbox" name="all" value="yes">Calcular para todas las empresas
