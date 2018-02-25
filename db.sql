@@ -12,6 +12,7 @@
     create table Empresa (
         id integer NOT NULL AUTO_INCREMENT /*DEFAULT 1,*/,
         nombre varchar(255),
+        antiguedad integer,
         primary key (id)
     );
 
