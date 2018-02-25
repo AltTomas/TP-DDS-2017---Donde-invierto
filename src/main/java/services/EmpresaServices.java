@@ -30,6 +30,19 @@ public class EmpresaServices {
 	   return empresa;
 	}
 	
+   
+   public Empresa createEmpresa(String nombre, int antiguedad)
+   {			
+	   Empresa empresa = new Empresa(nombre.toUpperCase());				
+	   empresa.setAntiguedad(antiguedad);
+	   
+	   em.getTransaction().begin();
+	   em.persist(empresa);
+	   em.flush();
+	   em.getTransaction().commit();
+	   		   
+	   return empresa;
+	}
 
     public Cuenta addCuenta(Empresa empresa, Cuenta cuenta) 
 

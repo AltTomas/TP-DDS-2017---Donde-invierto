@@ -1,11 +1,8 @@
 [
     {
 		"nombre": "Google",
-		"cuentas": [{
-			"nombre": "INEOC",
-			"valor": 15000,
-			"periodo": "2014"
-		},
+		"antiguedad": 2,
+		"cuentas": [
 		{
 			"nombre": "INEOC",
 			"valor": 14500,
@@ -20,11 +17,6 @@
 			"nombre": "INEOC",
 			"valor": 16000,
 			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 15000,
-			"periodo": "2014"
 		},
 		{
 			"nombre": "INEOD",
@@ -59,11 +51,8 @@
 	},
 	{
 		"nombre": "Microsoft",
-		"cuentas": [{
-			"nombre": "INEOC",
-			"valor": 11000,
-			"periodo": "2014"
-		},
+		"antiguedad": 5,
+		"cuentas": [
 		{
 			"nombre": "INEOC",
 			"valor": 13500,
@@ -78,11 +67,6 @@
 			"nombre": "INEOC",
 			"valor": 17000,
 			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 10000,
-			"periodo": "2014"
 		},
 		{
 			"nombre": "INEOD",
@@ -117,11 +101,8 @@
 	},
 	 {
 		"nombre": "AMD",
-		"cuentas": [{
-			"nombre": "INEOC",
-			"valor": 19000,
-			"periodo": "2014"
-		},
+		"antiguedad": 8,
+		"cuentas": [
 		{
 			"nombre": "INEOC",
 			"valor": 18500,
@@ -136,11 +117,6 @@
 			"nombre": "INEOC",
 			"valor": 19000,
 			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 15600,
-			"periodo": "2014"
 		},
 		{
 			"nombre": "INEOD",
@@ -175,11 +151,8 @@
 	},
 	{
 		"nombre": "Intel",
-		"cuentas": [{
-			"nombre": "INEOC",
-			"valor": 15000,
-			"periodo": "2014"
-		},
+		"antiguedad": 24,
+		"cuentas": [
 		{
 			"nombre": "INEOC",
 			"valor": 16500,
@@ -194,11 +167,6 @@
 			"nombre": "INEOC",
 			"valor": 11100,
 			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 12000,
-			"periodo": "2014"
 		},
 		{
 			"nombre": "INEOD",
@@ -233,11 +201,8 @@
 	},
 	 {
 		"nombre": "Oracle",
-		"cuentas": [{
-			"nombre": "INEOC",
-			"valor": 15000,
-			"periodo": "2014"
-		},
+		"antiguedad": 34,
+		"cuentas": [
 		{
 			"nombre": "INEOC",
 			"valor": 14500,
@@ -252,11 +217,6 @@
 			"nombre": "INEOC",
 			"valor": 16000,
 			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 15000,
-			"periodo": "2014"
 		},
 		{
 			"nombre": "INEOD",
@@ -291,11 +251,8 @@
 	},
 	{
 		"nombre": "SAP",
-		"cuentas": [{
-			"nombre": "INEOC",
-			"valor": 19000,
-			"periodo": "2014"
-		},
+        "antiguedad": 18,
+		"cuentas": [
 		{
 			"nombre": "INEOC",
 			"valor": 20500,
@@ -310,11 +267,6 @@
 			"nombre": "INEOC",
 			"valor": 20000,
 			"periodo": "2017"
-		},
-		{
-			"nombre": "INEOD",
-			"valor": 19000,
-			"periodo": "2014"
 		},
 		{
 			"nombre": "INEOD",
