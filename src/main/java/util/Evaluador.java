@@ -9,44 +9,42 @@ import util.DDSParserM;
 
 public class Evaluador {
 	
+	private DDSParserM parserM;
+	
+	public Evaluador() {
+		System.out.println("DAAAAAAWG");
+		this.parserM = new DDSParserM();		
+	}
+	
 	public List<Values> evaluador(List<Empresa> empresas, String metodologia) {
-		
-		ArrayList<ArrayList<Values>> listaValores = new ArrayList<ArrayList<Values>>();
-		
+				
+		ArrayList<ArrayList<Values>> listaValores = new ArrayList<ArrayList<Values>>();		
 		String[] condiciones = splitMetodologia(metodologia);
-		
+				
 		for (int i = 0; i < condiciones.length; i++) {
-			
+											
 			if(!(condiciones[i]==null | condiciones[i].equals("") | condiciones[i].equals("&"))){
 				
 				List<Posiciones> posiciones = new ArrayList<Posiciones>();
 				
-				for (int j = 0; j < empresas.size(); j++) {
-					
-					Boolean res = new DDSParserM().evaluar(condiciones[i], empresas.get(j), "2017");
-					
-					
-					posiciones.add(new Posiciones(empresas.get(j), condiciones[i], Boolean.toString(res)));	
+				for (int j = 0; j < empresas.size(); j++) {					
+					Boolean res = this.parserM.evaluar(condiciones[i], empresas.get(j), "2017");					
+					Posiciones posicion = new Posiciones(empresas.get(j), condiciones[i], Boolean.toString(res));
+					posiciones.add(posicion);	
 				}
-				
-				ArrayList<Values> valores = evalPosiciones(posiciones);
-				
-				listaValores.add(valores);
-				
-				
+								
+				ArrayList<Values> valores = evalPosiciones(posiciones);				
+				listaValores.add(valores);								
 			}
+			
 		}
-		
+				
 		return finalSort(listaValores);
 		
 	}
 	
-	public String[] splitMetodologia(String metodologia) {
-		
-		  
-	  	   String[] split1 = metodologia.split("([()])");
-	  	  
-	  	   	  	   
+	public String[] splitMetodologia(String metodologia) {				  
+	  	   String[] split1 = metodologia.split("([()])");	  	  	  	   	  	   
 	  	   return split1;
 	}
 	
