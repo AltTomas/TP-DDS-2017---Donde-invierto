@@ -29,5 +29,7 @@
         primary key (id)
     );
     	
-	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);	
+	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Empresa FOREIGN KEY (empresa_id) REFERENCES Empresa(id);
+	ALTER TABLE Cuenta ADD CONSTRAINT FK_Cuenta_Indicador FOREIGN KEY (indicador_id) REFERENCES Indicador(id);
+		
 	
