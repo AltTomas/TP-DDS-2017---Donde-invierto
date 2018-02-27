@@ -9,9 +9,10 @@ import dominio.Indicador;
 public class IndicadorServices {
 	
    private EntityManager em;
+   private EntityManagerFactory emf;
 
    public IndicadorServices() {	   		 
-	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("ddstp");			 	 
+	  this.emf = Persistence.createEntityManagerFactory("ddstp");			 	 
 	  this.em = emf.createEntityManager();		
 	}
 		
@@ -43,6 +44,11 @@ public class IndicadorServices {
 	  	}
 	  	  	
 		return indicadores;		
+	}
+	
+	public void close() {
+		
+		this.emf.close();
 	}
 	
 }

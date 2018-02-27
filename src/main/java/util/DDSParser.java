@@ -1,5 +1,6 @@
 package util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,12 +10,17 @@ import org.apache.commons.lang.StringUtils;
 import dominio.Cuenta;
 import dominio.Empresa;
 import dominio.Indicador;
+import services.EmpresaServices;
 import services.IndicadorServices;
+import services.MetodologiaServices;
 
 import com.google.gson.Gson;
 import redis.clients.jedis.Jedis;
 
 public class DDSParser {
+	
+	
+	
 
 	// Variables de operaciones.
 	private static final String SUMA = "+";
@@ -72,7 +78,8 @@ public class DDSParser {
 	/* Calcular */
 
 	public double calcular(String formula, Empresa empresa, String periodo) {
-
+		
+				
 		double resultado;
 		
 		String clave = formula + "_" + empresa + "_" + periodo; // Clave tiene la forma "formula-empresa-periodo".
@@ -94,8 +101,8 @@ public class DDSParser {
 			
 			this.jedis.set(clave, String.valueOf(resultado));					
 		}
-					
-		return resultado;
+		
+				return resultado;
 	}
 
 	public double calcularSR(List<String> reducido) {
@@ -162,7 +169,7 @@ public class DDSParser {
 				}
 			}
 		}
-
+		
 		return resfinal;
 	}
 
@@ -245,6 +252,7 @@ public class DDSParser {
 		}
 
 		String[] enviar = reducido.toArray(new String[0]);
+	
 		return enviar;
 	}
 
@@ -276,6 +284,7 @@ public class DDSParser {
 
 		String[] finalForm = parenSplitL.toArray(new String[0]);
 		String enviar = arrayToString(finalForm);
+		
 		return enviar;
 
 	}
@@ -345,6 +354,7 @@ public class DDSParser {
 		}
 
 		String[] enviar = reducido.toArray(new String[0]);
+	
 		return enviar;
 	}
 
@@ -357,7 +367,8 @@ public class DDSParser {
 			stringFinal = stringFinal + array[i];
 
 		}
-
+		
+		
 		return stringFinal;
 	}
 
@@ -374,7 +385,8 @@ public class DDSParser {
 					if (!(splittedArr[i].equals("true") || splittedArr[i].equals("false"))) {
 
 						if (searchValue(splittedArr[i], empresa, periodo).equals("-1")) {
-
+							
+						
 							return "0";
 
 						}
@@ -385,14 +397,18 @@ public class DDSParser {
 				}
 			}
 		}
-
+		
 		return arrayToString(splittedArr);
 
 	}
 
 	public String searchValue(String id, Empresa empresa, String periodo) {
+		
+	
 
 		if(id.equals("ANTIG")) {
+			
+			
 			return Integer.toString(empresa.getAntiguedad());
 		}
 		
@@ -401,21 +417,37 @@ public class DDSParser {
 		for (int i = 0; i < lc.size(); i++) {
 
 			if (lc.get(i).getNombre().equals(id) & lc.get(i).getPeriodo().equals(periodo)) {
-
+				
+				
 				return Double.toString(lc.get(i).getValor());
 			}
 		}
+		
+		IndicadorServices indicadorService = null;
+		List<Indicador> li = new ArrayList<Indicador>();
 
-		List<Indicador> li = new IndicadorServices().getAllIndicadores();
+		try{
+			
+			indicadorService = new IndicadorServices();
+			li = indicadorService.getAllIndicadores();
+			
+		}finally{
+			indicadorService.close();
+		}		
 
 		for (int i = 0; i < li.size(); i++) {
 
 			if (li.get(i).getNombre().equals(StringUtils.substringBefore(id, "_").toUpperCase())) {
 
+				
+				
 				return Double.toString(li.get(i).getValor(empresa, StringUtils.substringAfter(id, "_")));
+				
+				
 			}
 
 		}
+		
 		return "-1";
 
 	}

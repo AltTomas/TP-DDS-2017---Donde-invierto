@@ -5,15 +5,23 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import dominio.Empresa;
+import services.EmpresaServices;
+import services.IndicadorServices;
+import services.MetodologiaServices;
 import util.DDSParserM;
 
 public class Evaluador {
+	
+
+	public DDSParser DDSParser;
+
 	
 	private DDSParserM parserM;
 	
 	public Evaluador() {
 		System.out.println("DAAAAAAWG");
-		this.parserM = new DDSParserM();		
+		this.parserM = new DDSParserM();	
+		this.DDSParser = new DDSParser();
 	}
 	
 	public List<Values> evaluador(List<Empresa> empresas, String metodologia) {
@@ -141,8 +149,8 @@ public class Evaluador {
 		        			}
 		        			else {
 		        				
-		        				String value1 = new DDSParser().searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),"2017");
-		        				String value2 = new DDSParser().searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),"2017");
+		        				String value1 = DDSParser.searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),"2017");
+		        				String value2 = DDSParser.searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),"2017");
 		        				
 		        				int value1i = Integer.parseInt(value1);
 		        				int value2i = Integer.parseInt(value2);
@@ -173,8 +181,8 @@ public class Evaluador {
 			        			
 			        			else {
 			        				
-			        				String value1 = new DDSParser().searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),"2017");
-			        				String value2 = new DDSParser().searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),"2017");
+			        				String value1 = DDSParser.searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),"2017");
+			        				String value2 = DDSParser.searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),"2017");
 			        				
 			        				double value1i = Double.parseDouble(value1);
 			        				double value2i = Double.parseDouble(value2);
