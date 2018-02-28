@@ -383,14 +383,16 @@ public class DDSParser {
 				if (!(splittedArr[i].matches("-?\\d+(\\.\\d+)?") || splittedArr[i].matches("[*/+-^()|&<>=]"))) {
 
 					if (!(splittedArr[i].equals("true") || splittedArr[i].equals("false"))) {
+						
+							String val = searchValue(splittedArr[i], empresa, periodo);
 
-						if (searchValue(splittedArr[i], empresa, periodo).equals("-1")) {
+						if (val.equals("-1")) {
 							
 						
 							return "0";
 
 						}
-						splittedArr[i] = searchValue(splittedArr[i], empresa, periodo);
+						splittedArr[i] = val;
 
 					}
 
@@ -404,7 +406,7 @@ public class DDSParser {
 
 	public String searchValue(String id, Empresa empresa, String periodo) {
 		
-	
+		id = id.toUpperCase();
 
 		if(id.equals("ANTIG")) {
 			
@@ -412,19 +414,54 @@ public class DDSParser {
 			return Integer.toString(empresa.getAntiguedad());
 		}
 		
+		if(StringUtils.startsWith(id, "CU")) {
 		List<Cuenta> lc = empresa.getCuentas();
+		
+		String nombre = StringUtils.substringBetween(id, ".", "_");
+		
+		if(nombre == null | nombre == "") {
+			nombre = StringUtils.substringAfter(id, ".");
+		}
+		
+		String period = StringUtils.substringAfter(id, "_");
+		
+		if(period == "" | period == null) {
+			period = periodo;
+		}
+		
+		if(period.equals("LAST")) {
+			period = "2017";
+		}
 
 		for (int i = 0; i < lc.size(); i++) {
 
-			if (lc.get(i).getNombre().equals(id) & lc.get(i).getPeriodo().equals(periodo)) {
+			if (lc.get(i).getNombre().equals(nombre) & lc.get(i).getPeriodo().equals(period)) {
 				
 				
 				return Double.toString(lc.get(i).getValor());
 			}
 		}
+		}
 		
+		if(StringUtils.startsWith(id, "IN")) {
 		IndicadorServices indicadorService = null;
 		List<Indicador> li = new ArrayList<Indicador>();
+		
+		String nombre = StringUtils.substringBetween(id, ".", "_");
+		
+		if(nombre == null | nombre == "") {
+			nombre = StringUtils.substringAfter(id, ".");
+		}
+		
+		String period = StringUtils.substringAfter(id, "_");
+		
+		if(period == "" | period == null) {
+			period = periodo;
+		}
+		
+		if(period.equals("last")) {
+			period = "2017";
+		}
 
 		try{
 			
@@ -437,16 +474,16 @@ public class DDSParser {
 
 		for (int i = 0; i < li.size(); i++) {
 
-			if (li.get(i).getNombre().equals(StringUtils.substringBefore(id, "_").toUpperCase())) {
+			if (li.get(i).getNombre().equals(nombre.toUpperCase())) {
 
-				
-				
-				return Double.toString(li.get(i).getValor(empresa, StringUtils.substringAfter(id, "_")));
+								
+				return Double.toString(li.get(i).getValor(empresa,period));
 				
 				
 			}
 
 		}
+	}
 		
 		return "-1";
 

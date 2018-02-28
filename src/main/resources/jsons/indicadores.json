@@ -1,16 +1,10 @@
 [
   {
     "nombre": "ROE",
-    "formula": "BENEAI/FONPRO"
+    "formula": "CU.BENEAI/CU.FONPRO"
   },
-  {
-    "nombre": "PROPDEU",
-    "formula": "DEUDA/EQUIDAD"
-  },
-  
-  {
-    "nombre": "MARGEN",
-    "formula": "MARGENC"
+  { "nombre": "BEXFP",
+  	"formula": "CU.EBITDA/CU.FONPRO"
   }
   
   

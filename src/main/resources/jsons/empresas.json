@@ -105,7 +105,7 @@
 		},
 		{
 			"nombre": "BENEAI",
-			"valor": 12000,
+			"valor": 16000,
 			"periodo": "2017"
 		},
 		{
@@ -119,57 +119,112 @@
 			"periodo": "2017"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 2000,
 			"periodo": "2007"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 3000,
 			"periodo": "2008"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 4000,
 			"periodo": "2009"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 5000,
 			"periodo": "2010"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 6000,
 			"periodo": "2011"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 7000,
 			"periodo": "2012"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 8000,
 			"periodo": "2013"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 9000,
 			"periodo": "2014"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 10000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 11000,
 			"periodo": "2016"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
+			"valor": 12000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 2000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 3000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 4000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 5000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 6000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 7000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 8000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 9000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 10000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 11000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
 			"valor": 12000,
 			"periodo": "2017"
 		}
@@ -281,7 +336,7 @@
 		},
 		{
 			"nombre": "BENEAI",
-			"valor": 12000,
+			"valor": 15000,
 			"periodo": "2017"
 		},
 		{
@@ -295,58 +350,113 @@
 			"periodo": "2017"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 2000,
 			"periodo": "2007"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 3000,
 			"periodo": "2008"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 4000,
 			"periodo": "2009"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 5000,
 			"periodo": "2010"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 6000,
 			"periodo": "2011"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 7000,
 			"periodo": "2012"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 8000,
 			"periodo": "2013"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 9000,
 			"periodo": "2014"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 10000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 11000,
 			"periodo": "2016"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 12000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 2000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 3000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 4000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 5000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 6000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 7000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 8000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 9000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 10000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 11000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 15000,
 			"periodo": "2017"
 		}
 		
@@ -457,7 +567,7 @@
 		},
 		{
 			"nombre": "BENEAI",
-			"valor": 12000,
+			"valor": 18500,
 			"periodo": "2017"
 		},
 		{
@@ -467,62 +577,117 @@
 		},
 		{
 			"nombre": "PROPDEU",
-			"valor": 200,
+			"valor": 70,
 			"periodo": "2017"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 2000,
 			"periodo": "2007"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 3000,
 			"periodo": "2008"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 4000,
 			"periodo": "2009"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 5000,
 			"periodo": "2010"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 1000,
 			"periodo": "2011"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 7000,
 			"periodo": "2012"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 8000,
 			"periodo": "2013"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 9000,
 			"periodo": "2014"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 10000,
 			"periodo": "2015"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 11000,
 			"periodo": "2016"
 		},
 		{
-			"nombre": "MARGENC",
+			"nombre": "MARGEN",
 			"valor": 12000,
+			"periodo": "2017"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 11000,
+			"periodo": "2007"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 10000,
+			"periodo": "2008"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 9000,
+			"periodo": "2009"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 8000,
+			"periodo": "2010"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 7000,
+			"periodo": "2011"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 6000,
+			"periodo": "2012"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 5000,
+			"periodo": "2013"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 4000,
+			"periodo": "2014"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 3000,
+			"periodo": "2015"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 2000,
+			"periodo": "2016"
+		},
+		{
+			"nombre": "EBITDA",
+			"valor": 1000,
 			"periodo": "2017"
 		}
 		

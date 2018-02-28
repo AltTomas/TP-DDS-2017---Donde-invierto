@@ -161,13 +161,14 @@ public class MetodologiaController {
 			VelocityContext context = new VelocityContext();
 
 			String metodologia = req.queryParams("metodologia");
-			String empresas = req.queryParams("empresa");
+			String empresas = req.queryParams("empresas");
 			String all = req.queryParams("all");
+			
+			String formula = metodologiaServices.getMetodologia(metodologia).get(0).getFormula();
 
 			if (all != null) {
 				if (all.equals("yes")) {
 					List<Empresa> empresasL = this.empresaServices.getAllEmpresas();
-					String formula = metodologiaServices.getMetodologia(metodologia).get(0).getFormula();
 					List<Values> finalVal = evaluador.evaluador(empresasL, formula);
 					context.put("finalList", finalVal);
 					context.put("metodologia", metodologia);
@@ -183,11 +184,11 @@ public class MetodologiaController {
 
 				for (int i = 0; i < emps.length; i++) {
 
-					empresasL.add(new EmpresaServices().getEmpresa(emps[i]).get(0));
+					empresasL.add(this.empresaServices.getEmpresa(emps[i]).get(0));
 
 				}
 
-				List<Values> finalVal = evaluador.evaluador(empresasL, metodologia);
+				List<Values> finalVal = evaluador.evaluador(empresasL, formula);
 
 				context.put("finalList", finalVal);
 				context.put("metodologia", metodologia);

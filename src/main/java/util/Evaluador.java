@@ -1,5 +1,6 @@
 package util;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -26,6 +27,7 @@ public class Evaluador {
 	
 	public List<Values> evaluador(List<Empresa> empresas, String metodologia) {
 				
+		int promedio = 0;
 		ArrayList<ArrayList<Values>> listaValores = new ArrayList<ArrayList<Values>>();		
 		String[] condiciones = splitMetodologia(metodologia);
 				
@@ -35,19 +37,28 @@ public class Evaluador {
 				
 				List<Posiciones> posiciones = new ArrayList<Posiciones>();
 				
-				for (int j = 0; j < empresas.size(); j++) {					
+				for (int j = 0; j < empresas.size(); j++) {		
+					
+					if(condiciones[i].startsWith("AUM") | condiciones[i].startsWith("DIS")) {
+						condiciones[i] = generateCons(condiciones[i]);
+					}
+					
+					
 					Boolean res = this.parserM.evaluar(condiciones[i], empresas.get(j), "2017");					
 					Posiciones posicion = new Posiciones(empresas.get(j), condiciones[i], Boolean.toString(res));
 					posiciones.add(posicion);	
+					
+				
 				}
 								
 				ArrayList<Values> valores = evalPosiciones(posiciones);				
-				listaValores.add(valores);								
+				listaValores.add(valores);	
+				promedio++;
 			}
 			
 		}
 				
-		return finalSort(listaValores);
+		return finalSort(listaValores, promedio);
 		
 	}
 	
@@ -56,9 +67,11 @@ public class Evaluador {
 	  	   return split1;
 	}
 	
-	public List<Values> finalSort(ArrayList<ArrayList<Values>> listaValores){
+	public List<Values> finalSort(ArrayList<ArrayList<Values>> listaValores, int promedio){
 		
-		ArrayList<Values> finalVal = listaValores.get(0);
+	
+		
+		List<Values> finalVal = listaValores.get(0);
 		
 		for (int i = 1; i < listaValores.size(); i++) {
 			
@@ -82,14 +95,7 @@ public class Evaluador {
 			
 		}
 		
-		for (int i = 0; i < finalVal.size(); i++) {
 			
-			double posicion = Math.floor(finalVal.get(i).getValor() / 4);
-			
-			finalVal.get(i).setValor(posicion);
-			
-		}
-		
 		Values[] arr = new Values[finalVal.size()];
 		
 		arr = finalVal.toArray(arr);
@@ -107,6 +113,16 @@ public class Evaluador {
 	                }
 	           }
 		 }
+		 
+		 finalVal = Arrays.asList(arr);
+		 
+			for (int i = 0; i < finalVal.size(); i++) {
+				
+			
+				
+				finalVal.get(i).setValor(i+1);
+				
+			}
 		
 		
 		
@@ -149,11 +165,17 @@ public class Evaluador {
 		        			}
 		        			else {
 		        				
-		        				String value1 = DDSParser.searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),"2017");
-		        				String value2 = DDSParser.searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),"2017");
+		        				String periodo = StringUtils.substringAfterLast(arr[j].getCondicion(), "_");
 		        				
-		        				int value1i = Integer.parseInt(value1);
-		        				int value2i = Integer.parseInt(value2);
+		        				if(periodo.equals("LAST")) {
+		        					periodo = "2017";
+		        				}
+		        				
+		        				String value1 = DDSParser.searchValue(StringUtils.substringBetween(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),periodo);
+		        				String value2 = DDSParser.searchValue(StringUtils.substringBetween(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),periodo);
+		        				
+		        				double value1i = Double.parseDouble(value1);
+		        				double value2i = Double.parseDouble(value2);
 		        				
 		        				if(value1i < value2i) {
 				        			Posiciones temp = arr[j];
@@ -181,8 +203,14 @@ public class Evaluador {
 			        			
 			        			else {
 			        				
-			        				String value1 = DDSParser.searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),"2017");
-			        				String value2 = DDSParser.searchValue(StringUtils.substringAfter(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),"2017");
+			        				String periodo = StringUtils.substringAfterLast(arr[j].getCondicion(), "_");
+			        				
+			        				if(periodo.equals("LAST")) {
+			        					periodo = "2017";
+			        				}
+			        				
+			        				String value1 = DDSParser.searchValue(StringUtils.substringBetween(arr[j].getCondicion(), "_"), arr[j].getEmpresa(),periodo);
+			        				String value2 = DDSParser.searchValue(StringUtils.substringBetween(arr[j].getCondicion(), "_"), arr[j+1].getEmpresa(),periodo);
 			        				
 			        				double value1i = Double.parseDouble(value1);
 			        				double value2i = Double.parseDouble(value2);
@@ -212,6 +240,89 @@ public class Evaluador {
 				
 		
 		return returnLis;
+		
+	}
+	
+	public String generateCons(String cond) {
+		
+		if(StringUtils.startsWith(cond, "AUM")) {
+			
+			String id = StringUtils.substringBetween(cond, "-", "_");
+			
+			Integer periodoInit = Integer.parseInt(StringUtils.substringBetween(cond, "_", "_"));
+					
+		
+			
+			Integer until = Integer.parseInt(StringUtils.substringAfterLast(cond, "_"));
+			
+			String condicion = null;
+			
+			for (int i = 0; i < until; i++) {
+				
+				String periodo1 = Integer.toString(periodoInit+i);
+				String periodo2 = Integer.toString(periodoInit+i+1);
+				
+				String condparc = id+"_"+periodo1+"<"+id+"_"+periodo2;
+				
+				if(i==0) {
+				condicion = condparc;
+				}
+				
+				else {
+					condicion = condicion+"&"+condparc;
+				}
+				
+								
+			}
+			
+			if(condicion == null) {
+				return cond;
+			}
+			
+			return condicion;
+			
+			
+			
+		}
+		
+		else if(StringUtils.startsWith(cond, "DIS")) {
+			
+			String id = StringUtils.substringBetween(cond, "-", "_");
+			
+			Integer periodoInit = Integer.parseInt(StringUtils.substringBetween(cond, "_", "_"));
+			
+			Integer until = Integer.parseInt(StringUtils.substringAfterLast(cond, "_"));
+			
+			String condicion = null;
+			
+			for (int i = 0; i < until; i++) {
+				
+				String periodo1 = Integer.toString(periodoInit+i);
+				String periodo2 = Integer.toString(periodoInit+i+1);
+				
+				String condparc = id+"_"+periodo1+">"+id+"_"+periodo2;
+				
+				if(i==0) {
+				condicion = condparc;
+				}
+				
+				else {
+					condicion = condicion+"&"+condparc;
+				}
+				
+								
+			}
+			
+			if(condicion == null) {
+				return cond;
+			}
+			
+			return condicion;
+			
+			
+		}
+		
+		return cond;
 		
 	}
 }
